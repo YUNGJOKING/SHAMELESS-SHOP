@@ -3,424 +3,390 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>SHAMELESS Shop</title>
+<title>SHAMELESS Shop — Fuel Your Addiction</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@400;600&display=swap');
+
   /* Reset & base */
   * {
     box-sizing: border-box;
   }
   body {
-    margin: 0;
-    background: #110031;
-    color: #d6a1ff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0; padding: 0;
+    background: #0a021a;
+    color: #ddd;
+    font-family: 'Poppins', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    user-select: none;
   }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  button {
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+  }
+
+  /* Container */
   .container {
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    margin: auto;
+    padding: 0 20px 60px;
   }
 
-  /* Header */
+  /* Header/Nav */
   header {
-    text-align: center;
-    padding: 2rem 1rem;
-    border-bottom: 2px solid #4a1e9d;
+    background: #15022f;
+    box-shadow: 0 0 20px #6f00ff66;
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
-  header h1 {
-    font-size: 3rem;
-    letter-spacing: 0.15em;
-    margin: 0 0 0.25rem;
-    color: #bb77ff;
-    text-shadow:
-      0 0 8px #bb77ffcc,
-      0 0 16px #bb77ffaa;
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
   }
-  .slogan {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #d7aaffcc;
-    text-shadow: 0 0 10px #aa77ffbb;
-    font-style: italic;
-  }
-
-  /* Featured Products */
-  section.featured-products {
-    margin-top: 3rem;
-  }
-  section.featured-products h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #bb77ffdd;
-    text-shadow: 0 0 10px #bb77ffcc;
+  .logo {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.8rem;
+    color: #bb33ff;
     letter-spacing: 0.1em;
+    font-weight: 700;
     user-select: none;
   }
+  .nav-categories {
+    display: flex;
+    gap: 14px;
+  }
+  .nav-categories button {
+    background: #24014f;
+    color: #bb33ff;
+    padding: 8px 14px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background 0.3s, color 0.3s;
+    border: 2px solid transparent;
+  }
+  .nav-categories button:hover,
+  .nav-categories button.active {
+    background: #bb33ff;
+    color: #15022f;
+    border-color: #bb33ff;
+    box-shadow:
+      0 0 5px #bb33ff,
+      0 0 10px #bb33ff,
+      0 0 15px #bb33ff66;
+  }
+
+  /* Main */
+  main {
+    margin-top: 30px;
+  }
+  h1 {
+    font-family: 'Orbitron', monospace;
+    color: #bb33ff;
+    font-weight: 900;
+    font-size: 2.6rem;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 0.1em;
+  }
+  p.subtitle {
+    text-align: center;
+    color: #a080ffcc;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Product grid */
   .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+    gap: 28px;
   }
+
+  /* Product card */
   .product-card {
-    background: #3a177c;
-    border-radius: 12px;
-    padding: 16px;
+    background: #1a0a3a;
+    border-radius: 14px;
     box-shadow:
-      0 0 12px #bb77ffcc;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
+      inset 0 0 12px #4400cc33,
+      0 0 18px #bb33ff66;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  .product-card:hover,
-  .product-card:focus {
+  .product-card:hover {
     transform: scale(1.05);
     box-shadow:
-      0 0 24px #dd99ff,
-      0 0 40px #bb77ffdd;
-    outline: none;
+      0 0 20px #bb33ff,
+      0 0 40px #bb33ff88,
+      inset 0 0 20px #bb33ffcc;
+    z-index: 10;
   }
   .product-image {
-    max-width: 100%;
-    border-radius: 8px;
-    margin-bottom: 12px;
-    filter: drop-shadow(0 0 3px #bb77ff88);
-    user-select: none;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: drop-shadow(0 0 8px #bb33ffaa);
   }
   .product-info {
-    width: 100%;
-    text-align: center;
+    padding: 18px 20px 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
   }
-  .product-name {
+  .product-title {
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     margin-bottom: 6px;
-    color: #ddaaff;
-    text-shadow: 0 0 5px #bb77ffaa;
+    color: #e0b3ff;
+    text-shadow: 0 0 4px #bb33ffbb;
+  }
+  .product-desc {
+    font-size: 0.85rem;
+    color: #b799ffaa;
+    flex-grow: 1;
+    margin-bottom: 18px;
+    line-height: 1.3;
   }
   .product-price {
-    font-weight: 600;
-    font-size: 1rem;
-    margin-bottom: 10px;
-    color: #ccaaffcc;
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    font-size: 1.2rem;
+    color: #bb33ff;
+    margin-bottom: 14px;
+    letter-spacing: 0.05em;
   }
-  .buy-button {
-    background: linear-gradient(135deg, #bb77ff, #7f43f5);
-    border: none;
-    color: white;
-    font-weight: 700;
-    padding: 10px 18px;
-    border-radius: 9999px;
-    cursor: pointer;
-    width: 100%;
-    box-shadow: 0 0 10px #aa66ffcc;
-    transition: background 0.3s ease, box-shadow 0.3s ease;
-  }
-  .buy-button:hover,
-  .buy-button:focus {
-    background: linear-gradient(135deg, #dd99ff, #a35eff);
-    box-shadow: 0 0 18px #dd99ffcc;
-    outline: none;
-  }
-
-  /* Categories */
-  section.categories {
-    margin-top: 3rem;
-  }
-  section.categories h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #bb77ffdd;
-    text-shadow: 0 0 10px #bb77ffcc;
-    letter-spacing: 0.1em;
-  }
-  .categories-list {
-    display: flex;
-    justify-content: center;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-  .category-card {
-    background: #3a177c;
-    padding: 14px 28px;
-    border-radius: 9999px;
-    font-weight: 700;
-    color: #d6a1ff;
-    cursor: pointer;
-    user-select: none;
-    box-shadow: 0 0 10px #bb77ffcc;
-    transition: background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
-  }
-  .category-card:hover,
-  .category-card:focus {
-    background: #bb77ff;
-    color: #330044;
-    box-shadow: 0 0 25px #dd99ffdd;
-    outline: none;
-  }
-
-  /* Deals */
-  section.deals {
-    margin-top: 3rem;
-  }
-  section.deals h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #bb77ffdd;
-    text-shadow: 0 0 10px #bb77ffcc;
-    letter-spacing: 0.1em;
-  }
-  .deal-item {
-    background: #4a208e;
-    border-radius: 8px;
-    padding: 12px 20px;
-    margin-bottom: 10px;
-    font-weight: 600;
-    color: #e0c1ff;
-    box-shadow: 0 0 8px #bb77ffbb;
-    user-select: none;
-    cursor: default;
-    position: relative;
-    animation: glowPulse 3s ease-in-out infinite;
-  }
-  .deal-item:hover {
-    animation-play-state: paused;
-    box-shadow:
-      0 0 20px #dd99ffee,
-      0 0 40px #bb77ffee;
+  .buy-btn {
+    background: linear-gradient(45deg, #bb33ff, #7a00ff);
     color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 12px 0;
+    border-radius: 12px;
+    box-shadow:
+      0 0 8px #bb33ffbb,
+      0 0 15px #bb33ff99;
+    transition:
+      background 0.3s ease,
+      box-shadow 0.3s ease;
+    text-align: center;
+    user-select: none;
   }
-  @keyframes glowPulse {
-    0%, 100% {
-      box-shadow: 0 0 8px #bb77ffbb;
+  .buy-btn:hover {
+    background: linear-gradient(45deg, #e754ff, #aa00ff);
+    box-shadow:
+      0 0 15px #ff6eff,
+      0 0 30px #ff6effaa;
+  }
+
+  /* Glitch effect on buy button */
+  .buy-btn.glitch:hover {
+    animation: glitch-btn 0.7s infinite;
+  }
+  @keyframes glitch-btn {
+    0% {
+      text-shadow:
+        2px 0 #e754ff,
+        -2px 0 #aa00ff;
     }
     50% {
-      box-shadow: 0 0 20px #dd99ffdd;
+      text-shadow:
+        -2px 0 #e754ff,
+        2px 0 #aa00ff;
     }
-  }
-
-  /* How It Works */
-  section.how-it-works {
-    margin-top: 3rem;
-  }
-  section.how-it-works h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #bb77ffdd;
-    text-shadow: 0 0 10px #bb77ffcc;
-    letter-spacing: 0.1em;
-  }
-  .steps {
-    display: flex;
-    gap: 18px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .step {
-    background: #3a177c;
-    border-radius: 12px;
-    padding: 20px 16px;
-    max-width: 260px;
-    font-weight: 600;
-    font-size: 1rem;
-    color: #ffd6ee;
-    box-shadow: 0 0 12px #bb77ffcc;
-    user-select: none;
-    transition: transform 0.3s ease;
-  }
-  .step:hover {
-    transform: scale(1.05);
-    box-shadow:
-      0 0 24px #dd99ff,
-      0 0 40px #bb77ffdd;
-  }
-  .step h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    color: #ddaaff;
-  }
-
-  /* Customer Reviews */
-  section.reviews {
-    margin-top: 3rem;
-  }
-  section.reviews h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #bb77ffdd;
-    text-shadow: 0 0 10px #bb77ffcc;
-    letter-spacing: 0.1em;
-  }
-  .review-list {
-    display: flex;
-    justify-content: center;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-  .review-card {
-    background: #3a177c;
-    border-radius: 12px;
-    max-width: 300px;
-    padding: 20px;
-    box-shadow:
-      0 0 12px #bb77ffcc;
-    font-weight: 600;
-    font-size: 1rem;
-    color: #ffd6ee;
-    user-select: none;
-    transition: box-shadow 0.3s ease;
-  }
-  .review-card:hover {
-    box-shadow:
-      0 0 20px #dd99ff,
-      0 0 35px #bb77ffdd;
-  }
-  .reviewer {
-    font-weight: 700;
-    font-size: 1.1rem;
-    margin-bottom: 12px;
-    color: #d6a1ff;
-  }
-  .review-text {
-    font-style: italic;
+    100% {
+      text-shadow:
+        2px 0 #e754ff,
+        -2px 0 #aa00ff;
+    }
   }
 
   /* Footer */
   footer {
-    background: #110031;
+    background: #15022f;
     text-align: center;
-    padding: 20px 0;
-    color: #7744cc88;
+    padding: 22px 10px;
+    color: #bb33ffcc;
+    font-weight: 600;
+    letter-spacing: 0.1em;
     font-size: 0.9rem;
+    box-shadow: inset 0 2px 8px #6f00ff44;
     user-select: none;
-    margin-top: 4rem;
   }
 
-  /* Responsive */
-  @media (max-width: 600px) {
-    section.how-it-works .steps,
-    section.reviews .review-list {
+  /* Responsive tweaks */
+  @media (max-width: 480px) {
+    nav {
       flex-direction: column;
-      align-items: center;
+      height: auto;
+      gap: 8px;
+      padding: 10px 0;
     }
-    .products-grid {
-      grid-template-columns: 1fr;
+    .nav-categories {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+    .product-desc {
+      display: none;
     }
   }
 </style>
 </head>
 <body>
-  <header>
-    <h1>SHAMELESS Shop</h1>
-    <div class="slogan">Fuel Your Addiction</div>
-  </header>
 
-  <main class="container">
+<header>
+  <nav class="container" role="navigation" aria-label="Main navigation">
+    <div class="logo" tabindex="0">SHAMELESS</div>
+    <div class="nav-categories" role="menubar" aria-label="Product categories">
+      <button class="active" role="menuitem" tabindex="0" data-category="all">All</button>
+      <button role="menuitem" tabindex="0" data-category="fortnite">Fortnite</button>
+      <button role="menuitem" tabindex="0" data-category="valorant">Valorant</button>
+      <button role="menuitem" tabindex="0" data-category="discord">Discord</button>
+      <button role="menuitem" tabindex="0" data-category="telegram">Telegram</button>
+      <button role="menuitem" tabindex="0" data-category="custom">Custom</button>
+    </div>
+  </nav>
+</header>
 
-    <!-- Featured Products -->
-    <section class="featured-products" aria-label="Featured Products">
-      <h2>Featured Products</h2>
-      <div class="products-grid">
-        <article class="product-card" tabindex="0" aria-label="SHAMELESS Hoodie, $49.99">
-          <img class="product-image" src="https://i.imgur.com/HRpzP9x.jpg" alt="SHAMELESS Hoodie" />
-          <div class="product-info">
-            <div class="product-name">SHAMELESS Hoodie</div>
-            <div class="product-price">$49.99</div>
-            <button class="buy-button" aria-label="Buy SHAMELESS Hoodie">Buy Now</button>
-          </div>
-        </article>
-        <article class="product-card" tabindex="0" aria-label="SHAMELESS Mousepad, $19.99">
-          <img class="product-image" src="https://i.imgur.com/yly1dP5.jpg" alt="SHAMELESS Mousepad" />
-          <div class="product-info">
-            <div class="product-name">SHAMELESS Mousepad</div>
-            <div class="product-price">$19.99</div>
-            <button class="buy-button" aria-label="Buy SHAMELESS Mousepad">Buy Now</button>
-          </div>
-        </article>
-        <article class="product-card" tabindex="0" aria-label="SHAMELESS Sticker Pack, $9.99">
-          <img class="product-image" src="https://i.imgur.com/dQRkR6j.jpg" alt="SHAMELESS Sticker Pack" />
-          <div class="product-info">
-            <div class="product-name">SHAMELESS Sticker Pack</div>
-            <div class="product-price">$9.99</div>
-            <button class="buy-button" aria-label="Buy SHAMELESS Sticker Pack">Buy Now</button>
-          </div>
-        </article>
+<main class="container" role="main">
+  <h1>SHAMELESS Shop</h1>
+  <p class="subtitle">Fuel your addiction with the darkest neon deals on Fortnite, Valorant, Discord Nitro, Telegram Premium, and more.</p>
+
+  <section class="products-grid" aria-live="polite" aria-label="Product listings">
+
+    <!-- Product cards: swap images with your real product images -->
+    <article class="product-card" data-category="fortnite" tabindex="0" role="article" aria-label="Fortnite In-Game Products">
+      <div class="product-image" style="background-image:url('https://i.imgur.com/HnJLPTv.png');" alt="Fortnite In-Game Products"></div>
+      <div class="product-info">
+        <h2 class="product-title">Fortnite In-Game Products</h2>
+        <p class="product-desc">Skins, emotes, and more to elevate your game.</p>
+        <div class="product-price">$9.99 - $49.99</div>
+        <button class="buy-btn glitch" aria-label="Buy Fortnite In-Game Products">Buy Now</button>
       </div>
-    </section>
+    </article>
 
-    <!-- Categories -->
-    <section class="categories" aria-label="Product Categories">
-      <h2>Shop by Category</h2>
-      <div class="categories-list">
-        <div class="category-card" tabindex="0" role="button" aria-pressed="false" aria-label="Apparel Category">Apparel</div>
-        <div class="category-card" tabindex="0" role="button" aria-pressed="false" aria-label="Accessories Category">Accessories</div>
-        <div class="category-card" tabindex="0" role="button" aria-pressed="false" aria-label="Digital Goods Category">Digital Goods</div>
+    <article class="product-card" data-category="fortnite" tabindex="0" role="article" aria-label="Gifting V-Bucks">
+      <div class="product-image" style="background-image:url('https://i.imgur.com/VmV57Nr.png');" alt="Gifting V-Bucks"></div>
+      <div class="product-info">
+        <h2 class="product-title">Gifting V-Bucks</h2>
+        <p class="product-desc">Send V-Bucks gifts instantly to your friends.</p>
+        <div class="product-price">$10.00 - $100.00</div>
+        <button class="buy-btn glitch" aria-label="Buy Gifting V-Bucks">Buy Now</button>
       </div>
-    </section>
+    </article>
 
-    <!-- Deals -->
-    <section class="deals" aria-label="Special Deals and Promotions">
-      <h2>Special Deals</h2>
-      <div class="deal-item">🔥 Fortnite In-Game Items & V-Bucks Gifting</div>
-      <div class="deal-item">⚡ Valorant Points (TR Region) Available</div>
-      <div class="deal-item">🎮 Discord Nitro Subscriptions</div>
-      <div class="deal-item">🚀 Fortnite Rank & Victory Boosts</div>
-      <div class="deal-item">🎯 Custom Fortnite Requests Tailored to You</div>
-      <div class="deal-item">📱 Telegram Premium Subscriptions</div>
-      <div class="deal-item">... and More — Stay Shameless!</div>
-    </section>
-
-    <!-- How It Works -->
-    <section class="how-it-works" aria-label="How It Works">
-      <h2>How It Works</h2>
-      <div class="steps">
-        <div class="step">
-          <h3>1. Browse Products</h3>
-          Find your favorite SHAMELESS gear.
-        </div>
-        <div class="step">
-          <h3>2. Add to Cart</h3>
-          Select your items and add them.
-        </div>
-        <div class="step">
-          <h3>3. Checkout Securely</h3>
-          Fast and safe payment methods.
-        </div>
-        <div class="step">
-          <h3>4. Enjoy & Stay Shameless</h3>
-          Receive your order and rock the vibe.
-        </div>
+    <article class="product-card" data-category="valorant" tabindex="0" role="article" aria-label="Valorant Points (TR Region)">
+      <div class="product-image" style="background-image:url('https://i.imgur.com/xnLeP3I.png');" alt="Valorant Points TR"></div>
+      <div class="product-info">
+        <h2 class="product-title">Valorant Points (TR Region)</h2>
+        <p class="product-desc">Fast and secure Valorant Points for Turkish region accounts.</p>
+        <div class="product-price">Starting at $5.99</div>
+        <button class="buy-btn glitch" aria-label="Buy Valorant Points">Buy Now</button>
       </div>
-    </section>
+    </article>
 
-    <!-- Customer Reviews -->
-    <section class="reviews" aria-label="Customer Reviews">
-      <h2>What Our Customers Say</h2>
-      <div class="review-list">
-        <div class="review-card" tabindex="0">
-          <div class="reviewer">Shadmehr</div>
-          <div class="review-text">"The Fortnite boosts got me crushing the competition. SHAMELESS delivers every time!"</div>
-        </div>
-        <div class="review-card" tabindex="0">
-          <div class="reviewer">Elahe</div>
-          <div class="review-text">"Love the hoodie quality and the vibe of the whole shop. Always recommend to friends."</div>
-        </div>
-        <div class="review-card" tabindex="0">
-          <div class="reviewer">Arman</div>
-          <div class="review-text">"Discord Nitro deals are legit and quick. Easy checkout and awesome support."</div>
-        </div>
+    <article class="product-card" data-category="discord" tabindex="0" role="article" aria-label="Discord Nitro">
+      <div class="product-image" style="background-image:url('https://i.imgur.com/hSscN3I.png');" alt="Discord Nitro"></div>
+      <div class="product-info">
+        <h2 class="product-title">Discord Nitro</h2>
+        <p class="product-desc">Get Discord Nitro subscription instantly.</p>
+        <div class="product-price">$9.99/month</div>
+        <button class="buy-btn glitch" aria-label="Buy Discord Nitro">Buy Now</button>
       </div>
-    </section>
+    </article>
 
-  </main>
+    <article class="product-card" data-category="fortnite" tabindex="0" role="article" aria-label="Fortnite Rank Boost">
+      <div class="product-image" style="background-image:url('https://i.imgur.com/fmsfTXc.png');" alt="Fortnite Rank Boost"></div>
+      <div class="product-info">
+        <h2 class="product-title">Fortnite Rank Boost</h2>
+        <p class="product-desc">Level up fast with our professional boosting service.</p>
+        <div class="product-price">Starting at $19.99</div>
+        <button class="buy-btn glitch" aria-label="Buy Fortnite Rank Boost">Buy Now</button>
+      </div>
+    </article>
 
-  <footer>
-    &copy; 2025 SHAMELESS — Fuel Your Addiction. All rights reserved.
-  </footer>
+    <article class="product-card" data-category="fortnite" tabindex="0" role="article" aria-label="Fortnite Victory Boost">
+      <div class="product-image" style="background-image:url('https://i.imgur.com/BFjx0dl.png');" alt="Fortnite Victory Boost"></div>
+      <div class="product-info">
+        <h2 class="product-title">Fortnite Victory Boost</h2>
+        <p class="product-desc">Secure your Victory Royale with expert help.</p>
+        <div class="product-price">Starting at $14.99</div>
+        <button class="buy-btn glitch" aria-label="Buy Fortnite Victory Boost">Buy Now</button>
+      </div>
+    </article>
+
+    <article class="product-card" data-category="custom" tabindex="0" role="article" aria-label="Custom Fortnite Requests">
+      <div class="product-image" style="background-image:url('https://i.imgur.com/TLxhR6k.png');" alt="Custom Fortnite Requests"></div>
+      <div class="product-info">
+        <h2 class="product-title">Custom Fortnite Requests</h2>
+        <p class="product-desc">Tailored services for your unique Fortnite needs.</p>
+        <div class="product-price">Contact for pricing</div>
+        <button class="buy-btn glitch" aria-label="Contact for Custom Fortnite Requests">Contact Us</button>
+      </div>
+    </article>
+
+    <article class="product-card" data-category="telegram" tabindex="0" role="article" aria-label="Telegram Premium">
+      <div class="product-image" style="background-image:url('https://i.imgur.com/D4bP7WO.png');" alt="Telegram Premium"></div>
+      <div class="product-info">
+        <h2 class="product-title">Telegram Premium</h2>
+        <p class="product-desc">Unlock exclusive Telegram features with Premium.</p>
+        <div class="product-price">$4.99/month</div>
+        <button class="buy-btn glitch" aria-label="Buy Telegram Premium">Buy Now</button>
+      </div>
+    </article>
+
+  </section>
+</main>
+
+<footer role="contentinfo">
+  &copy; 2025 SHAMELESS — Fuel Your Addiction. All rights reserved.
+</footer>
+
+<script>
+  // Category filter logic
+  const categoryButtons = document.querySelectorAll('.nav-categories button');
+  const productCards = document.querySelectorAll('.product-card');
+
+  categoryButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      categoryButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const category = btn.getAttribute('data-category');
+
+      productCards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+
+    // Keyboard accessibility (Enter/Space triggers click)
+    btn.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        btn.click();
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
