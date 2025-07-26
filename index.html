@@ -3,16 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SHAMELESS Shop - Home</title>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  />
+  <title>SHAMELESS Shop — Your Trusted Gamer Market</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
   <header>
-    <nav>
+    <nav class="navbar">
+      <div class="logo">SHAMELESS</div>
       <ul class="nav-list">
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="fortnite.html">Fortnite</a></li>
@@ -25,33 +23,61 @@
   </header>
 
   <main>
-    <section class="home-intro" style="max-width: 700px; margin: 3rem auto; padding: 0 1rem;">
+    <section class="hero">
       <h1>Welcome to SHAMELESS Shop</h1>
-      <p>
-        SHAMELESS Shop is your trusted destination for in-game products, boosts, and premium services. We specialize in Fortnite, Valorant, Discord Nitro, Telegram Premium, and more.
-      </p>
-      <p>
-        Enjoy secure transactions, fast delivery, and 24/7 support from a team passionate about gaming.
-      </p>
-      <p>
-        Browse our categories above or use the links below to get started.
-      </p>
+      <p>Your trusted digital marketplace for Fortnite, Valorant, Nitro & more.</p>
+      <a href="fortnite.html" class="btn-primary">Browse Products</a>
+    </section>
 
-      <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
-        <a href="fortnite.html" class="btn btn-primary" style="flex: 1;">Fortnite Products</a>
-        <a href="valorant.html" class="btn btn-primary" style="flex: 1;">Valorant Points</a>
-        <a href="discord.html" class="btn btn-primary" style="flex: 1;">Discord Nitro</a>
+    <section class="services">
+      <h2>Our Products</h2>
+      <div class="service-grid">
+        <div class="card">
+          <h3>Fortnite Products</h3>
+          <p>Skins, Boosts, Battle Pass</p>
+          <a href="fortnite.html">Explore</a>
+        </div>
+        <div class="card">
+          <h3>Valorant Points (TR)</h3>
+          <p>Region locked points</p>
+          <a href="valorant.html">Explore</a>
+        </div>
+        <div class="card">
+          <h3>Discord Nitro</h3>
+          <p>1 Month / 1 Year options</p>
+          <a href="discord.html">Explore</a>
+        </div>
+        <div class="card">
+          <h3>Telegram Premium</h3>
+          <p>Premium monthly access</p>
+          <a href="telegram.html">Explore</a>
+        </div>
+        <div class="card">
+          <h3>Gifting</h3>
+          <p>Custom Fortnite item gifts</p>
+          <a href="gifting.html">Explore</a>
+        </div>
       </div>
+    </section>
+
+    <section class="features">
+      <h2>Why SHAMELESS?</h2>
+      <ul>
+        <li>⚡ Instant Delivery & Secure Payments</li>
+        <li>🛒 Affordable Prices</li>
+        <li>💬 24/7 Support via Telegram & Discord</li>
+        <li>✅ Trusted by Hundreds of Gamers</li>
+      </ul>
     </section>
   </main>
 
   <footer>
     <div class="footer-socials">
-      <a href="#" aria-label="Discord" target="_blank"><i class="fab fa-discord"></i></a>
-      <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="#" aria-label="Telegram" target="_blank"><i class="fab fa-telegram"></i></a>
+      <a href="#"><i class="fab fa-discord"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-telegram"></i></a>
     </div>
-    <div>&copy; 2025 SHAMELESS Shop. All rights reserved.</div>
+    <p>&copy; 2025 SHAMELESS Shop. All rights reserved.</p>
   </footer>
 </body>
 </html>
