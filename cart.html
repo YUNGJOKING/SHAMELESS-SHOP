@@ -5,6 +5,80 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SHAMELESS Shop - Cart</title>
 <link rel="stylesheet" href="styles.css" />
+<style>
+  /* Simple cart styling */
+  .container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: #1a1a2e;
+    border-radius: 10px;
+    color: #eee;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #9b59b6;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+  }
+  th, td {
+    border-bottom: 1px solid #444;
+    padding: 12px 15px;
+    text-align: center;
+  }
+  th {
+    background-color: #2e2e4d;
+  }
+  td .qty-controls button {
+    background: #9b59b6;
+    border: none;
+    color: white;
+    padding: 4px 8px;
+    margin: 0 3px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  td .qty-controls button:hover {
+    background: #7d3f98;
+  }
+  .total {
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 1rem;
+    color: #d6aaff;
+  }
+  .btn-group {
+    text-align: right;
+    margin-top: 1rem;
+  }
+  button#clear-cart, button#checkout {
+    background: #9b59b6;
+    border: none;
+    color: white;
+    padding: 10px 18px;
+    margin-left: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  button#clear-cart:hover, button#checkout:hover {
+    background: #7d3f98;
+  }
+  .empty-cart {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 3rem;
+    color: #bbb;
+  }
+</style>
 </head>
 <body>
 
@@ -18,16 +92,171 @@
   <a href="cart.html" class="active">Cart</a>
 </nav>
 
-<div class="cart-container container">
-  <h1 class="cart-title">Your Shopping Cart</h1>
-  <ul id="cart-list" class="cart-list"></ul>
-  <div class="cart-total" id="cart-total">Total: $0.00</div>
-  <div style="text-align:right; margin-top: 20px;">
-    <button id="clear-cart-btn">Clear Cart</button>
-    <button id="checkout-btn">Checkout</button>
+<div class="container">
+  <h1>Your Cart</h1>
+
+  <table id="cart-table">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Price (USD)</th>
+        <th>Quantity</th>
+        <th>Subtotal (USD)</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Cart items will be inserted here -->
+    </tbody>
+  </table>
+
+  <div class="total" id="total-price">Total: $0.00</div>
+
+  <div class="btn-group">
+    <button id="clear-cart">Clear Cart</button>
+    <button id="checkout">Checkout</button>
+  </div>
+
+  <div id="empty-msg" class="empty-cart" style="display:none;">
+    Your cart is empty.
   </div>
 </div>
 
-<script src="cart.js"></script>
+<script>
+  const cartTableBody = document.querySelector('#cart-table tbody');
+  const totalPriceElem = document.getElementById('total-price');
+  const clearCartBtn = document.getElementById('clear-cart');
+  const checkoutBtn = document.getElementById('checkout');
+  const emptyMsg = document.getElementById('empty-msg');
+
+  function formatPrice(num) {
+    return num.toFixed(2);
+  }
+
+  function renderCart() {
+    let cart = JSON.parse(localStorage.getItem('shamlessCart')) || [];
+
+    if(cart.length === 0){
+      cartTableBody.innerHTML = '';
+      totalPriceElem.textContent = 'Total: $0.00';
+      emptyMsg.style.display = 'block';
+      return;
+    }
+    emptyMsg.style.display = 'none';
+
+    cartTableBody.innerHTML = '';
+    let total = 0;
+
+    cart.forEach((item, index) => {
+      const subtotal = item.price * item.qty;
+      total += subtotal;
+
+      const row = document.createElement('tr');
+
+      // Product name
+      const nameTd = document.createElement('td');
+      nameTd.textContent = item.name;
+      row.appendChild(nameTd);
+
+      // Price
+      const priceTd = document.createElement('td');
+      priceTd.textContent = `$${formatPrice(item.price)}`;
+      row.appendChild(priceTd);
+
+      // Quantity with controls
+      const qtyTd = document.createElement('td');
+      const qtyControls = document.createElement('div');
+      qtyControls.className = 'qty-controls';
+
+      const btnMinus = document.createElement('button');
+      btnMinus.textContent = '-';
+      btnMinus.title = 'Decrease quantity';
+      btnMinus.onclick = () => {
+        if(item.qty > 1){
+          item.qty--;
+          updateCartItem(index, item);
+        } else {
+          if(confirm(`Remove "${item.name}" from cart?`)) {
+            removeCartItem(index);
+          }
+        }
+      };
+
+      const qtySpan = document.createElement('span');
+      qtySpan.textContent = item.qty;
+
+      const btnPlus = document.createElement('button');
+      btnPlus.textContent = '+';
+      btnPlus.title = 'Increase quantity';
+      btnPlus.onclick = () => {
+        item.qty++;
+        updateCartItem(index, item);
+      };
+
+      qtyControls.appendChild(btnMinus);
+      qtyControls.appendChild(qtySpan);
+      qtyControls.appendChild(btnPlus);
+      qtyTd.appendChild(qtyControls);
+      row.appendChild(qtyTd);
+
+      // Subtotal
+      const subtotalTd = document.createElement('td');
+      subtotalTd.textContent = `$${formatPrice(subtotal)}`;
+      row.appendChild(subtotalTd);
+
+      // Remove button
+      const removeTd = document.createElement('td');
+      const removeBtn = document.createElement('button');
+      removeBtn.textContent = '×';
+      removeBtn.title = 'Remove item';
+      removeBtn.style.background = '#e74c3c';
+      removeBtn.style.color = 'white';
+      removeBtn.style.border = 'none';
+      removeBtn.style.padding = '6px 12px';
+      removeBtn.style.borderRadius = '6px';
+      removeBtn.style.cursor = 'pointer';
+      removeBtn.onclick = () => {
+        if(confirm(`Remove "${item.name}" from cart?`)) {
+          removeCartItem(index);
+        }
+      };
+      removeTd.appendChild(removeBtn);
+      row.appendChild(removeTd);
+
+      cartTableBody.appendChild(row);
+    });
+
+    totalPriceElem.textContent = `Total: $${formatPrice(total)}`;
+  }
+
+  function updateCartItem(index, newItem) {
+    let cart = JSON.parse(localStorage.getItem('shamlessCart')) || [];
+    cart[index] = newItem;
+    localStorage.setItem('shamlessCart', JSON.stringify(cart));
+    renderCart();
+  }
+
+  function removeCartItem(index) {
+    let cart = JSON.parse(localStorage.getItem('shamlessCart')) || [];
+    cart.splice(index, 1);
+    localStorage.setItem('shamlessCart', JSON.stringify(cart));
+    renderCart();
+  }
+
+  clearCartBtn.onclick = () => {
+    if(confirm('Are you sure you want to clear the entire cart?')) {
+      localStorage.removeItem('shamlessCart');
+      renderCart();
+    }
+  };
+
+  checkoutBtn.onclick = () => {
+    alert('Checkout is not implemented yet. This is a demo.');
+  };
+
+  // Initial render
+  renderCart();
+</script>
+
 </body>
 </html>
