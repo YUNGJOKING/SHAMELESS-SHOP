@@ -1,62 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>SHAMELESS Shop - Telegram</title>
-<link rel="stylesheet" href="styles.css" />
-<script defer src="cart.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SHAMELESS Shop — Telegram Premium</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <header>
+    <nav>
+      <a href="index.html" class="logo">SHAMELESS</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="fortnite.html">Fortnite</a></li>
+        <li><a href="valorant.html">Valorant</a></li>
+        <li><a href="discord.html">Discord</a></li>
+        <li><a href="telegram.html" class="active">Telegram</a></li>
+        <li><a href="gifting.html">Gifting</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="fortnite.html">Fortnite</a>
-  <a href="valorant.html">Valorant</a>
-  <a href="discord.html">Discord</a>
-  <a href="telegram.html" class="active">Telegram</a>
-  <a href="gifting.html">Gifting</a>
-  <a href="cart.html">Cart</a>
-</nav>
+  <main>
+    <h1>Telegram Premium Subscription</h1>
+    <section class="products-grid">
+      <article class="product-card" tabindex="0">
+        <img src="images/telegram-premium-1m.png" alt="Telegram Premium 1 Month" />
+        <h3>1 Month Telegram Premium</h3>
+        <p class="description">Unlock all Telegram Premium features for 1 month.</p>
+        <p class="price">$4.99</p>
+        <button class="add-to-cart" data-name="Telegram Premium 1 Month" data-price="4.99">Add to Cart</button>
+      </article>
 
-<header>
-  <h1>Telegram Boosting Services</h1>
-  <p>Increase your Telegram channel members and visibility.</p>
-</header>
+      <article class="product-card" tabindex="0">
+        <img src="images/telegram-premium-6m.png" alt="Telegram Premium 6 Months" />
+        <h3>6 Months Telegram Premium</h3>
+        <p class="description">6 months access to Telegram Premium benefits at a discount.</p>
+        <p class="price">$24.99</p>
+        <button class="add-to-cart" data-name="Telegram Premium 6 Months" data-price="24.99">Add to Cart</button>
+      </article>
 
-<div class="container">
-  <div class="product-card" tabindex="0" role="button" aria-pressed="false" onclick="addToCart({
-      id: 'telegram_members_100',
-      name: '100 New Members',
-      price: 7.99,
-      img: 'images/telegram_members.png',
-      description: 'Add 100 real Telegram members to your channel.'
-    })">
-    <img src="images/telegram_members.png" alt="100 New Members" />
-    <h3>100 New Members</h3>
-    <p class="description">Add 100 real Telegram members to your channel.</p>
-    <div class="price">$7.99</div>
-    <button type="button" aria-label="Add 100 New Members to cart">Add to Cart</button>
-  </div>
+      <article class="product-card" tabindex="0">
+        <img src="images/telegram-premium-12m.png" alt="Telegram Premium 12 Months" />
+        <h3>12 Months Telegram Premium</h3>
+        <p class="description">Enjoy Telegram Premium for a full year with extra perks.</p>
+        <p class="price">$44.99</p>
+        <button class="add-to-cart" data-name="Telegram Premium 12 Months" data-price="44.99">Add to Cart</button>
+      </article>
+    </section>
+  </main>
 
-  <div class="product-card" tabindex="0" role="button" aria-pressed="false" onclick="addToCart({
-      id: 'telegram_promo',
-      name: 'Channel Promotion',
-      price: 14.99,
-      img: 'images/telegram_promo.png',
-      description: 'Promote your Telegram channel on popular groups.'
-    })">
-    <img src="images/telegram_promo.png" alt="Channel Promotion" />
-    <h3>Channel Promotion</h3>
-    <p class="description">Promote your Telegram channel on popular groups.</p>
-    <div class="price">$14.99</div>
-    <button type="button" aria-label="Add Channel Promotion to cart">Add to Cart</button>
-  </div>
-</div>
+  <footer>
+    <p>© 2025 SHAMELESS Shop. All rights reserved.</p>
+    <div class="socials">
+      <a href="#" aria-label="Discord"><img src="icons/discord.svg" alt="Discord" /></a>
+      <a href="#" aria-label="Instagram"><img src="icons/instagram.svg" alt="Instagram" /></a>
+      <a href="#" aria-label="Telegram"><img src="icons/telegram.svg" alt="Telegram" /></a>
+    </div>
+  </footer>
 
-<footer>
-  <p>© 2025 SHAMELESS Shop</p>
-</footer>
-
+  <script src="cart.js"></script>
 </body>
 </html>
