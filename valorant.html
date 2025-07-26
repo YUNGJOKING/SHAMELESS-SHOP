@@ -5,105 +5,109 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SHAMELESS Shop - Valorant</title>
 <link rel="stylesheet" href="styles.css" />
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.product-card').forEach(card => {
-    card.addEventListener('click', () => {
-      if(card.classList.contains('desc-open')) {
-        card.classList.remove('desc-open');
-      } else {
-        document.querySelectorAll('.product-card.desc-open').forEach(openCard => openCard.classList.remove('desc-open'));
-        card.classList.add('desc-open');
-      }
-    });
-  });
-});
-</script>
 </head>
 <body>
-<header>
-  <nav class="navbar">
-    <a href="index.html" class="nav-logo">SHAMELESS Shop</a>
-    <ul class="nav-links">
-      <li><a href="fortnite.html">Fortnite</a></li>
-      <li><a href="valorant.html" class="active">Valorant</a></li>
-      <li><a href="discord.html">Discord</a></li>
-      <li><a href="telegram.html">Telegram</a></li>
-      <li><a href="gifting.html">Gifting</a></li>
-    </ul>
-  </nav>
-</header>
 
-<main class="products-main">
-  <h2>Valorant Products</h2>
-  <section class="products-grid">
+<nav>
+  <a href="index.html">Home</a>
+  <a href="fortnite.html">Fortnite</a>
+  <a href="valorant.html" class="active">Valorant</a>
+  <a href="discord.html">Discord</a>
+  <a href="telegram.html">Telegram</a>
+  <a href="gifting.html">Gifting</a>
+  <a href="cart.html">Cart</a>
+</nav>
 
-    <article class="product-card" tabindex="0">
-      <div class="product-image-wrapper">
-        <img src="images/valorantpoints-475.png" alt="475 Valorant Points" class="product-image" />
-      </div>
-      <h3>475 Valorant Points</h3>
-      <p class="product-price">$5.00</p>
-      <div class="product-description">
-        Add 475 Valorant Points to your account for skins and agents.
-      </div>
-    </article>
+<div class="container">
+  <h1>Valorant Products</h1>
+  <div class="products-grid">
 
-    <article class="product-card" tabindex="0">
-      <div class="product-image-wrapper">
-        <img src="images/valorantpoints-1000.png" alt="1000 Valorant Points" class="product-image" />
+    <div class="product-card" title="475 VP - Valorant Points">
+      <img src="images/475-vp.png" alt="475 VP" class="product-image" />
+      <div class="product-info">
+        <h3>475 VP</h3>
+        <p>Get 475 Valorant Points instantly.</p>
+        <div class="product-price">$4.99</div>
+        <button onclick="addToCart('475 VP', 4.99)">Add to Cart</button>
       </div>
-      <h3>1000 Valorant Points</h3>
-      <p class="product-price">$10.00</p>
-      <div class="product-description">
-        1000 Valorant Points to unlock premium items.
-      </div>
-    </article>
+    </div>
 
-    <article class="product-card" tabindex="0">
-      <div class="product-image-wrapper">
-        <img src="images/valorantpoints-2050.png" alt="2050 Valorant Points" class="product-image" />
+    <div class="product-card" title="1000 VP - Valorant Points">
+      <img src="images/1000-vp.png" alt="1000 VP" class="product-image" />
+      <div class="product-info">
+        <h3>1000 VP</h3>
+        <p>Get 1000 Valorant Points instantly.</p>
+        <div class="product-price">$9.99</div>
+        <button onclick="addToCart('1000 VP', 9.99)">Add to Cart</button>
       </div>
-      <h3>2050 Valorant Points</h3>
-      <p class="product-price">$20.00</p>
-      <div class="product-description">
-        Bulk pack of 2050 Valorant Points for your collection.
-      </div>
-    </article>
+    </div>
 
-    <article class="product-card" tabindex="0">
-      <div class="product-image-wrapper">
-        <img src="images/valorantpoints-4250.png" alt="4250 Valorant Points" class="product-image" />
+    <div class="product-card" title="2050 VP - Valorant Points">
+      <img src="images/2050-vp.png" alt="2050 VP" class="product-image" />
+      <div class="product-info">
+        <h3>2050 VP</h3>
+        <p>Get 2050 Valorant Points instantly.</p>
+        <div class="product-price">$19.99</div>
+        <button onclick="addToCart('2050 VP', 19.99)">Add to Cart</button>
       </div>
-      <h3>4250 Valorant Points</h3>
-      <p class="product-price">$40.00</p>
-      <div class="product-description">
-        Maximum points pack for serious players.
-      </div>
-    </article>
+    </div>
 
-    <article class="product-card" tabindex="0">
-      <div class="product-image-wrapper">
-        <img src="images/valorantboost.png" alt="Valorant Boost" class="product-image" />
+    <div class="product-card" title="3650 VP - Valorant Points">
+      <img src="images/3650-vp.png" alt="3650 VP" class="product-image" />
+      <div class="product-info">
+        <h3>3650 VP</h3>
+        <p>Get 3650 Valorant Points instantly.</p>
+        <div class="product-price">$34.99</div>
+        <button onclick="addToCart('3650 VP', 34.99)">Add to Cart</button>
       </div>
-      <h3>Valorant Boost</h3>
-      <p class="product-price">$29.99</p>
-      <div class="product-description">
-        Rank up quickly with our reliable Valorant boosting services.
+    </div>
+
+    <div class="product-card" title="5350 VP - Valorant Points">
+      <img src="images/5350-vp.png" alt="5350 VP" class="product-image" />
+      <div class="product-info">
+        <h3>5350 VP</h3>
+        <p>Get 5350 Valorant Points instantly.</p>
+        <div class="product-price">$49.99</div>
+        <button onclick="addToCart('5350 VP', 49.99)">Add to Cart</button>
       </div>
-    </article>
+    </div>
 
-  </section>
-</main>
+    <div class="product-card" title="6350 VP - Valorant Points">
+      <img src="images/6350-vp.png" alt="6350 VP" class="product-image" />
+      <div class="product-info">
+        <h3>6350 VP</h3>
+        <p>Get 6350 Valorant Points instantly.</p>
+        <div class="product-price">$59.99</div>
+        <button onclick="addToCart('6350 VP', 59.99)">Add to Cart</button>
+      </div>
+    </div>
 
-<footer class="footer">
-  <div class="social-icons">
-    <a href="https://discord.gg/yourserver" target="_blank" aria-label="Discord"><img src="icons/discord.svg" alt="Discord" /></a>
-    <a href="https://instagram.com/yourprofile" target="_blank" aria-label="Instagram"><img src="icons/instagram.svg" alt="Instagram" /></a>
-    <a href="https://t.me/yourchannel" target="_blank" aria-label="Telegram"><img src="icons/telegram.svg" alt="Telegram" /></a>
+    <div class="product-card" title="11000 VP - Valorant Points">
+      <img src="images/11000-vp.png" alt="11000 VP" class="product-image" />
+      <div class="product-info">
+        <h3>11000 VP</h3>
+        <p>Get 11000 Valorant Points instantly.</p>
+        <div class="product-price">$99.99</div>
+        <button onclick="addToCart('11000 VP', 99.99)">Add to Cart</button>
+      </div>
+    </div>
+
   </div>
-  <p>© 2025 SHAMELESS Shop. All rights reserved.</p>
-</footer>
+</div>
+
+<script>
+  function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem('shamlessCart')) || [];
+    const idx = cart.findIndex(item => item.name === name);
+    if (idx !== -1) {
+      cart[idx].qty += 1;
+    } else {
+      cart.push({ name, price, qty: 1 });
+    }
+    localStorage.setItem('shamlessCart', JSON.stringify(cart));
+    alert(`Added "${name}" to cart.`);
+  }
+</script>
 
 </body>
 </html>
