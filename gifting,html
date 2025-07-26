@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Shameless Shop - Gifting</title>
+<link rel="stylesheet" href="styles.css" />
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header>
+  <nav>
+    <ul class="nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="fortnite.html">Fortnite</a></li>
+      <li><a href="valorant.html">Valorant</a></li>
+      <li><a href="discord.html">Discord</a></li>
+      <li><a href="telegram.html">Telegram</a></li>
+      <li><a href="gifting.html" class="active">Gifting</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container">
+  <section class="products">
+    <h2>Gifting Services</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <i class="fas fa-gift product-icon"></i>
+        <h3>V-Bucks Gifting</h3>
+        <p>Instant and secure gifting of V-Bucks.</p>
+        <button class="btn btn-primary">Buy Now</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-socials">
+    <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+  </div>
+  <p>© 2025 Shameless Shop</p>
+</footer>
+</body>
+</html>
