@@ -3,171 +3,140 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>SHAMELESS Shop — Fuel Your Addiction</title>
+<title>SHAMELESS Shop</title>
 <style>
   /* Reset & base */
   * {
-    margin: 0; padding: 0; box-sizing: border-box;
+    box-sizing: border-box;
   }
   body {
+    margin: 0;
+    background: #110031;
+    color: #d6a1ff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #0a001a;
-    color: #ddd;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  a {
-    color: #bb77ff;
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-
-  /* Container */
-  .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-  }
-
-  /* Header & Hero */
-  header {
-    padding: 30px 0 60px;
-    text-align: center;
-    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     user-select: none;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  /* Header */
+  header {
+    text-align: center;
+    padding: 2rem 1rem;
+    border-bottom: 2px solid #4a1e9d;
   }
   header h1 {
     font-size: 3rem;
+    letter-spacing: 0.15em;
+    margin: 0 0 0.25rem;
     color: #bb77ff;
-    letter-spacing: 2px;
     text-shadow:
-      0 0 6px #bb77ff88,
-      0 0 12px #bb77ffbb;
+      0 0 8px #bb77ffcc,
+      0 0 16px #bb77ffaa;
   }
-  header .slogan {
-    margin-top: 10px;
-    font-size: 1.4rem;
+  .slogan {
+    font-size: 1.25rem;
     font-weight: 600;
-    color: #d6a1ff;
-    text-shadow:
-      0 0 5px #d6a1ffaa,
-      0 0 10px #bb77ffcc;
-    animation: glitchText 3s infinite;
-  }
-
-  /* Glitch effect */
-  @keyframes glitchText {
-    0%, 100% {
-      text-shadow:
-        2px 0 #bb77ff,
-        -2px 0 #d6a1ff;
-    }
-    25% {
-      text-shadow:
-        4px 0 #bb77ff,
-        -4px 0 #d6a1ff;
-    }
-    50% {
-      text-shadow:
-        2px 0 #d6a1ff,
-        -2px 0 #bb77ff;
-    }
-    75% {
-      text-shadow:
-        4px 0 #d6a1ff,
-        -4px 0 #bb77ff;
-    }
+    color: #d7aaffcc;
+    text-shadow: 0 0 10px #aa77ffbb;
+    font-style: italic;
   }
 
   /* Featured Products */
   section.featured-products {
-    margin-bottom: 60px;
+    margin-top: 3rem;
   }
   section.featured-products h2 {
-    font-size: 2.4rem;
-    color: #bb77ff;
-    margin-bottom: 30px;
-    letter-spacing: 1.5px;
-    text-align: center;
-    text-shadow:
-      0 0 6px #bb77ff88,
-      0 0 12px #bb77ffbb;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #bb77ffdd;
+    text-shadow: 0 0 10px #bb77ffcc;
+    letter-spacing: 0.1em;
+    user-select: none;
   }
   .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 24px;
   }
   .product-card {
-    background: #1c0a3d;
+    background: #3a177c;
     border-radius: 12px;
+    padding: 16px;
     box-shadow:
-      0 0 12px #bb77ff66,
-      inset 0 0 8px #bb77ff33;
-    overflow: hidden;
+      0 0 12px #bb77ffcc;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  .product-card:hover {
-    transform: translateY(-8px);
+  .product-card:hover,
+  .product-card:focus {
+    transform: scale(1.05);
     box-shadow:
-      0 0 20px #bb77ffcc,
-      inset 0 0 14px #bb77ff88;
+      0 0 24px #dd99ff,
+      0 0 40px #bb77ffdd;
+    outline: none;
   }
   .product-image {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    display: block;
-  }
-  .product-info {
-    padding: 16px;
-  }
-  .product-name {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #d6a1ff;
-    margin-bottom: 8px;
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 0 3px #bb77ff88);
     user-select: none;
   }
+  .product-info {
+    width: 100%;
+    text-align: center;
+  }
+  .product-name {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+    color: #ddaaff;
+    text-shadow: 0 0 5px #bb77ffaa;
+  }
   .product-price {
-    font-size: 1rem;
     font-weight: 600;
-    color: #bb77ff;
-    margin-bottom: 12px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #ccaaffcc;
   }
   .buy-button {
-    background: #bb77ff;
+    background: linear-gradient(135deg, #bb77ff, #7f43f5);
     border: none;
-    color: #1c0a3d;
+    color: white;
     font-weight: 700;
-    font-size: 1rem;
-    padding: 10px 20px;
-    border-radius: 30px;
-    width: 100%;
+    padding: 10px 18px;
+    border-radius: 9999px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    width: 100%;
+    box-shadow: 0 0 10px #aa66ffcc;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
   }
-  .buy-button:hover {
-    background-color: #d6a1ff;
+  .buy-button:hover,
+  .buy-button:focus {
+    background: linear-gradient(135deg, #dd99ff, #a35eff);
+    box-shadow: 0 0 18px #dd99ffcc;
+    outline: none;
   }
 
-  /* Categories Section */
+  /* Categories */
   section.categories {
-    margin-bottom: 60px;
+    margin-top: 3rem;
   }
   section.categories h2 {
-    font-size: 2.4rem;
-    color: #bb77ff;
-    margin-bottom: 30px;
-    letter-spacing: 1.5px;
-    text-align: center;
-    text-shadow:
-      0 0 6px #bb77ff88,
-      0 0 12px #bb77ffbb;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #bb77ffdd;
+    text-shadow: 0 0 10px #bb77ffcc;
+    letter-spacing: 0.1em;
   }
   .categories-list {
     display: flex;
@@ -176,119 +145,115 @@
     flex-wrap: wrap;
   }
   .category-card {
-    background: #1c0a3d;
-    padding: 20px 30px;
-    border-radius: 12px;
-    color: #d6a1ff;
+    background: #3a177c;
+    padding: 14px 28px;
+    border-radius: 9999px;
     font-weight: 700;
-    font-size: 1.2rem;
-    box-shadow:
-      0 0 10px #bb77ff55;
+    color: #d6a1ff;
     cursor: pointer;
-    transition: background-color 0.3s ease;
     user-select: none;
+    box-shadow: 0 0 10px #bb77ffcc;
+    transition: background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
   }
-  .category-card:hover {
-    background-color: #3b1a79;
-    box-shadow:
-      0 0 20px #bb77ffcc;
+  .category-card:hover,
+  .category-card:focus {
+    background: #bb77ff;
+    color: #330044;
+    box-shadow: 0 0 25px #dd99ffdd;
+    outline: none;
   }
 
-  /* Deals Section */
+  /* Deals */
   section.deals {
-    margin-bottom: 60px;
-    background: #210d4b;
-    padding: 40px 20px;
-    border-radius: 14px;
-    box-shadow:
-      0 0 18px #bb77ff88;
+    margin-top: 3rem;
   }
   section.deals h2 {
-    text-align: center;
-    font-size: 2.4rem;
-    color: #ff66aa;
-    margin-bottom: 30px;
-    letter-spacing: 1.5px;
-    user-select: none;
-    text-shadow:
-      0 0 6px #ff66aaaa,
-      0 0 12px #ff66aacc;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #bb77ffdd;
+    text-shadow: 0 0 10px #bb77ffcc;
+    letter-spacing: 0.1em;
   }
   .deal-item {
-    background: #3a177c;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 12px auto;
-    max-width: 600px;
-    text-align: center;
-    font-weight: 700;
-    font-size: 1.3rem;
-    color: #ffd6ee;
-    box-shadow:
-      0 0 12px #ff66aaaa;
-    cursor: default;
+    background: #4a208e;
+    border-radius: 8px;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #e0c1ff;
+    box-shadow: 0 0 8px #bb77ffbb;
     user-select: none;
+    cursor: default;
+    position: relative;
+    animation: glowPulse 3s ease-in-out infinite;
+  }
+  .deal-item:hover {
+    animation-play-state: paused;
+    box-shadow:
+      0 0 20px #dd99ffee,
+      0 0 40px #bb77ffee;
+    color: #fff;
+  }
+  @keyframes glowPulse {
+    0%, 100% {
+      box-shadow: 0 0 8px #bb77ffbb;
+    }
+    50% {
+      box-shadow: 0 0 20px #dd99ffdd;
+    }
   }
 
   /* How It Works */
   section.how-it-works {
-    margin-bottom: 60px;
-    text-align: center;
+    margin-top: 3rem;
   }
   section.how-it-works h2 {
-    font-size: 2.4rem;
-    color: #bb77ff;
-    margin-bottom: 30px;
-    letter-spacing: 1.5px;
-    text-shadow:
-      0 0 6px #bb77ff88,
-      0 0 12px #bb77ffbb;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #bb77ffdd;
+    text-shadow: 0 0 10px #bb77ffcc;
+    letter-spacing: 0.1em;
   }
   .steps {
     display: flex;
+    gap: 18px;
     justify-content: center;
-    gap: 40px;
     flex-wrap: wrap;
   }
   .step {
-    background: #1c0a3d;
+    background: #3a177c;
     border-radius: 12px;
-    padding: 24px;
-    max-width: 250px;
-    box-shadow:
-      0 0 12px #bb77ff66,
-      inset 0 0 8px #bb77ff33;
-    color: #d6a1ff;
+    padding: 20px 16px;
+    max-width: 260px;
     font-weight: 600;
     font-size: 1rem;
+    color: #ffd6ee;
+    box-shadow: 0 0 12px #bb77ffcc;
     user-select: none;
+    transition: transform 0.3s ease;
+  }
+  .step:hover {
+    transform: scale(1.05);
+    box-shadow:
+      0 0 24px #dd99ff,
+      0 0 40px #bb77ffdd;
   }
   .step h3 {
-    margin-bottom: 14px;
-    font-size: 1.2rem;
-    color: #d6a1ff;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #ddaaff;
   }
 
   /* Customer Reviews */
   section.reviews {
-    margin-bottom: 60px;
-    background: #210d4b;
-    padding: 40px 20px;
-    border-radius: 14px;
-    box-shadow:
-      0 0 18px #bb77ff88;
-    color: #ffd6ee;
+    margin-top: 3rem;
   }
   section.reviews h2 {
-    text-align: center;
-    font-size: 2.4rem;
-    color: #bb77ff;
-    margin-bottom: 30px;
-    letter-spacing: 1.5px;
-    user-select: none;
-    text-shadow:
-      0 0 6px #bb77ff88,
-      0 0 12px #bb77ffbb;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #bb77ffdd;
+    text-shadow: 0 0 10px #bb77ffcc;
+    letter-spacing: 0.1em;
   }
   .review-list {
     display: flex;
@@ -307,6 +272,12 @@
     font-size: 1rem;
     color: #ffd6ee;
     user-select: none;
+    transition: box-shadow 0.3s ease;
+  }
+  .review-card:hover {
+    box-shadow:
+      0 0 20px #dd99ff,
+      0 0 35px #bb77ffdd;
   }
   .reviewer {
     font-weight: 700;
@@ -326,6 +297,7 @@
     color: #7744cc88;
     font-size: 0.9rem;
     user-select: none;
+    margin-top: 4rem;
   }
 
   /* Responsive */
@@ -334,6 +306,9 @@
     section.reviews .review-list {
       flex-direction: column;
       align-items: center;
+    }
+    .products-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>
@@ -390,8 +365,13 @@
     <!-- Deals -->
     <section class="deals" aria-label="Special Deals and Promotions">
       <h2>Special Deals</h2>
-      <div class="deal-item">Buy 2 SHAMELESS Hoodies, get 1 Sticker Pack free!</div>
-      <div class="deal-item">Free shipping on orders over $75</div>
+      <div class="deal-item">🔥 Fortnite In-Game Items & V-Bucks Gifting</div>
+      <div class="deal-item">⚡ Valorant Points (TR Region) Available</div>
+      <div class="deal-item">🎮 Discord Nitro Subscriptions</div>
+      <div class="deal-item">🚀 Fortnite Rank & Victory Boosts</div>
+      <div class="deal-item">🎯 Custom Fortnite Requests Tailored to You</div>
+      <div class="deal-item">📱 Telegram Premium Subscriptions</div>
+      <div class="deal-item">... and More — Stay Shameless!</div>
     </section>
 
     <!-- How It Works -->
@@ -411,35 +391,36 @@
           Fast and safe payment methods.
         </div>
         <div class="step">
-          <h3>4. Enjoy</h3>
-          Get your order shipped to your door.
+          <h3>4. Enjoy & Stay Shameless</h3>
+          Receive your order and rock the vibe.
         </div>
       </div>
     </section>
 
     <!-- Customer Reviews -->
     <section class="reviews" aria-label="Customer Reviews">
-      <h2>What Customers Say</h2>
+      <h2>What Our Customers Say</h2>
       <div class="review-list">
-        <article class="review-card">
-          <div class="reviewer">Alex K.</div>
-          <div class="review-text">“Love the hoodie! Super comfy and the glitch design is fire 🔥”</div>
-        </article>
-        <article class="review-card">
-          <div class="reviewer">Jenna P.</div>
-          <div class="review-text">“Mousepad feels great and looks amazing on my desk.”</div>
-        </article>
-        <article class="review-card">
-          <div class="reviewer">Mike D.</div>
-          <div class="review-text">“Fast shipping and excellent customer service. Highly recommend!”</div>
-        </article>
+        <div class="review-card" tabindex="0">
+          <div class="reviewer">Shadmehr</div>
+          <div class="review-text">"The Fortnite boosts got me crushing the competition. SHAMELESS delivers every time!"</div>
+        </div>
+        <div class="review-card" tabindex="0">
+          <div class="reviewer">Elahe</div>
+          <div class="review-text">"Love the hoodie quality and the vibe of the whole shop. Always recommend to friends."</div>
+        </div>
+        <div class="review-card" tabindex="0">
+          <div class="reviewer">Arman</div>
+          <div class="review-text">"Discord Nitro deals are legit and quick. Easy checkout and awesome support."</div>
+        </div>
       </div>
     </section>
 
   </main>
 
   <footer>
-    &copy; 2025 SHAMELESS. All rights reserved. Made with 💜 and glitches.
+    &copy; 2025 SHAMELESS — Fuel Your Addiction. All rights reserved.
   </footer>
+
 </body>
 </html>
