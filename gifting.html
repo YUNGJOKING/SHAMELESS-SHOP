@@ -5,142 +5,79 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SHAMELESS Shop - Gifting</title>
 <link rel="stylesheet" href="styles.css" />
-<style>
-  /* Simple clean style overrides for gifting page */
-  .container {
-    max-width: 960px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-  }
-  h1 {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-weight: 700;
-    color: #2c2c2c;
-  }
-  .product-slides {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .product-card {
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    width: 280px;
-    padding: 1rem;
-    box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
-    transition: box-shadow 0.3s ease;
-    cursor: pointer;
-    position: relative;
-  }
-  .product-card:hover {
-    box-shadow: 0 8px 16px rgb(0 0 0 / 0.2);
-  }
-  .product-image {
-    width: 100%;
-    height: 160px;
-    background: #ddd;
-    border-radius: 6px;
-    margin-bottom: 1rem;
-    background-position: center;
-    background-size: cover;
-  }
-  .product-title {
-    font-weight: 600;
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-    color: #222;
-  }
-  .balance {
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-    color: #555;
-  }
-  .amount-input {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #bbb;
-    border-radius: 4px;
-    font-size: 1rem;
-  }
-  /* Tooltip styling */
-  .tooltip {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    background: #222;
-    color: #fff;
-    padding: 0.5rem;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    max-width: 240px;
-    display: none;
-    z-index: 10;
-  }
-  .product-card:hover .tooltip {
-    display: block;
-  }
-</style>
 </head>
 <body>
 
-<header>
-  <nav class="navbar">
-    <a href="index.html" class="nav-logo">SHAMELESS Shop</a>
-    <ul class="nav-links">
-      <li><a href="fortnite.html">Fortnite</a></li>
-      <li><a href="valorant.html">Valorant</a></li>
-      <li><a href="discord.html">Discord</a></li>
-      <li><a href="telegram.html">Telegram</a></li>
-      <li><a href="gifting.html" class="active">Gifting</a></li>
-    </ul>
-  </nav>
-</header>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="fortnite.html">Fortnite</a>
+  <a href="valorant.html">Valorant</a>
+  <a href="discord.html">Discord</a>
+  <a href="telegram.html">Telegram</a>
+  <a href="gifting.html" class="active">Gifting</a>
+  <a href="cart.html">Cart</a>
+</nav>
 
-<main class="container">
-  <h1>Gifting Products</h1>
-  <div class="product-slides">
-    <!-- Slide 1 -->
-    <div class="product-card">
-      <div class="product-image" style="background-image: url('images/goofgang.jpg');"></div>
-      <div class="product-title">GOOF GANG</div>
-      <div class="balance">Balance: 1000 units</div>
-      <input type="number" class="amount-input" placeholder="Enter amount" min="1" />
-      <div class="tooltip">GOOF GANG is our premium gifting package with exclusive bonuses and fast delivery.</div>
+<div class="container">
+  <h1>Gift Cards & Vouchers</h1>
+  <div class="products-grid">
+
+    <div class="product-card" title="Steam Gift Card $10">
+      <img src="images/steam-10.png" alt="Steam Gift Card 10" class="product-image" />
+      <div class="product-info">
+        <h3>Steam Gift Card $10</h3>
+        <p>Redeemable Steam gift card worth $10.</p>
+        <div class="product-price">$10.00</div>
+        <button onclick="addToCart('Steam Gift Card $10', 10.00)">Add to Cart</button>
+      </div>
     </div>
 
-    <!-- Slide 2 -->
-    <div class="product-card">
-      <div class="product-image" style="background-image: url('images/goofgang2.jpg');"></div>
-      <div class="product-title">GOOFGANG2</div>
-      <div class="balance">Balance: 500 units</div>
-      <input type="number" class="amount-input" placeholder="Enter amount" min="1" />
-      <div class="tooltip">GOOFGANG2 offers a great balance of price and value for your gifting needs.</div>
+    <div class="product-card" title="Steam Gift Card $20">
+      <img src="images/steam-20.png" alt="Steam Gift Card 20" class="product-image" />
+      <div class="product-info">
+        <h3>Steam Gift Card $20</h3>
+        <p>Redeemable Steam gift card worth $20.</p>
+        <div class="product-price">$20.00</div>
+        <button onclick="addToCart('Steam Gift Card $20', 20.00)">Add to Cart</button>
+      </div>
     </div>
 
-    <!-- Slide 3 -->
-    <div class="product-card">
-      <div class="product-image" style="background-image: url('images/goofgang3.jpg');"></div>
-      <div class="product-title">GOOFGANG3</div>
-      <div class="balance">Balance: 250 units</div>
-      <input type="number" class="amount-input" placeholder="Enter amount" min="1" />
-      <div class="tooltip">GOOFGANG3 is perfect for smaller gifts or budget-conscious customers.</div>
+    <div class="product-card" title="Xbox Gift Card $25">
+      <img src="images/xbox-25.png" alt="Xbox Gift Card 25" class="product-image" />
+      <div class="product-info">
+        <h3>Xbox Gift Card $25</h3>
+        <p>Redeemable Xbox gift card worth $25.</p>
+        <div class="product-price">$25.00</div>
+        <button onclick="addToCart('Xbox Gift Card $25', 25.00)">Add to Cart</button>
+      </div>
     </div>
+
+    <div class="product-card" title="PlayStation Gift Card $50">
+      <img src="images/ps-50.png" alt="PS Gift Card 50" class="product-image" />
+      <div class="product-info">
+        <h3>PlayStation Gift Card $50</h3>
+        <p>Redeemable PlayStation gift card worth $50.</p>
+        <div class="product-price">$50.00</div>
+        <button onclick="addToCart('PlayStation Gift Card $50', 50.00)">Add to Cart</button>
+      </div>
+    </div>
+
   </div>
-</main>
+</div>
 
-<footer>
-  <div class="footer-content">
-    <p>© 2025 SHAMELESS Shop. All rights reserved.</p>
-    <div class="social-links">
-      <a href="https://discord.gg/yourdiscord" target="_blank" rel="noopener" aria-label="Discord">Discord</a> |
-      <a href="https://instagram.com/yourinstagram" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> |
-      <a href="https://t.me/yourtelegram" target="_blank" rel="noopener" aria-label="Telegram">Telegram</a>
-    </div>
-  </div>
-</footer>
+<script>
+  function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem('shamlessCart')) || [];
+    const idx = cart.findIndex(item => item.name === name);
+    if (idx !== -1) {
+      cart[idx].qty += 1;
+    } else {
+      cart.push({ name, price, qty: 1 });
+    }
+    localStorage.setItem('shamlessCart', JSON.stringify(cart));
+    alert(`Added "${name}" to cart.`);
+  }
+</script>
 
 </body>
 </html>
