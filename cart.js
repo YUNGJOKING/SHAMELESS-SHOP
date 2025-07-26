@@ -1,66 +1,89 @@
-// Simple Cart Management in localStorage
+// Simple cart system with localStorage persistence
 
-const cartList = document.getElementById('cart-list');
-const cartTotal = document.getElementById('cart-total');
-const clearCartBtn = document.getElementById('clear-cart-btn');
+const cartItemsEl = document.getElementById('cart-items');
+const cartTotalEl = document.getElementById('cart-total');
+const emptyMessageEl = document.getElementById('empty-message');
 const checkoutBtn = document.getElementById('checkout-btn');
 
-function loadCart() {
-  let cart = JSON.parse(localStorage.getItem('shamlessCart')) || [];
-  renderCart(cart);
+let cart = JSON.parse(localStorage.getItem('shamelessCart')) || [];
+
+// Utility: format price as $X.XX
+function formatPrice(price) {
+  return '$' + price.toFixed(2);
 }
 
-function renderCart(cart) {
-  cartList.innerHTML = '';
+// Render cart items in table
+function renderCart() {
+  cartItemsEl.innerHTML = '';
+
   if (cart.length === 0) {
-    cartList.innerHTML = '<li>Your cart is empty.</li>';
-    cartTotal.textContent = 'Total: $0.00';
+    emptyMessageEl.style.display = 'block';
+    checkoutBtn.disabled = true;
+    cartTotalEl.textContent = formatPrice(0);
     return;
+  } else {
+    emptyMessageEl.style.display = 'none';
+    checkoutBtn.disabled = false;
   }
+
   let total = 0;
   cart.forEach((item, index) => {
-    total += item.price * item.qty;
-    const li = document.createElement('li');
-    li.className = 'cart-item';
+    const subtotal = item.price * item.quantity;
+    total += subtotal;
 
-    li.innerHTML = `
-      <div class="cart-item-info">
-        <div class="cart-item-title">${item.name}</div>
-      </div>
-      <div class="cart-item-qty">Qty: ${item.qty}</div>
-      <div class="cart-item-price">$${(item.price * item.qty).toFixed(2)}</div>
-      <div class="cart-item-remove" data-index="${index}" title="Remove item">&times;</div>
+    const tr = document.createElement('tr');
+
+    tr.innerHTML = `
+      <td>${item.name}</td>
+      <td>
+        <input type="number" min="1" value="${item.quantity}" data-index="${index}" class="qty-input" />
+      </td>
+      <td>${formatPrice(item.price)}</td>
+      <td>${formatPrice(subtotal)}</td>
+      <td><button class="remove-btn" data-index="${index}" aria-label="Remove ${item.name}">&times;</button></td>
     `;
-    cartList.appendChild(li);
-  });
-  cartTotal.textContent = `Total: $${total.toFixed(2)}`;
 
-  // Attach remove listeners
-  document.querySelectorAll('.cart-item-remove').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const idx = e.target.getAttribute('data-index');
-      removeItemFromCart(parseInt(idx));
-    });
+    cartItemsEl.appendChild(tr);
   });
+
+  cartTotalEl.textContent = formatPrice(total);
 }
 
-function removeItemFromCart(index) {
-  let cart = JSON.parse(localStorage.getItem('shamlessCart')) || [];
-  cart.splice(index, 1);
-  localStorage.setItem('shamlessCart', JSON.stringify(cart));
-  loadCart();
+// Save cart to localStorage
+function saveCart() {
+  localStorage.setItem('shamelessCart', JSON.stringify(cart));
 }
 
-clearCartBtn.addEventListener('click', () => {
-  if (confirm('Are you sure you want to clear the cart?')) {
-    localStorage.removeItem('shamlessCart');
-    loadCart();
+// Remove item handler
+cartItemsEl.addEventListener('click', e => {
+  if (e.target.classList.contains('remove-btn')) {
+    const idx = parseInt(e.target.dataset.index);
+    cart.splice(idx, 1);
+    saveCart();
+    renderCart();
   }
 });
 
+// Quantity change handler
+cartItemsEl.addEventListener('input', e => {
+  if (e.target.classList.contains('qty-input')) {
+    const idx = parseInt(e.target.dataset.index);
+    let val = parseInt(e.target.value);
+    if (isNaN(val) || val < 1) {
+      val = 1;
+      e.target.value = 1;
+    }
+    cart[idx].quantity = val;
+    saveCart();
+    renderCart();
+  }
+});
+
+// Checkout click
 checkoutBtn.addEventListener('click', () => {
-  alert('Checkout feature coming soon!');
+  alert('Checkout is not implemented yet. This is a demo cart.');
+  // In real scenario, redirect to payment gateway or process order.
 });
 
 // Initialize
-loadCart();
+renderCart();
