@@ -2,63 +2,108 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Valorant — SHAMELESS Shop</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SHAMELESS Shop - Valorant</title>
 <link rel="stylesheet" href="styles.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('click', () => {
+      if(card.classList.contains('desc-open')) {
+        card.classList.remove('desc-open');
+      } else {
+        document.querySelectorAll('.product-card.desc-open').forEach(openCard => openCard.classList.remove('desc-open'));
+        card.classList.add('desc-open');
+      }
+    });
+  });
+});
+</script>
 </head>
 <body>
 <header>
-<nav class="navbar">
-  <div class="logo">SHAMELESS</div>
-  <div class="nav-toggle" id="nav-toggle"><i class="fas fa-bars"></i></div>
-  <ul class="nav-list" id="nav-list">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="fortnite.html">Fortnite</a></li>
-    <li><a href="valorant.html" class="active">Valorant</a></li>
-    <li><a href="discord.html">Discord</a></li>
-    <li><a href="telegram.html">Telegram</a></li>
-    <li><a href="gifting.html">Gifting</a></li>
-  </ul>
-  <div class="cart-icon" id="cart-icon"><i class="fas fa-shopping-cart"></i><span id="cart-count">0</span></div>
-</nav>
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo">SHAMELESS Shop</a>
+    <ul class="nav-links">
+      <li><a href="fortnite.html">Fortnite</a></li>
+      <li><a href="valorant.html" class="active">Valorant</a></li>
+      <li><a href="discord.html">Discord</a></li>
+      <li><a href="telegram.html">Telegram</a></li>
+      <li><a href="gifting.html">Gifting</a></li>
+    </ul>
+  </nav>
 </header>
-<main>
-<section class="products-grid">
-  <article class="product-card">
-    <i class="fa-solid fa-bolt product-icon"></i>
-    <h3>Valorant Points - 1,000</h3>
-    <p>Instant delivery for RP purchase</p>
-    <button class="btn btn-primary" onclick="addToCart('vl_points_1000', 'Valorant Points - 1,000', 12)">Add to Cart</button>
-  </article>
-  <article class="product-card">
-    <i class="fa-solid fa-crosshairs product-icon"></i>
-    <h3>Valorant Skin Bundle</h3>
-    <p>Exclusive weapon skins pack</p>
-    <button class="btn btn-primary" onclick="addToCart('vl_skin_bundle', 'Valorant Skin Bundle', 30)">Add to Cart</button>
-  </article>
-  <article class="product-card">
-    <i class="fa-solid fa-clock product-icon"></i>
-    <h3>Valorant Boost</h3>
-    <p>Rank up boosting service</p>
-    <button class="btn btn-primary" onclick="addToCart('vl_boost', 'Valorant Boost', 45)">Add to Cart</button>
-  </article>
-</section>
+
+<main class="products-main">
+  <h2>Valorant Products</h2>
+  <section class="products-grid">
+
+    <article class="product-card" tabindex="0">
+      <div class="product-image-wrapper">
+        <img src="images/valorantpoints-475.png" alt="475 Valorant Points" class="product-image" />
+      </div>
+      <h3>475 Valorant Points</h3>
+      <p class="product-price">$5.00</p>
+      <div class="product-description">
+        Add 475 Valorant Points to your account for skins and agents.
+      </div>
+    </article>
+
+    <article class="product-card" tabindex="0">
+      <div class="product-image-wrapper">
+        <img src="images/valorantpoints-1000.png" alt="1000 Valorant Points" class="product-image" />
+      </div>
+      <h3>1000 Valorant Points</h3>
+      <p class="product-price">$10.00</p>
+      <div class="product-description">
+        1000 Valorant Points to unlock premium items.
+      </div>
+    </article>
+
+    <article class="product-card" tabindex="0">
+      <div class="product-image-wrapper">
+        <img src="images/valorantpoints-2050.png" alt="2050 Valorant Points" class="product-image" />
+      </div>
+      <h3>2050 Valorant Points</h3>
+      <p class="product-price">$20.00</p>
+      <div class="product-description">
+        Bulk pack of 2050 Valorant Points for your collection.
+      </div>
+    </article>
+
+    <article class="product-card" tabindex="0">
+      <div class="product-image-wrapper">
+        <img src="images/valorantpoints-4250.png" alt="4250 Valorant Points" class="product-image" />
+      </div>
+      <h3>4250 Valorant Points</h3>
+      <p class="product-price">$40.00</p>
+      <div class="product-description">
+        Maximum points pack for serious players.
+      </div>
+    </article>
+
+    <article class="product-card" tabindex="0">
+      <div class="product-image-wrapper">
+        <img src="images/valorantboost.png" alt="Valorant Boost" class="product-image" />
+      </div>
+      <h3>Valorant Boost</h3>
+      <p class="product-price">$29.99</p>
+      <div class="product-description">
+        Rank up quickly with our reliable Valorant boosting services.
+      </div>
+    </article>
+
+  </section>
 </main>
-<footer>
-<div class="footer-socials">
-  <a href="#"><i class="fab fa-discord"></i></a>
-  <a href="#"><i class="fab fa-instagram"></i></a>
-  <a href="#"><i class="fab fa-telegram"></i></a>
-</div>
-<p>&copy; 2025 SHAMELESS Shop</p>
+
+<footer class="footer">
+  <div class="social-icons">
+    <a href="https://discord.gg/yourserver" target="_blank" aria-label="Discord"><img src="icons/discord.svg" alt="Discord" /></a>
+    <a href="https://instagram.com/yourprofile" target="_blank" aria-label="Instagram"><img src="icons/instagram.svg" alt="Instagram" /></a>
+    <a href="https://t.me/yourchannel" target="_blank" aria-label="Telegram"><img src="icons/telegram.svg" alt="Telegram" /></a>
+  </div>
+  <p>© 2025 SHAMELESS Shop. All rights reserved.</p>
 </footer>
-<script src="cart.js"></script>
-<script>
-document.getElementById('nav-toggle').onclick = () =>
-  document.getElementById('nav-list').classList.toggle('nav-open');
-document.getElementById('cart-icon').onclick = () => location.href = 'cart.html';
-updateCartCount();
-</script>
+
 </body>
 </html>
