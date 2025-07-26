@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SHAMELESS Shop - Telegram</title>
 <link rel="stylesheet" href="styles.css" />
+<script defer src="cart.js"></script>
 </head>
 <body>
 
@@ -18,46 +19,44 @@
   <a href="cart.html">Cart</a>
 </nav>
 
+<header>
+  <h1>Telegram Boosting Services</h1>
+  <p>Increase your Telegram channel members and visibility.</p>
+</header>
+
 <div class="container">
-  <h1>Telegram Products</h1>
-  <div class="products-grid">
+  <div class="product-card" tabindex="0" role="button" aria-pressed="false" onclick="addToCart({
+      id: 'telegram_members_100',
+      name: '100 New Members',
+      price: 7.99,
+      img: 'images/telegram_members.png',
+      description: 'Add 100 real Telegram members to your channel.'
+    })">
+    <img src="images/telegram_members.png" alt="100 New Members" />
+    <h3>100 New Members</h3>
+    <p class="description">Add 100 real Telegram members to your channel.</p>
+    <div class="price">$7.99</div>
+    <button type="button" aria-label="Add 100 New Members to cart">Add to Cart</button>
+  </div>
 
-    <div class="product-card" title="Telegram Premium Subscription">
-      <img src="images/telegram-premium.png" alt="Telegram Premium" class="product-image" />
-      <div class="product-info">
-        <h3>Telegram Premium</h3>
-        <p>Get Telegram Premium subscription with extra features.</p>
-        <div class="product-price">$4.99</div>
-        <button onclick="addToCart('Telegram Premium', 4.99)">Add to Cart</button>
-      </div>
-    </div>
-
-    <div class="product-card" title="Telegram Stickers Pack">
-      <img src="images/telegram-stickers.png" alt="Telegram Stickers" class="product-image" />
-      <div class="product-info">
-        <h3>Stickers Pack</h3>
-        <p>Exclusive Telegram Stickers collection.</p>
-        <div class="product-price">$1.99</div>
-        <button onclick="addToCart('Stickers Pack', 1.99)">Add to Cart</button>
-      </div>
-    </div>
-
+  <div class="product-card" tabindex="0" role="button" aria-pressed="false" onclick="addToCart({
+      id: 'telegram_promo',
+      name: 'Channel Promotion',
+      price: 14.99,
+      img: 'images/telegram_promo.png',
+      description: 'Promote your Telegram channel on popular groups.'
+    })">
+    <img src="images/telegram_promo.png" alt="Channel Promotion" />
+    <h3>Channel Promotion</h3>
+    <p class="description">Promote your Telegram channel on popular groups.</p>
+    <div class="price">$14.99</div>
+    <button type="button" aria-label="Add Channel Promotion to cart">Add to Cart</button>
   </div>
 </div>
 
-<script>
-  function addToCart(name, price) {
-    let cart = JSON.parse(localStorage.getItem('shamlessCart')) || [];
-    const idx = cart.findIndex(item => item.name === name);
-    if (idx !== -1) {
-      cart[idx].qty += 1;
-    } else {
-      cart.push({ name, price, qty: 1 });
-    }
-    localStorage.setItem('shamlessCart', JSON.stringify(cart));
-    alert(`Added "${name}" to cart.`);
-  }
-</script>
+<footer>
+  <p>© 2025 SHAMELESS Shop</p>
+</footer>
 
 </body>
 </html>
