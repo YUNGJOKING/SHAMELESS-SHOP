@@ -1,47 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SHAMELESS Shop - Home</title>
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SHAMELESS Shop - Home</title>
+<link rel="stylesheet" href="styles.css" />
+<!-- FontAwesome CDN for icons -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
 </head>
 <body>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="fortnite.html">Fortnite</a></li>
+    <li><a href="valorant.html">Valorant</a></li>
+    <li><a href="discord.html">Discord</a></li>
+    <li><a href="telegram.html">Telegram</a></li>
+    <li><a href="fortnite-gifting.html">Fortnite Gifting</a></li>
+  </ul>
+</nav>
+
+<div class="container">
   <header>
-    <nav aria-label="Primary navigation">
-      <a href="index.html" class="active">Home</a>
-      <a href="fortnite.html">Fortnite</a>
-      <a href="valorant.html">Valorant</a>
-      <a href="discord.html">Discord</a>
-      <a href="telegram.html">Telegram</a>
-    </nav>
-  </header>
-
-  <main>
     <h1>Welcome to SHAMELESS Shop</h1>
-    <p>
-      Discover exclusive gaming skins, weapon upgrades, premium Discord Nitro, Telegram stickers, and more.<br />
-      SHAMELESS is your ultimate destination for high-quality digital gaming products with a sleek, glitchy aesthetic.<br />
-      Shop confidently and elevate your gaming experience!
-    </p>
-  </main>
+    <p>Your trusted destination for Fortnite in-game products, gifting V-Bucks, Valorant points (TR region), Discord Nitro, Fortnite rank boosts, victory boosts, custom Fortnite requests, Telegram Premium, and more. Quality service, fast delivery, and unbeatable deals.</p>
+  </header>
+</div>
 
-  <footer>
-    <div class="social-links" aria-label="Social media links">
-      <a href="https://discord.gg/yourserver" target="_blank" rel="noopener" aria-label="Join our Discord server">Discord</a> |
-      <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener" aria-label="Follow us on Instagram">Instagram</a> |
-      <a href="https://t.me/yourchannel" target="_blank" rel="noopener" aria-label="Join our Telegram channel">Telegram</a>
-    </div>
-    <p>© 2025 SHAMELESS Shop. All rights reserved.</p>
-  </footer>
+<footer>
+  <div>Connect with us:</div>
+  <div class="social-links">
+    <a href="https://discord.gg/yourserver" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
+    <a href="https://instagram.com/yourprofile" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://t.me/yourchannel" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+  </div>
+  <div style="margin-top:1rem;">© 2025 SHAMELESS Shop</div>
+</footer>
 
-  <script>
-    const navLinks = document.querySelectorAll('nav a');
-    navLinks.forEach(link => {
-      if(link.href === window.location.href) {
-        link.classList.add('active');
-      }
-    });
-  </script>
 </body>
 </html>
