@@ -49,6 +49,7 @@
     align-items: center;
     justify-content: space-between;
     height: 64px;
+    position: relative;
   }
   .logo {
     font-family: 'Orbitron', monospace;
@@ -81,6 +82,40 @@
       0 0 5px #bb33ff,
       0 0 10px #bb33ff,
       0 0 15px #bb33ff66;
+  }
+
+  /* Cart button in nav */
+  .cart-btn {
+    position: relative;
+    font-size: 1.3rem;
+    color: #bb33ff;
+    background: transparent;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 12px;
+    box-shadow: 
+      0 0 10px #bb33ff88;
+    user-select: none;
+  }
+  .cart-btn:hover {
+    color: #e754ff;
+    box-shadow: 0 0 20px #ff6eff;
+  }
+  .cart-count {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: #ff44ff;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 0.75rem;
+    color: white;
+    font-weight: 700;
+    line-height: 18px;
+    text-align: center;
+    pointer-events: none;
+    user-select: none;
   }
 
   /* Main */
@@ -239,153 +274,447 @@
     .nav-categories {
       flex-wrap: wrap;
       justify-content: center;
-      gap: 8px;
     }
-    .product-desc {
-      display: none;
+    .buy-btn {
+      font-size: 0.9rem;
     }
+  }
+
+  /* --- CART SIDEBAR --- */
+  .cart-sidebar {
+    position: fixed;
+    top: 64px;
+    right: 0;
+    width: 320px;
+    max-width: 90vw;
+    height: calc(100vh - 64px);
+    background: #1a003a;
+    box-shadow:
+      -4px 0 20px #bb33ffbb;
+    padding: 20px 16px 30px;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 110;
+  }
+  .cart-sidebar.open {
+    transform: translateX(0);
+  }
+  .cart-sidebar header {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #bb33ff;
+    margin-bottom: 20px;
+    user-select: none;
+    letter-spacing: 0.1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cart-close-btn {
+    background: transparent;
+    font-size: 1.4rem;
+    color: #bb33ff;
+    cursor: pointer;
+    user-select: none;
+    border: none;
+    padding: 4px 8px;
+    transition: color 0.3s;
+  }
+  .cart-close-btn:hover {
+    color: #e754ff;
+  }
+  .cart-items {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 16px;
+  }
+  .cart-item {
+    display: flex;
+    gap: 12px;
+    padding: 10px 8px;
+    border-radius: 8px;
+    background: #240050;
+    box-shadow: 0 0 12px #bb33ff66;
+    align-items: center;
+  }
+  .cart-item img {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    border-radius: 8px;
+    filter: drop-shadow(0 0 6px #bb33ffcc);
+  }
+  .cart-item-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .cart-item-title {
+    font-weight: 600;
+    color: #e0b3ff;
+    font-size: 1rem;
+    margin-bottom: 4px;
+  }
+  .cart-item-qty-price {
+    font-size: 0.85rem;
+    color: #b799ffcc;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .cart-item-remove {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    color: #bb33ff;
+    cursor: pointer;
+    user-select: none;
+    padding: 4px;
+    transition: color 0.3s;
+  }
+  .cart-item-remove:hover {
+    color: #ff44ff;
+  }
+
+  .cart-total {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    font-size: 1.3rem;
+    color: #bb33ff;
+    text-align: right;
+    margin-bottom: 16px;
+  }
+  .cart-actions {
+    display: flex;
+    gap: 12px;
+  }
+  .cart-actions button {
+    flex: 1;
+    padding: 12px 0;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+    background: linear-gradient(45deg, #bb33ff, #7a00ff);
+    color: white;
+    box-shadow:
+      0 0 10px #bb33ffaa,
+      0 0 20px #bb33ffcc;
+    transition: background 0.3s ease;
+  }
+  .cart-actions button:hover {
+    background: linear-gradient(45deg, #e754ff, #aa00ff);
+    box-shadow:
+      0 0 15px #ff6eff,
+      0 0 30px #ff6effaa;
+  }
+
+  /* Scrollbar styling */
+  .cart-items::-webkit-scrollbar {
+    width: 6px;
+  }
+  .cart-items::-webkit-scrollbar-thumb {
+    background: #bb33ff88;
+    border-radius: 10px;
+  }
+  .cart-items::-webkit-scrollbar-track {
+    background: #15022f;
   }
 </style>
 </head>
 <body>
 
 <header>
-  <nav class="container" role="navigation" aria-label="Main navigation">
-    <div class="logo" tabindex="0">SHAMELESS</div>
-    <div class="nav-categories" role="menubar" aria-label="Product categories">
-      <button class="active" role="menuitem" tabindex="0" data-category="all">All</button>
-      <button role="menuitem" tabindex="0" data-category="fortnite">Fortnite</button>
-      <button role="menuitem" tabindex="0" data-category="valorant">Valorant</button>
-      <button role="menuitem" tabindex="0" data-category="discord">Discord</button>
-      <button role="menuitem" tabindex="0" data-category="telegram">Telegram</button>
-      <button role="menuitem" tabindex="0" data-category="custom">Custom</button>
+  <nav class="container">
+    <div class="logo">SHAMELESS</div>
+    <div class="nav-categories">
+      <button class="category-btn active" data-category="all">All</button>
+      <button class="category-btn" data-category="tools">Tools</button>
+      <button class="category-btn" data-category="skins">Skins</button>
+      <button class="category-btn" data-category="boost">Boost</button>
     </div>
+    <button class="cart-btn" id="cartBtn" aria-label="Open Cart">
+      🛒 Cart <span class="cart-count" id="cartCount">0</span>
+    </button>
   </nav>
 </header>
 
-<main class="container" role="main">
+<main class="container">
   <h1>SHAMELESS Shop</h1>
-  <p class="subtitle">Fuel your addiction with the darkest neon deals on Fortnite, Valorant, Discord Nitro, Telegram Premium, and more.</p>
+  <p class="subtitle">Fuel your addiction with our exclusive gaming tools, skins, and boost services — all dark, glitchy, and ready for battle.</p>
 
-  <section class="products-grid" aria-live="polite" aria-label="Product listings">
-
-    <!-- Product cards: swap images with your real product images -->
-    <article class="product-card" data-category="fortnite" tabindex="0" role="article" aria-label="Fortnite In-Game Products">
-      <div class="product-image" style="background-image:url('https://i.imgur.com/HnJLPTv.png');" alt="Fortnite In-Game Products"></div>
-      <div class="product-info">
-        <h2 class="product-title">Fortnite In-Game Products</h2>
-        <p class="product-desc">Skins, emotes, and more to elevate your game.</p>
-        <div class="product-price">$9.99 - $49.99</div>
-        <button class="buy-btn glitch" aria-label="Buy Fortnite In-Game Products">Buy Now</button>
-      </div>
-    </article>
-
-    <article class="product-card" data-category="fortnite" tabindex="0" role="article" aria-label="Gifting V-Bucks">
-      <div class="product-image" style="background-image:url('https://i.imgur.com/VmV57Nr.png');" alt="Gifting V-Bucks"></div>
-      <div class="product-info">
-        <h2 class="product-title">Gifting V-Bucks</h2>
-        <p class="product-desc">Send V-Bucks gifts instantly to your friends.</p>
-        <div class="product-price">$10.00 - $100.00</div>
-        <button class="buy-btn glitch" aria-label="Buy Gifting V-Bucks">Buy Now</button>
-      </div>
-    </article>
-
-    <article class="product-card" data-category="valorant" tabindex="0" role="article" aria-label="Valorant Points (TR Region)">
-      <div class="product-image" style="background-image:url('https://i.imgur.com/xnLeP3I.png');" alt="Valorant Points TR"></div>
-      <div class="product-info">
-        <h2 class="product-title">Valorant Points (TR Region)</h2>
-        <p class="product-desc">Fast and secure Valorant Points for Turkish region accounts.</p>
-        <div class="product-price">Starting at $5.99</div>
-        <button class="buy-btn glitch" aria-label="Buy Valorant Points">Buy Now</button>
-      </div>
-    </article>
-
-    <article class="product-card" data-category="discord" tabindex="0" role="article" aria-label="Discord Nitro">
-      <div class="product-image" style="background-image:url('https://i.imgur.com/hSscN3I.png');" alt="Discord Nitro"></div>
-      <div class="product-info">
-        <h2 class="product-title">Discord Nitro</h2>
-        <p class="product-desc">Get Discord Nitro subscription instantly.</p>
-        <div class="product-price">$9.99/month</div>
-        <button class="buy-btn glitch" aria-label="Buy Discord Nitro">Buy Now</button>
-      </div>
-    </article>
-
-    <article class="product-card" data-category="fortnite" tabindex="0" role="article" aria-label="Fortnite Rank Boost">
-      <div class="product-image" style="background-image:url('https://i.imgur.com/fmsfTXc.png');" alt="Fortnite Rank Boost"></div>
-      <div class="product-info">
-        <h2 class="product-title">Fortnite Rank Boost</h2>
-        <p class="product-desc">Level up fast with our professional boosting service.</p>
-        <div class="product-price">Starting at $19.99</div>
-        <button class="buy-btn glitch" aria-label="Buy Fortnite Rank Boost">Buy Now</button>
-      </div>
-    </article>
-
-    <article class="product-card" data-category="fortnite" tabindex="0" role="article" aria-label="Fortnite Victory Boost">
-      <div class="product-image" style="background-image:url('https://i.imgur.com/BFjx0dl.png');" alt="Fortnite Victory Boost"></div>
-      <div class="product-info">
-        <h2 class="product-title">Fortnite Victory Boost</h2>
-        <p class="product-desc">Secure your Victory Royale with expert help.</p>
-        <div class="product-price">Starting at $14.99</div>
-        <button class="buy-btn glitch" aria-label="Buy Fortnite Victory Boost">Buy Now</button>
-      </div>
-    </article>
-
-    <article class="product-card" data-category="custom" tabindex="0" role="article" aria-label="Custom Fortnite Requests">
-      <div class="product-image" style="background-image:url('https://i.imgur.com/TLxhR6k.png');" alt="Custom Fortnite Requests"></div>
-      <div class="product-info">
-        <h2 class="product-title">Custom Fortnite Requests</h2>
-        <p class="product-desc">Tailored services for your unique Fortnite needs.</p>
-        <div class="product-price">Contact for pricing</div>
-        <button class="buy-btn glitch" aria-label="Contact for Custom Fortnite Requests">Contact Us</button>
-      </div>
-    </article>
-
-    <article class="product-card" data-category="telegram" tabindex="0" role="article" aria-label="Telegram Premium">
-      <div class="product-image" style="background-image:url('https://i.imgur.com/D4bP7WO.png');" alt="Telegram Premium"></div>
-      <div class="product-info">
-        <h2 class="product-title">Telegram Premium</h2>
-        <p class="product-desc">Unlock exclusive Telegram features with Premium.</p>
-        <div class="product-price">$4.99/month</div>
-        <button class="buy-btn glitch" aria-label="Buy Telegram Premium">Buy Now</button>
-      </div>
-    </article>
-
-  </section>
+  <div class="products-grid" id="productsGrid">
+    <!-- Product cards generated by JS -->
+  </div>
 </main>
 
-<footer role="contentinfo">
-  &copy; 2025 SHAMELESS — Fuel Your Addiction. All rights reserved.
+<!-- Cart Sidebar -->
+<aside class="cart-sidebar" id="cartSidebar" aria-label="Shopping Cart">
+  <header>
+    Cart
+    <button class="cart-close-btn" id="cartCloseBtn" aria-label="Close Cart">&times;</button>
+  </header>
+  <div class="cart-items" id="cartItems">
+    <!-- Cart items inserted here -->
+  </div>
+  <div class="cart-total" id="cartTotal">Total: $0.00</div>
+  <div class="cart-actions">
+    <button id="clearCartBtn">Clear Cart</button>
+    <button id="checkoutBtn">Checkout</button>
+  </div>
+</aside>
+
+<footer>
+  © 2025 SHAMELESS. All Rights Reserved.
 </footer>
 
 <script>
-  // Category filter logic
-  const categoryButtons = document.querySelectorAll('.nav-categories button');
-  const productCards = document.querySelectorAll('.product-card');
+  // Products data
+  const products = [
+    {
+      id: 'tool001',
+      title: 'Ultimate Game Booster',
+      desc: 'Turbocharge your PC and crush lag instantly.',
+      price: 19.99,
+      category: 'tools',
+      image: 'https://cdn-icons-png.flaticon.com/512/1055/1055646.png',
+    },
+    {
+      id: 'skin001',
+      title: 'Dark Phantom Skin',
+      desc: 'Exclusive dark-themed skin to terrify your opponents.',
+      price: 9.99,
+      category: 'skins',
+      image: 'https://cdn-icons-png.flaticon.com/512/2921/2921222.png',
+    },
+    {
+      id: 'boost001',
+      title: 'Rank Boost Service',
+      desc: 'Climb ranks faster with our pro boosting team.',
+      price: 49.99,
+      category: 'boost',
+      image: 'https://cdn-icons-png.flaticon.com/512/1055/1055642.png',
+    },
+    {
+      id: 'tool002',
+      title: 'Stealth Hack Detector',
+      desc: 'Protect your account with real-time cheat detection.',
+      price: 29.99,
+      category: 'tools',
+      image: 'https://cdn-icons-png.flaticon.com/512/2921/2921229.png',
+    },
+    {
+      id: 'skin002',
+      title: 'Neon Rider Skin',
+      desc: 'Glowing neon skin for nighttime domination.',
+      price: 14.99,
+      category: 'skins',
+      image: 'https://cdn-icons-png.flaticon.com/512/2921/2921237.png',
+    },
+    {
+      id: 'boost002',
+      title: 'XP Double Boost',
+      desc: 'Double your experience points for 24 hours.',
+      price: 24.99,
+      category: 'boost',
+      image: 'https://cdn-icons-png.flaticon.com/512/1055/1055653.png',
+    },
+  ];
 
+  // State
+  let currentCategory = 'all';
+  let cart = {};
+
+  // DOM references
+  const productsGrid = document.getElementById('productsGrid');
+  const categoryButtons = document.querySelectorAll('.category-btn');
+  const cartBtn = document.getElementById('cartBtn');
+  const cartSidebar = document.getElementById('cartSidebar');
+  const cartCloseBtn = document.getElementById('cartCloseBtn');
+  const cartItemsContainer = document.getElementById('cartItems');
+  const cartCountEl = document.getElementById('cartCount');
+  const cartTotalEl = document.getElementById('cartTotal');
+  const clearCartBtn = document.getElementById('clearCartBtn');
+  const checkoutBtn = document.getElementById('checkoutBtn');
+
+  // Format price helper
+  function formatPrice(num) {
+    return '$' + num.toFixed(2);
+  }
+
+  // Render products based on current category filter
+  function renderProducts() {
+    productsGrid.innerHTML = '';
+    const filtered = currentCategory === 'all'
+      ? products
+      : products.filter(p => p.category === currentCategory);
+    if (filtered.length === 0) {
+      productsGrid.innerHTML = '<p style="color:#bb33ff99; font-style:italic;">No products found in this category.</p>';
+      return;
+    }
+    filtered.forEach(product => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.innerHTML = `
+        <div class="product-image" style="background-image:url('${product.image}');"></div>
+        <div class="product-info">
+          <div class="product-title">${product.title}</div>
+          <div class="product-desc">${product.desc}</div>
+          <div class="product-price">${formatPrice(product.price)}</div>
+          <button class="buy-btn glitch" data-id="${product.id}">Buy Now</button>
+        </div>
+      `;
+      productsGrid.appendChild(card);
+    });
+  }
+
+  // Save cart to localStorage
+  function saveCart() {
+    localStorage.setItem('shamelessCart', JSON.stringify(cart));
+  }
+  // Load cart from localStorage
+  function loadCart() {
+    const saved = localStorage.getItem('shamelessCart');
+    if (saved) {
+      cart = JSON.parse(saved);
+    }
+  }
+
+  // Render cart contents
+  function renderCart() {
+    cartItemsContainer.innerHTML = '';
+    let total = 0;
+    const keys = Object.keys(cart);
+    if (keys.length === 0) {
+      cartItemsContainer.innerHTML = '<p style="color:#bb33ff99; font-style:italic; text-align:center;">Your cart is empty.</p>';
+      cartTotalEl.textContent = 'Total: $0.00';
+      cartCountEl.textContent = '0';
+      return;
+    }
+    keys.forEach(id => {
+      const item = cart[id];
+      const product = products.find(p => p.id === id);
+      if (!product) return;
+      const subtotal = item.qty * product.price;
+      total += subtotal;
+      const div = document.createElement('div');
+      div.className = 'cart-item';
+      div.innerHTML = `
+        <img src="${product.image}" alt="${product.title}">
+        <div class="cart-item-info">
+          <div class="cart-item-title">${product.title}</div>
+          <div class="cart-item-qty-price">Qty: ${item.qty} &nbsp;&nbsp; Subtotal: ${formatPrice(subtotal)}</div>
+        </div>
+        <button class="cart-item-remove" data-id="${id}" aria-label="Remove item">&times;</button>
+      `;
+      cartItemsContainer.appendChild(div);
+    });
+    cartTotalEl.textContent = `Total: ${formatPrice(total)}`;
+    // Update count badge
+    const totalItems = keys.reduce((acc, id) => acc + cart[id].qty, 0);
+    cartCountEl.textContent = totalItems;
+  }
+
+  // Add product to cart
+  function addToCart(id) {
+    if (!cart[id]) {
+      cart[id] = { qty: 1 };
+    } else {
+      cart[id].qty += 1;
+    }
+    saveCart();
+    renderCart();
+    openCartSidebar();
+  }
+
+  // Remove product from cart
+  function removeFromCart(id) {
+    if (cart[id]) {
+      delete cart[id];
+      saveCart();
+      renderCart();
+    }
+  }
+
+  // Clear cart
+  function clearCart() {
+    if (confirm('Are you sure you want to clear your cart?')) {
+      cart = {};
+      saveCart();
+      renderCart();
+    }
+  }
+
+  // Open cart sidebar
+  function openCartSidebar() {
+    cartSidebar.classList.add('open');
+  }
+  // Close cart sidebar
+  function closeCartSidebar() {
+    cartSidebar.classList.remove('open');
+  }
+
+  // Event Listeners
+  // Category filter buttons
   categoryButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       categoryButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-
-      const category = btn.getAttribute('data-category');
-
-      productCards.forEach(card => {
-        if (category === 'all' || card.getAttribute('data-category') === category) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
-
-    // Keyboard accessibility (Enter/Space triggers click)
-    btn.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        btn.click();
-      }
+      currentCategory = btn.dataset.category;
+      renderProducts();
     });
   });
+
+  // Buy Now buttons (delegated)
+  productsGrid.addEventListener('click', e => {
+    if (e.target.matches('.buy-btn')) {
+      const id = e.target.dataset.id;
+      addToCart(id);
+    }
+  });
+
+  // Cart open button
+  cartBtn.addEventListener('click', () => {
+    openCartSidebar();
+  });
+
+  // Cart close button
+  cartCloseBtn.addEventListener('click', () => {
+    closeCartSidebar();
+  });
+
+  // Remove item button (delegated)
+  cartItemsContainer.addEventListener('click', e => {
+    if (e.target.matches('.cart-item-remove')) {
+      const id = e.target.dataset.id;
+      removeFromCart(id);
+    }
+  });
+
+  // Clear cart
+  clearCartBtn.addEventListener('click', clearCart);
+
+  // Checkout
+  checkoutBtn.addEventListener('click', () => {
+    if (Object.keys(cart).length === 0) {
+      alert('Your cart is empty!');
+      return;
+    }
+    alert('Thanks for your order! (This is a demo, no real purchase was made.)');
+    cart = {};
+    saveCart();
+    renderCart();
+    closeCartSidebar();
+  });
+
+  // Initialize
+  loadCart();
+  renderProducts();
+  renderCart();
+
 </script>
 
 </body>
