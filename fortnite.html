@@ -1,76 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>SHAMELESS Shop - Fortnite</title>
-<link rel="stylesheet" href="styles.css" />
-<script defer src="cart.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shameless Shop - Fortnite</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="cart.js"></script>
 </head>
 <body>
+  <header>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="fortnite.html" class="active">Fortnite</a></li>
+        <li><a href="valorant.html">Valorant</a></li>
+        <li><a href="discord.html">Discord</a></li>
+        <li><a href="telegram.html">Telegram</a></li>
+        <li><a href="gifting.html">Gifting</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="fortnite.html" class="active">Fortnite</a>
-  <a href="valorant.html">Valorant</a>
-  <a href="discord.html">Discord</a>
-  <a href="telegram.html">Telegram</a>
-  <a href="gifting.html">Gifting</a>
-  <a href="cart.html">Cart</a>
-</nav>
+  <main class="products-main">
+    <h2>Fortnite Products</h2>
+    <div class="products-grid">
 
-<header>
-  <h1>Fortnite Products</h1>
-  <p>Buy Fortnite skins, V-Bucks, and boosts.</p>
-</header>
+      <!-- VBuck Packs -->
+      <div class="product-card" data-name="1000 V-Bucks" data-price="9.99" data-description="1000 V-Bucks for Fortnite. Fast delivery." data-image="images/vbuck1000.png">
+        <img src="images/vbuck1000.png" alt="1000 V-Bucks" />
+        <h3>1000 V-Bucks</h3>
+        <p class="price">$9.99</p>
+        <button class="add-to-cart">Add to Cart</button>
+        <div class="desc-hover">1000 V-Bucks for Fortnite. Fast delivery.</div>
+      </div>
 
-<div class="container">
-  <div class="product-card" tabindex="0" role="button" aria-pressed="false" onclick="addToCart({
-      id: 'vbuck_1000',
-      name: '1000 V-Bucks',
-      price: 9.99,
-      img: 'images/vbuck1000.png',
-      description: 'Get 1000 V-Bucks for your Fortnite account.'
-    })">
-    <img src="images/vbuck1000.png" alt="1000 V-Bucks" />
-    <h3>1000 V-Bucks</h3>
-    <p class="description">Get 1000 V-Bucks for your Fortnite account.</p>
-    <div class="price">$9.99</div>
-    <button type="button" aria-label="Add 1000 V-Bucks to cart">Add to Cart</button>
-  </div>
+      <div class="product-card" data-name="2800 V-Bucks" data-price="24.99" data-description="2800 V-Bucks for Fortnite. Reliable and secure." data-image="images/vbuck2800.png">
+        <img src="images/vbuck2800.png" alt="2800 V-Bucks" />
+        <h3>2800 V-Bucks</h3>
+        <p class="price">$24.99</p>
+        <button class="add-to-cart">Add to Cart</button>
+        <div class="desc-hover">2800 V-Bucks for Fortnite. Reliable and secure.</div>
+      </div>
 
-  <div class="product-card" tabindex="0" role="button" aria-pressed="false" onclick="addToCart({
-      id: 'skin_epic',
-      name: 'Epic Skin',
-      price: 19.99,
-      img: 'images/skin_epic.png',
-      description: 'Exclusive Epic Fortnite skin.'
-    })">
-    <img src="images/skin_epic.png" alt="Epic Skin" />
-    <h3>Epic Skin</h3>
-    <p class="description">Exclusive Epic Fortnite skin.</p>
-    <div class="price">$19.99</div>
-    <button type="button" aria-label="Add Epic Skin to cart">Add to Cart</button>
-  </div>
+      <div class="product-card" data-name="5000 V-Bucks" data-price="44.99" data-description="5000 V-Bucks - great for all skins and items." data-image="images/vbuck5000.png">
+        <img src="images/vbuck5000.png" alt="5000 V-Bucks" />
+        <h3>5000 V-Bucks</h3>
+        <p class="price">$44.99</p>
+        <button class="add-to-cart">Add to Cart</button>
+        <div class="desc-hover">5000 V-Bucks - great for all skins and items.</div>
+      </div>
 
-  <div class="product-card" tabindex="0" role="button" aria-pressed="false" onclick="addToCart({
-      id: 'skin_legendary',
-      name: 'Legendary Skin',
-      price: 24.99,
-      img: 'images/skin_legendary.png',
-      description: 'Exclusive legendary Fortnite skin.'
-    })">
-    <img src="images/skin_legendary.png" alt="Legendary Skin" />
-    <h3>Legendary Skin</h3>
-    <p class="description">Exclusive legendary Fortnite skin.</p>
-    <div class="price">$24.99</div>
-    <button type="button" aria-label="Add Legendary Skin to cart">Add to Cart</button>
-  </div>
-</div>
+      <div class="product-card" data-name="13500 V-Bucks" data-price="99.99" data-description="13500 V-Bucks for the biggest purchases!" data-image="images/vbuck13500.png">
+        <img src="images/vbuck13500.png" alt="13500 V-Bucks" />
+        <h3>13500 V-Bucks</h3>
+        <p class="price">$99.99</p>
+        <button class="add-to-cart">Add to Cart</button>
+        <div class="desc-hover">13500 V-Bucks for the biggest purchases!</div>
+      </div>
 
-<footer>
-  <p>© 2025 SHAMELESS Shop</p>
-</footer>
+      <!-- Fortnite Packs -->
+      <div class="product-card" data-name="Fortnite Starter Pack" data-price="4.99" data-description="Starter pack with exclusive items." data-image="images/fortnite-starter.png">
+        <img src="images/fortnite-starter.png" alt="Fortnite Starter Pack" />
+        <h3>Fortnite Starter Pack</h3>
+        <p class="price">$4.99</p>
+        <button class="add-to-cart">Add to Cart</button>
+        <div class="desc-hover">Starter pack with exclusive items.</div>
+      </div>
 
+      <div class="product-card" data-name="Fortnite Crew Pack" data-price="11.99" data-description="Monthly subscription crew pack." data-image="images/fortnite-crew.png">
+        <img src="images/fortnite-crew.png" alt="Fortnite Crew Pack" />
+        <h3>Fortnite Crew Pack</h3>
+        <p class="price">$11.99</p>
+        <button class="add-to-cart">Add to Cart</button>
+        <div class="desc-hover">Monthly subscription crew pack.</div>
+      </div>
+
+      <div class="product-card" data-name="Fortnite Battle Pass" data-price="9.99" data-description="Get the latest season Battle Pass." data-image="images/fortnite-battlepass.png">
+        <img src="images/fortnite-battlepass.png" alt="Fortnite Battle Pass" />
+        <h3>Fortnite Battle Pass</h3>
+        <p class="price">$9.99</p>
+        <button class="add-to-cart">Add to Cart</button>
+        <div class="desc-hover">Get the latest season Battle Pass.</div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="socials">
+      <a href="#" aria-label="Discord" class="social-icon">Discord</a>
+      <a href="#" aria-label="Instagram" class="social-icon">Instagram</a>
+      <a href="#" aria-label="Telegram" class="social-icon">Telegram</a>
+    </div>
+    <p>© 2025 Shameless Shop. All rights reserved.</p>
+  </footer>
 </body>
 </html>
