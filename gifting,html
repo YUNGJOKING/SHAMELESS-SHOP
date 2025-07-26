@@ -28,37 +28,31 @@
     <section class="products-grid">
       <article class="product-card">
         <i class="fa-solid fa-gift product-icon"></i>
-        <h3>Fortnite Gifting</h3>
-        <p>
-          Send V-Bucks or Fortnite gifts to your friends securely and instantly.
-          We offer fast delivery with guaranteed safety.
-        </p>
+        <h3>Gift V-Bucks</h3>
+        <p>Send V-Bucks as a gift directly to any Epic Games account.</p>
         <button class="btn btn-primary">Order Now</button>
       </article>
 
       <article class="product-card">
-        <i class="fa-solid fa-shield-alt product-icon"></i>
-        <h3>Secure Transactions</h3>
-        <p>
-          Your payments and data are protected with our secure and trusted system.
-        </p>
+        <i class="fa-solid fa-box-open product-icon"></i>
+        <h3>Gift Skins & Items</h3>
+        <p>Choose any item from the Fortnite store and send it as a gift.</p>
+        <button class="btn btn-primary">Order Now</button>
       </article>
 
       <article class="product-card">
-        <i class="fa-solid fa-headset product-icon"></i>
-        <h3>24/7 Support</h3>
-        <p>
-          Need help with gifting? Our team is available round the clock to assist you.
-        </p>
+        <i class="fa-solid fa-clock product-icon"></i>
+        <h3>Fast Delivery</h3>
+        <p>Delivery within minutes of order confirmation. 100% secure.</p>
       </article>
     </section>
   </main>
 
   <footer>
     <div class="footer-socials">
-      <a href="#" aria-label="Discord" target="_blank"><i class="fab fa-discord"></i></a>
-      <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="#" aria-label="Telegram" target="_blank"><i class="fab fa-telegram"></i></a>
+      <a href="#"><i class="fab fa-discord"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-telegram"></i></a>
     </div>
     <div>&copy; 2025 SHAMELESS Shop. All rights reserved.</div>
   </footer>
