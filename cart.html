@@ -1,34 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>SHAMELESS Shop - Cart</title>
-<link rel="stylesheet" href="styles.css" />
-<script defer src="cart.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SHAMELESS Shop — Cart</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: #1a1a1a;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #5b3eff50;
+      color: #eee;
+    }
+    h1 {
+      text-align: center;
+      color: #a367ff;
+      margin-bottom: 1.5rem;
+      user-select: none;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+    }
+    th, td {
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid #5b3eff33;
+      text-align: left;
+    }
+    th {
+      color: #d1b3ff;
+      font-weight: 600;
+    }
+    tbody tr:hover {
+      background: #2d1a66;
+      cursor: default;
+    }
+    .remove-btn {
+      background: transparent;
+      border: none;
+      color: #ff5c5c;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+    .remove-btn:hover {
+      color: #ff1a1a;
+    }
+    .total-row td {
+      font-weight: 700;
+      font-size: 1.2rem;
+      border-top: 2px solid #5b3eff88;
+    }
+    .empty-msg {
+      text-align: center;
+      color: #888;
+      font-style: italic;
+      margin: 3rem 0;
+      user-select: none;
+    }
+    .checkout-btn {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      background: #5b3eff;
+      border: none;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+    .checkout-btn:hover:not(:disabled) {
+      background: #a367ff;
+    }
+    .checkout-btn:disabled {
+      background: #3d2a7f;
+      cursor: not-allowed;
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <nav>
+      <a href="index.html" class="logo">SHAMELESS</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="fortnite.html">Fortnite</a></li>
+        <li><a href="valorant.html">Valorant</a></li>
+        <li><a href="discord.html">Discord</a></li>
+        <li><a href="telegram.html">Telegram</a></li>
+        <li><a href="gifting.html">Gifting</a></li>
+        <li><a href="cart.html" class="active">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="fortnite.html">Fortnite</a>
-  <a href="valorant.html">Valorant</a>
-  <a href="discord.html">Discord</a>
-  <a href="telegram.html">Telegram</a>
-  <a href="gifting.html">Gifting</a>
-  <a href="cart.html" class="active">Cart</a>
-</nav>
+  <main>
+    <h1>Your Cart</h1>
+    <table id="cart-table" aria-label="Shopping cart items">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Qty</th>
+          <th>Price</th>
+          <th>Subtotal</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody id="cart-items">
+        <!-- Cart items will be injected here -->
+      </tbody>
+      <tfoot>
+        <tr class="total-row">
+          <td colspan="3" style="text-align:right;">Total:</td>
+          <td id="cart-total">$0.00</td>
+          <td></td>
+        </tr>
+      </tfoot>
+    </table>
+    <p class="empty-msg" id="empty-message" style="display:none;">Your cart is empty.</p>
+    <button id="checkout-btn" class="checkout-btn" disabled>Checkout</button>
+  </main>
 
-<div class="container">
-  <h1>Your Cart</h1>
-  <div id="cart-items"></div>
-  <h2 id="total-price"></h2>
-  <button id="clear-cart" aria-label="Clear Cart">Clear Cart</button>
-</div>
+  <footer>
+    <p>© 2025 SHAMELESS Shop. All rights reserved.</p>
+    <div class="socials">
+      <a href="#" aria-label="Discord"><img src="icons/discord.svg" alt="Discord" /></a>
+      <a href="#" aria-label="Instagram"><img src="icons/instagram.svg" alt="Instagram" /></a>
+      <a href="#" aria-label="Telegram"><img src="icons/telegram.svg" alt="Telegram" /></a>
+    </div>
+  </footer>
 
-<footer>
-  <p>© 2025 SHAMELESS Shop</p>
-</footer>
-
+  <script src="cart.js"></script>
 </body>
 </html>
