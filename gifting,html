@@ -3,48 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fortnite Gifting - SHAMELESS Shop</title>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  />
+  <title>Fortnite Gifting – SHAMELESS Shop</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
   <header>
-    <nav>
+    <nav class="navbar">
       <ul class="nav-list">
         <li><a href="index.html">Home</a></li>
         <li><a href="fortnite.html">Fortnite</a></li>
         <li><a href="valorant.html">Valorant</a></li>
         <li><a href="discord.html">Discord</a></li>
         <li><a href="telegram.html">Telegram</a></li>
-        <li><a href="gifting.html" class="active">Fortnite Gifting</a></li>
+        <li><a href="gifting.html" class="active">Gifting</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
+  <main class="main-content">
+    <h1>Fortnite Gifting</h1>
+    <p class="page-description">
+      Instantly gift V-Bucks, skins, and bundles to any Fortnite account. Fast delivery, secure process.
+    </p>
+
     <section class="products-grid">
-      <article class="product-card">
+      <div class="product-card">
         <i class="fa-solid fa-gift product-icon"></i>
         <h3>Gift V-Bucks</h3>
-        <p>Send V-Bucks as a gift directly to any Epic Games account.</p>
+        <p>Send V-Bucks directly to a friend or customer. Fast delivery and reliable process.</p>
         <button class="btn btn-primary">Order Now</button>
-      </article>
+      </div>
 
-      <article class="product-card">
+      <div class="product-card">
         <i class="fa-solid fa-box-open product-icon"></i>
-        <h3>Gift Skins & Items</h3>
-        <p>Choose any item from the Fortnite store and send it as a gift.</p>
+        <h3>Gift Items</h3>
+        <p>Pick any skin, emote, or bundle from the Item Shop and gift it securely.</p>
         <button class="btn btn-primary">Order Now</button>
-      </article>
+      </div>
 
-      <article class="product-card">
-        <i class="fa-solid fa-clock product-icon"></i>
-        <h3>Fast Delivery</h3>
-        <p>Delivery within minutes of order confirmation. 100% secure.</p>
-      </article>
+      <div class="product-card">
+        <i class="fa-solid fa-headset product-icon"></i>
+        <h3>Support 24/7</h3>
+        <p>We’re always online via Telegram or Discord if you need help or custom requests.</p>
+      </div>
     </section>
   </main>
 
@@ -54,7 +56,7 @@
       <a href="#"><i class="fab fa-instagram"></i></a>
       <a href="#"><i class="fab fa-telegram"></i></a>
     </div>
-    <div>&copy; 2025 SHAMELESS Shop. All rights reserved.</div>
+    <p>&copy; 2025 SHAMELESS Shop. All rights reserved.</p>
   </footer>
 </body>
 </html>
