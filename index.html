@@ -1,76 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SHAMELESS Shop — Home</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-</head>
-<body>
-  <header>
-    <nav class="navbar">
-      <div class="logo">SHAMELESS</div>
-      <div class="nav-toggle" id="nav-toggle"><i class="fas fa-bars"></i></div>
-      <ul class="nav-list" id="nav-list">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="fortnite.html">Fortnite</a></li>
-        <li><a href="valorant.html">Valorant</a></li>
-        <li><a href="discord.html">Discord</a></li>
-        <li><a href="telegram.html">Telegram</a></li>
-        <li><a href="gifting.html">Gifting</a></li>
-      </ul>
-      <div class="cart-icon" id="cart-icon">
-        <i class="fas fa-shopping-cart"></i>
-        <span id="cart-count">0</span>
-      </div>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero">
-      <h1>Welcome to SHAMELESS Shop</h1>
-      <p>Your trusted digital marketplace for Fortnite, Valorant, Nitro & more.</p>
-      <a href="fortnite.html" class="btn-primary">Browse Products</a>
-    </section>
-
-    <section class="services">
-      <h2>Our Products</h2>
-      <div class="service-grid">
-        <div class="card"><h3>Fortnite</h3><p>Prices $15‑50</p><a href="fortnite.html">Explore</a></div>
-        <div class="card"><h3>Valorant TR</h3><p>Starts $20</p><a href="valorant.html">Explore</a></div>
-        <div class="card"><h3>Discord Nitro</h3><p>$10/month</p><a href="discord.html">Explore</a></div>
-        <div class="card"><h3>Telegram Premium</h3><p>$5/month</p><a href="telegram.html">Explore</a></div>
-        <div class="card"><h3>Gifting</h3><p>From $25</p><a href="gifting.html">Explore</a></div>
-      </div>
-    </section>
-
-    <section class="features">
-      <h2>Why SHAMELESS?</h2>
-      <ul>
-        <li>⚡ Instant Delivery</li><li>💸 Best Prices</li>
-        <li>💬 24/7 Support</li><li>✅ Trusted by Gamers</li>
-      </ul>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-socials">
-      <a href="#"><i class="fab fa-discord"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-telegram"></i></a>
-    </div>
-    <p>&copy; 2025 SHAMELESS Shop</p>
-  </footer>
-
-  <script src="cart.js"></script>
-  <script>
-    document.getElementById('nav-toggle').onclick = () =>
-      document.getElementById('nav-list').classList.toggle('nav-open');
-    document.getElementById('cart-icon').onclick = () =>
-      location.href = 'cart.html';
-    updateCartCount();
-  </script>
-</body>
-</html>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>SHAMELESS Shop — Home</title>
+<link rel="stylesheet" href="styles.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head><body>
+<header><nav class="navbar"><div class="logo">SHAMELESS</div>
+<div class="nav-toggle" id="nav-toggle"><i class="fas fa-bars"></i></div>
+<ul class="nav-list" id="nav-list">
+<li><a href="index.html" class="active">Home</a></li>
+<li><a href="fortnite.html">Fortnite</a></li>
+<li><a href="valorant.html">Valorant</a></li>
+<li><a href="discord.html">Discord</a></li>
+<li><a href="telegram.html">Telegram</a></li>
+<li><a href="gifting.html">Gifting</a></li>
+</ul>
+<div class="cart-icon" id="cart-icon"><i class="fas fa-shopping-cart"></i><span id="cart-count">0</span></div>
+</nav></header>
+<main>
+<section class="hero"><h1>Welcome to SHAMELESS Shop</h1><p>Your trusted digital marketplace for Fortnite, Valorant, Nitro & more.</p>
+<a href="fortnite.html" class="btn-primary">Browse Products</a></section>
+<section class="services"><h2>Our Products</h2><div class="service-grid">
+<div class="card"><h3>Fortnite Products</h3><p>Skins, Boosts, Battle Pass</p><a href="fortnite.html">Explore</a></div>
+<div class="card"><h3>Valorant Points (TR)</h3><p>Fast point delivery</p><a href="valorant.html">Explore</a></div>
+<div class="card"><h3>Discord Nitro</h3><p>Monthly and yearly</p><a href="discord.html">Explore</a></div>
+<div class="card"><h3>Telegram Premium</h3><p>Premium monthly</p><a href="telegram.html">Explore</a></div>
+<div class="card"><h3>Gifting Services</h3><p>Send V‑bucks & items</p><a href="gifting.html">Explore</a></div>
+</div></section>
+<section class="features"><h2>Why SHAMELESS?</h2><ul>
+<li>⚡ Instant Delivery & Secure</li><li>💸 Affordable Prices</li>
+<li>💬 24/7 Support via Telegram & Discord</li><li>✅ Trusted by Gamers</li></ul></section>
+</main>
+<footer>
+<div class="footer-socials"><a href="#"><i class="fab fa-discord"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-telegram"></i></a></div>
+<p>&copy; 2025 SHAMELESS Shop</p></footer>
+<script src="cart.js"></script><script>
+document.getElementById('nav-toggle').onclick = ()=>document.getElementById('nav-list').classList.toggle('nav-open');
+document.getElementById('cart-icon').onclick = ()=>location.href='cart.html';
+updateCartCount();
+</script>
+</body></html>
