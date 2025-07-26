@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SHAMELESS Shop - Discord Nitro</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <nav aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="fortnite.html">Fortnite</a>
+      <a href="valorant.html">Valorant</a>
+      <a href="discord.html" class="active">Discord</a>
+      <a href="telegram.html">Telegram</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Discord Nitro</h1>
+    <p>Get premium Discord Nitro subscriptions to enhance your chatting experience.</p>
+    <!-- Add product listings here -->
+  </main>
+
+  <footer>
+    <div class="social-links" aria-label="Social media links">
+      <a href="https://discord.gg/yourserver" target="_blank" rel="noopener" aria-label="Join our Discord server">Discord</a> |
+      <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener" aria-label="Follow us on Instagram">Instagram</a> |
+      <a href="https://t.me/yourchannel" target="_blank" rel="noopener" aria-label="Join our Telegram channel">Telegram</a>
+    </div>
+    <p>© 2025 SHAMELESS Shop. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+      if(link.href === window.location.href) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+</body>
+</html>
