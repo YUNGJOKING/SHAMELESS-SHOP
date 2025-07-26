@@ -1,73 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>SHAMELESS Shop - Discord</title>
-<link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shameless Shop - Discord Nitro</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="cart.js"></script>
 </head>
 <body>
+<header>
+  <nav>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="fortnite.html">Fortnite</a></li>
+      <li><a href="valorant.html">Valorant</a></li>
+      <li><a href="discord.html" class="active">Discord</a></li>
+      <li><a href="telegram.html">Telegram</a></li>
+      <li><a href="gifting.html">Gifting</a></li>
+      <li><a href="cart.html">Cart</a></li>
+    </ul>
+  </nav>
+</header>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="fortnite.html">Fortnite</a>
-  <a href="valorant.html">Valorant</a>
-  <a href="discord.html" class="active">Discord</a>
-  <a href="telegram.html">Telegram</a>
-  <a href="gifting.html">Gifting</a>
-  <a href="cart.html">Cart</a>
-</nav>
-
-<div class="container">
-  <h1>Discord Nitro</h1>
+<main class="products-main">
+  <h2>Discord Nitro</h2>
   <div class="products-grid">
-
-    <div class="product-card" title="1 Month Discord Nitro">
-      <img src="images/1month-nitro.png" alt="1 Month Nitro" class="product-image" />
-      <div class="product-info">
-        <h3>1 Month Nitro</h3>
-        <p>Full Discord Nitro subscription for 1 month.</p>
-        <div class="product-price">$9.99</div>
-        <button onclick="addToCart('1 Month Nitro', 9.99)">Add to Cart</button>
-      </div>
+    <div class="product-card" data-name="1 Month Nitro" data-price="9.99" data-description="Full Discord Nitro - 1 month" data-image="images/discord1.png">
+      <img src="images/discord1.png" alt="1 Month Nitro" />
+      <h3>1 Month Nitro</h3>
+      <p class="price">$9.99</p>
+      <button class="add-to-cart">Add to Cart</button>
+      <div class="desc-hover">Full Discord Nitro - 1 month</div>
     </div>
-
-    <div class="product-card" title="6 Months Discord Nitro">
-      <img src="images/6months-nitro.png" alt="6 Months Nitro" class="product-image" />
-      <div class="product-info">
-        <h3>6 Months Nitro</h3>
-        <p>Full Discord Nitro subscription for 6 months.</p>
-        <div class="product-price">$54.99</div>
-        <button onclick="addToCart('6 Months Nitro', 54.99)">Add to Cart</button>
-      </div>
+    <div class="product-card" data-name="6 Months Nitro" data-price="49.99" data-description="Full Discord Nitro - 6 months" data-image="images/discord6.png">
+      <img src="images/discord6.png" alt="6 Months Nitro" />
+      <h3>6 Months Nitro</h3>
+      <p class="price">$49.99</p>
+      <button class="add-to-cart">Add to Cart</button>
+      <div class="desc-hover">Full Discord Nitro - 6 months</div>
     </div>
-
-    <div class="product-card" title="12 Months Discord Nitro">
-      <img src="images/12months-nitro.png" alt="12 Months Nitro" class="product-image" />
-      <div class="product-info">
-        <h3>12 Months Nitro</h3>
-        <p>Full Discord Nitro subscription for 12 months.</p>
-        <div class="product-price">$99.99</div>
-        <button onclick="addToCart('12 Months Nitro', 99.99)">Add to Cart</button>
-      </div>
+    <div class="product-card" data-name="12 Months Nitro" data-price="89.99" data-description="Full Discord Nitro - 12 months" data-image="images/discord12.png">
+      <img src="images/discord12.png" alt="12 Months Nitro" />
+      <h3>12 Months Nitro</h3>
+      <p class="price">$89.99</p>
+      <button class="add-to-cart">Add to Cart</button>
+      <div class="desc-hover">Full Discord Nitro - 12 months</div>
     </div>
-
-  </div>
-</div>
-
-<script>
-  function addToCart(name, price) {
-    let cart = JSON.parse(localStorage.getItem('shamlessCart')) || [];
-    const idx = cart.findIndex(item => item.name === name);
-    if (idx !== -1) {
-      cart[idx].qty += 1;
-    } else {
-      cart.push({ name, price, qty: 1 });
-    }
-    localStorage.setItem('shamlessCart', JSON.stringify(cart));
-    alert(`Added "${name}" to cart.`);
-  }
-</script>
-
-</body>
-</html>
+    <div class="product-card" data-name="1 Month Nitro Basic" data-price="4.99" data-description="Discord Nitro Basic - 1 month" data-image="images/discord1b.png">
+      <img src="images/discord1b.png" alt="1 Month Nitro Basic" />
+      <h3>1 Month Nitro Basic</h3>
+      <p class="price">$4.99</p>
+      <button class="add-to-cart">Add to Cart</button>
+      <div class="desc-hover">Discord Nitro
