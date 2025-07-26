@@ -1,54 +1,90 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shameless Shop - Discord Nitro</title>
+  <title>SHAMELESS Shop — Discord Nitro</title>
   <link rel="stylesheet" href="styles.css" />
-  <script defer src="cart.js"></script>
 </head>
 <body>
-<header>
-  <nav>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="fortnite.html">Fortnite</a></li>
-      <li><a href="valorant.html">Valorant</a></li>
-      <li><a href="discord.html" class="active">Discord</a></li>
-      <li><a href="telegram.html">Telegram</a></li>
-      <li><a href="gifting.html">Gifting</a></li>
-      <li><a href="cart.html">Cart</a></li>
-    </ul>
-  </nav>
-</header>
+  <header>
+    <nav>
+      <a href="index.html" class="logo">SHAMELESS</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="fortnite.html">Fortnite</a></li>
+        <li><a href="valorant.html">Valorant</a></li>
+        <li><a href="discord.html" class="active">Discord</a></li>
+        <li><a href="telegram.html">Telegram</a></li>
+        <li><a href="gifting.html">Gifting</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<main class="products-main">
-  <h2>Discord Nitro</h2>
-  <div class="products-grid">
-    <div class="product-card" data-name="1 Month Nitro" data-price="9.99" data-description="Full Discord Nitro - 1 month" data-image="images/discord1.png">
-      <img src="images/discord1.png" alt="1 Month Nitro" />
-      <h3>1 Month Nitro</h3>
-      <p class="price">$9.99</p>
-      <button class="add-to-cart">Add to Cart</button>
-      <div class="desc-hover">Full Discord Nitro - 1 month</div>
+  <main>
+    <h1>Discord Nitro Packages</h1>
+    <section class="products-grid">
+      <!-- Product Item -->
+      <article class="product-card" tabindex="0">
+        <img src="images/discord-nitro-1m.png" alt="Discord Nitro 1 Month" />
+        <h3>1 Month Nitro</h3>
+        <p class="description">Full Discord Nitro subscription for 1 month with all perks unlocked.</p>
+        <p class="price">$9.99</p>
+        <button class="add-to-cart" data-name="Discord Nitro 1 Month" data-price="9.99">Add to Cart</button>
+      </article>
+
+      <article class="product-card" tabindex="0">
+        <img src="images/discord-nitro-6m.png" alt="Discord Nitro 6 Months" />
+        <h3>6 Months Nitro</h3>
+        <p class="description">Enjoy Discord Nitro for 6 months at a discounted price.</p>
+        <p class="price">$54.99</p>
+        <button class="add-to-cart" data-name="Discord Nitro 6 Months" data-price="54.99">Add to Cart</button>
+      </article>
+
+      <article class="product-card" tabindex="0">
+        <img src="images/discord-nitro-12m.png" alt="Discord Nitro 12 Months" />
+        <h3>12 Months Nitro</h3>
+        <p class="description">Get a full year of Discord Nitro with exclusive features.</p>
+        <p class="price">$99.99</p>
+        <button class="add-to-cart" data-name="Discord Nitro 12 Months" data-price="99.99">Add to Cart</button>
+      </article>
+
+      <article class="product-card" tabindex="0">
+        <img src="images/discord-nitro-basic-1m.png" alt="Discord Nitro Basic 1 Month" />
+        <h3>1 Month Nitro Basic</h3>
+        <p class="description">Discord Nitro Basic for 1 month, enjoy core perks.</p>
+        <p class="price">$4.99</p>
+        <button class="add-to-cart" data-name="Discord Nitro Basic 1 Month" data-price="4.99">Add to Cart</button>
+      </article>
+
+      <article class="product-card" tabindex="0">
+        <img src="images/discord-nitro-basic-6m.png" alt="Discord Nitro Basic 6 Months" />
+        <h3>6 Months Nitro Basic</h3>
+        <p class="description">Half-year Nitro Basic at a special price.</p>
+        <p class="price">$27.99</p>
+        <button class="add-to-cart" data-name="Discord Nitro Basic 6 Months" data-price="27.99">Add to Cart</button>
+      </article>
+
+      <article class="product-card" tabindex="0">
+        <img src="images/discord-nitro-basic-12m.png" alt="Discord Nitro Basic 12 Months" />
+        <h3>12 Months Nitro Basic</h3>
+        <p class="description">One year of Discord Nitro Basic subscription.</p>
+        <p class="price">$49.99</p>
+        <button class="add-to-cart" data-name="Discord Nitro Basic 12 Months" data-price="49.99">Add to Cart</button>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 SHAMELESS Shop. All rights reserved.</p>
+    <div class="socials">
+      <a href="#" aria-label="Discord"><img src="icons/discord.svg" alt="Discord" /></a>
+      <a href="#" aria-label="Instagram"><img src="icons/instagram.svg" alt="Instagram" /></a>
+      <a href="#" aria-label="Telegram"><img src="icons/telegram.svg" alt="Telegram" /></a>
     </div>
-    <div class="product-card" data-name="6 Months Nitro" data-price="49.99" data-description="Full Discord Nitro - 6 months" data-image="images/discord6.png">
-      <img src="images/discord6.png" alt="6 Months Nitro" />
-      <h3>6 Months Nitro</h3>
-      <p class="price">$49.99</p>
-      <button class="add-to-cart">Add to Cart</button>
-      <div class="desc-hover">Full Discord Nitro - 6 months</div>
-    </div>
-    <div class="product-card" data-name="12 Months Nitro" data-price="89.99" data-description="Full Discord Nitro - 12 months" data-image="images/discord12.png">
-      <img src="images/discord12.png" alt="12 Months Nitro" />
-      <h3>12 Months Nitro</h3>
-      <p class="price">$89.99</p>
-      <button class="add-to-cart">Add to Cart</button>
-      <div class="desc-hover">Full Discord Nitro - 12 months</div>
-    </div>
-    <div class="product-card" data-name="1 Month Nitro Basic" data-price="4.99" data-description="Discord Nitro Basic - 1 month" data-image="images/discord1b.png">
-      <img src="images/discord1b.png" alt="1 Month Nitro Basic" />
-      <h3>1 Month Nitro Basic</h3>
-      <p class="price">$4.99</p>
-      <button class="add-to-cart">Add to Cart</button>
-      <div class="desc-hover">Discord Nitro
+  </footer>
+
+  <script src="cart.js"></script>
+</body>
+</html>
