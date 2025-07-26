@@ -3,354 +3,443 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>SHAMELESS Shop - Dark Neon Game Store</title>
+<title>SHAMELESS Shop — Fuel Your Addiction</title>
 <style>
-  /* Import Orbitron font */
-  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
-
-  /* Reset & basics */
+  /* Reset & base */
   * {
-    box-sizing: border-box;
+    margin: 0; padding: 0; box-sizing: border-box;
   }
   body {
-    margin: 0;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #0a001a;
-    color: #ccc;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
+    color: #ddd;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
   a {
     color: #bb77ff;
     text-decoration: none;
-    transition: color 0.3s ease;
   }
   a:hover {
-    color: #eeaaff;
+    text-decoration: underline;
   }
 
   /* Container */
   .container {
+    width: 90%;
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem 2rem 4rem;
+    margin: auto;
   }
 
-  /* Header */
+  /* Header & Hero */
   header {
-    padding: 1rem 2rem;
-    background: #130033;
-    box-shadow: 0 0 15px #bb77ff44;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    padding: 30px 0 60px;
+    text-align: center;
+    position: relative;
+    user-select: none;
   }
   header h1 {
-    color: #bb77ff;
-    font-weight: 700;
-    font-size: 1.8rem;
-    letter-spacing: 0.12em;
-    user-select: none;
-  }
-  nav {
-    margin-top: 0.6rem;
-    display: flex;
-    gap: 1.5rem;
-  }
-  nav a {
-    font-weight: 600;
-    font-size: 1rem;
-    text-transform: uppercase;
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    box-shadow: 0 0 6px #bb77ff88;
-    user-select: none;
-  }
-  nav a:hover {
-    background: #bb77ff22;
-    box-shadow: 0 0 15px #bb77ffdd;
-  }
-
-  /* Hero */
-  .hero {
-    margin: 2rem 0 4rem;
-    padding: 3rem 2rem;
-    background: linear-gradient(135deg, #1a0033 30%, #3a0a80 80%);
-    border-radius: 12px;
-    box-shadow: 0 0 40px #bb77ffaa;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: "";
-    position: absolute;
-    top: -40%;
-    left: -30%;
-    width: 200%;
-    height: 200%;
-    background: repeating-linear-gradient(
-      45deg,
-      #bb77ff33 0,
-      #bb77ff33 2px,
-      transparent 2px,
-      transparent 10px
-    );
-    animation: glitchMove 6s linear infinite;
-    opacity: 0.15;
-    pointer-events: none;
-    z-index: 1;
-  }
-  @keyframes glitchMove {
-    0% { transform: translate(0,0) rotate(0deg); }
-    100% { transform: translate(30px,30px) rotate(5deg); }
-  }
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 650px;
-  }
-  .hero h2 {
-    color: #eeaaff;
     font-size: 3rem;
-    margin: 0 0 0.5rem;
-    text-shadow: 0 0 10px #bb77ffdd;
-  }
-  .hero p {
-    font-size: 1.3rem;
-    line-height: 1.5;
-    color: #ddd;
-  }
-  .hero button {
-    margin-top: 2rem;
-    padding: 0.75rem 2rem;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #fff;
-    background: #bb77ff;
-    border: none;
-    border-radius: 40px;
-    cursor: pointer;
-    box-shadow: 0 0 15px #bb77ffcc;
-    transition: all 0.3s ease;
-    user-select: none;
-  }
-  .hero button:hover {
-    background: #d899ff;
-    box-shadow: 0 0 25px #d899ffcc;
-  }
-
-  /* Categories Grid */
-  .categories {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-    gap: 1.7rem;
-    margin-bottom: 3rem;
-  }
-  .category-card {
-    background: #1a0033;
-    border-radius: 12px;
-    padding: 2rem 1.5rem;
-    text-align: center;
-    box-shadow: 0 0 12px #bb77ff88;
-    position: relative;
-    cursor: pointer;
-    overflow: hidden;
-    transition: box-shadow 0.4s ease;
-  }
-  .category-card:hover {
-    box-shadow: 0 0 40px #bb77ffdd;
-  }
-  .category-card::after {
-    content: '';
-    position: absolute;
-    top: -25%;
-    left: -25%;
-    width: 150%;
-    height: 150%;
-    background: linear-gradient(45deg, #bb77ff55, transparent 70%);
-    filter: blur(12px);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    pointer-events: none;
-  }
-  .category-card:hover::after {
-    opacity: 1;
-  }
-  .category-icon {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
     color: #bb77ff;
-    text-shadow: 0 0 10px #bb77ffcc;
+    letter-spacing: 2px;
+    text-shadow:
+      0 0 6px #bb77ff88,
+      0 0 12px #bb77ffbb;
   }
-  .category-title {
+  header .slogan {
+    margin-top: 10px;
     font-size: 1.4rem;
-    font-weight: 700;
-    color: #eeaaff;
-    letter-spacing: 0.06em;
+    font-weight: 600;
+    color: #d6a1ff;
+    text-shadow:
+      0 0 5px #d6a1ffaa,
+      0 0 10px #bb77ffcc;
+    animation: glitchText 3s infinite;
   }
 
-  /* Products Grid */
-  .products {
+  /* Glitch effect */
+  @keyframes glitchText {
+    0%, 100% {
+      text-shadow:
+        2px 0 #bb77ff,
+        -2px 0 #d6a1ff;
+    }
+    25% {
+      text-shadow:
+        4px 0 #bb77ff,
+        -4px 0 #d6a1ff;
+    }
+    50% {
+      text-shadow:
+        2px 0 #d6a1ff,
+        -2px 0 #bb77ff;
+    }
+    75% {
+      text-shadow:
+        4px 0 #d6a1ff,
+        -4px 0 #bb77ff;
+    }
+  }
+
+  /* Featured Products */
+  section.featured-products {
+    margin-bottom: 60px;
+  }
+  section.featured-products h2 {
+    font-size: 2.4rem;
+    color: #bb77ff;
+    margin-bottom: 30px;
+    letter-spacing: 1.5px;
+    text-align: center;
+    text-shadow:
+      0 0 6px #bb77ff88,
+      0 0 12px #bb77ffbb;
+  }
+  .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 24px;
   }
   .product-card {
-    background: #1a0033;
-    border-radius: 14px;
-    box-shadow: 0 0 15px #bb77ff88;
+    background: #1c0a3d;
+    border-radius: 12px;
+    box-shadow:
+      0 0 12px #bb77ff66,
+      inset 0 0 8px #bb77ff33;
     overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    position: relative;
-    transition: box-shadow 0.4s ease;
   }
   .product-card:hover {
-    box-shadow: 0 0 35px #bb77ffdd;
+    transform: translateY(-8px);
+    box-shadow:
+      0 0 20px #bb77ffcc,
+      inset 0 0 14px #bb77ff88;
   }
   .product-image {
     width: 100%;
-    aspect-ratio: 16/9;
+    height: 160px;
     object-fit: cover;
-    filter: drop-shadow(0 0 8px #bb77ffcc);
+    display: block;
   }
   .product-info {
-    padding: 1rem 1.2rem 1.5rem;
-    color: #ddd;
+    padding: 16px;
   }
   .product-name {
+    font-size: 1.1rem;
     font-weight: 700;
-    font-size: 1.2rem;
-    margin-bottom: 0.4rem;
-    color: #eeaaff;
+    color: #d6a1ff;
+    margin-bottom: 8px;
     user-select: none;
   }
   .product-price {
+    font-size: 1rem;
     font-weight: 600;
-    font-size: 1.1rem;
     color: #bb77ff;
-    user-select: none;
+    margin-bottom: 12px;
   }
   .buy-button {
-    display: inline-block;
-    margin-top: 0.8rem;
-    padding: 0.5rem 1.4rem;
     background: #bb77ff;
-    color: #111;
+    border: none;
+    color: #1c0a3d;
     font-weight: 700;
+    font-size: 1rem;
+    padding: 10px 20px;
     border-radius: 30px;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    box-shadow: 0 0 10px #bb77ffcc;
-    transition: background 0.3s ease;
-    user-select: none;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
   }
   .buy-button:hover {
-    background: #d899ff;
-    box-shadow: 0 0 25px #d899ffcc;
+    background-color: #d6a1ff;
+  }
+
+  /* Categories Section */
+  section.categories {
+    margin-bottom: 60px;
+  }
+  section.categories h2 {
+    font-size: 2.4rem;
+    color: #bb77ff;
+    margin-bottom: 30px;
+    letter-spacing: 1.5px;
+    text-align: center;
+    text-shadow:
+      0 0 6px #bb77ff88,
+      0 0 12px #bb77ffbb;
+  }
+  .categories-list {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .category-card {
+    background: #1c0a3d;
+    padding: 20px 30px;
+    border-radius: 12px;
+    color: #d6a1ff;
+    font-weight: 700;
+    font-size: 1.2rem;
+    box-shadow:
+      0 0 10px #bb77ff55;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+  .category-card:hover {
+    background-color: #3b1a79;
+    box-shadow:
+      0 0 20px #bb77ffcc;
+  }
+
+  /* Deals Section */
+  section.deals {
+    margin-bottom: 60px;
+    background: #210d4b;
+    padding: 40px 20px;
+    border-radius: 14px;
+    box-shadow:
+      0 0 18px #bb77ff88;
+  }
+  section.deals h2 {
+    text-align: center;
+    font-size: 2.4rem;
+    color: #ff66aa;
+    margin-bottom: 30px;
+    letter-spacing: 1.5px;
+    user-select: none;
+    text-shadow:
+      0 0 6px #ff66aaaa,
+      0 0 12px #ff66aacc;
+  }
+  .deal-item {
+    background: #3a177c;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 12px auto;
+    max-width: 600px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #ffd6ee;
+    box-shadow:
+      0 0 12px #ff66aaaa;
+    cursor: default;
+    user-select: none;
+  }
+
+  /* How It Works */
+  section.how-it-works {
+    margin-bottom: 60px;
+    text-align: center;
+  }
+  section.how-it-works h2 {
+    font-size: 2.4rem;
+    color: #bb77ff;
+    margin-bottom: 30px;
+    letter-spacing: 1.5px;
+    text-shadow:
+      0 0 6px #bb77ff88,
+      0 0 12px #bb77ffbb;
+  }
+  .steps {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .step {
+    background: #1c0a3d;
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 250px;
+    box-shadow:
+      0 0 12px #bb77ff66,
+      inset 0 0 8px #bb77ff33;
+    color: #d6a1ff;
+    font-weight: 600;
+    font-size: 1rem;
+    user-select: none;
+  }
+  .step h3 {
+    margin-bottom: 14px;
+    font-size: 1.2rem;
+    color: #d6a1ff;
+  }
+
+  /* Customer Reviews */
+  section.reviews {
+    margin-bottom: 60px;
+    background: #210d4b;
+    padding: 40px 20px;
+    border-radius: 14px;
+    box-shadow:
+      0 0 18px #bb77ff88;
+    color: #ffd6ee;
+  }
+  section.reviews h2 {
+    text-align: center;
+    font-size: 2.4rem;
+    color: #bb77ff;
+    margin-bottom: 30px;
+    letter-spacing: 1.5px;
+    user-select: none;
+    text-shadow:
+      0 0 6px #bb77ff88,
+      0 0 12px #bb77ffbb;
+  }
+  .review-list {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .review-card {
+    background: #3a177c;
+    border-radius: 12px;
+    max-width: 300px;
+    padding: 20px;
+    box-shadow:
+      0 0 12px #bb77ffcc;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #ffd6ee;
+    user-select: none;
+  }
+  .reviewer {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: #d6a1ff;
+  }
+  .review-text {
+    font-style: italic;
   }
 
   /* Footer */
   footer {
-    background: #130033;
-    padding: 2rem 2rem 3rem;
+    background: #110031;
     text-align: center;
-    color: #bb77ffcc;
+    padding: 20px 0;
+    color: #7744cc88;
     font-size: 0.9rem;
     user-select: none;
   }
 
   /* Responsive */
-  @media (max-width: 640px) {
-    .hero h2 {
-      font-size: 2rem;
-    }
-    .hero p {
-      font-size: 1.1rem;
+  @media (max-width: 600px) {
+    section.how-it-works .steps,
+    section.reviews .review-list {
+      flex-direction: column;
+      align-items: center;
     }
   }
-
 </style>
 </head>
 <body>
+  <header>
+    <h1>SHAMELESS Shop</h1>
+    <div class="slogan">Fuel Your Addiction</div>
+  </header>
 
-<header>
-  <h1>SHAMELESS SHOP</h1>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Shop</a>
-    <a href="#">Blog</a>
-    <a href="#">Support</a>
-  </nav>
-</header>
+  <main class="container">
 
-<main class="container">
-  <section class="hero" aria-label="Shop hero banner">
-    <div class="hero-content">
-      <h2>The Darkest Neon Game Store</h2>
-      <p>Get your favorite game points, gift cards, and exclusive digital goods with SHAMELESS style.</p>
-      <button onclick="alert('Shop coming soon!')">Shop Now</button>
-    </div>
-  </section>
-
-  <section aria-label="Shop categories" class="categories">
-    <article class="category-card" tabindex="0">
-      <div class="category-icon">🎮</div>
-      <h3 class="category-title">Game Points</h3>
-    </article>
-    <article class="category-card" tabindex="0">
-      <div class="category-icon">💳</div>
-      <h3 class="category-title">Gift Cards</h3>
-    </article>
-    <article class="category-card" tabindex="0">
-      <div class="category-icon">⚡</div>
-      <h3 class="category-title">Boost Services</h3>
-    </article>
-    <article class="category-card" tabindex="0">
-      <div class="category-icon">🛡️</div>
-      <h3 class="category-title">Security & VPN</h3>
-    </article>
-  </section>
-
-  <section aria-label="Featured products" class="products">
-    <article class="product-card" tabindex="0">
-      <img class="product-image" src="https://via.placeholder.com/320x180/330055/bb77ff?text=Fortnite+Points" alt="Fortnite Points" />
-      <div class="product-info">
-        <h4 class="product-name">Fortnite Points - 1000</h4>
-        <div class="product-price">$9.99</div>
-        <button class="buy-button" onclick="alert('Added Fortnite Points 1000 to cart')">Buy Now</button>
+    <!-- Featured Products -->
+    <section class="featured-products" aria-label="Featured Products">
+      <h2>Featured Products</h2>
+      <div class="products-grid">
+        <article class="product-card" tabindex="0" aria-label="SHAMELESS Hoodie, $49.99">
+          <img class="product-image" src="https://i.imgur.com/HRpzP9x.jpg" alt="SHAMELESS Hoodie" />
+          <div class="product-info">
+            <div class="product-name">SHAMELESS Hoodie</div>
+            <div class="product-price">$49.99</div>
+            <button class="buy-button" aria-label="Buy SHAMELESS Hoodie">Buy Now</button>
+          </div>
+        </article>
+        <article class="product-card" tabindex="0" aria-label="SHAMELESS Mousepad, $19.99">
+          <img class="product-image" src="https://i.imgur.com/yly1dP5.jpg" alt="SHAMELESS Mousepad" />
+          <div class="product-info">
+            <div class="product-name">SHAMELESS Mousepad</div>
+            <div class="product-price">$19.99</div>
+            <button class="buy-button" aria-label="Buy SHAMELESS Mousepad">Buy Now</button>
+          </div>
+        </article>
+        <article class="product-card" tabindex="0" aria-label="SHAMELESS Sticker Pack, $9.99">
+          <img class="product-image" src="https://i.imgur.com/dQRkR6j.jpg" alt="SHAMELESS Sticker Pack" />
+          <div class="product-info">
+            <div class="product-name">SHAMELESS Sticker Pack</div>
+            <div class="product-price">$9.99</div>
+            <button class="buy-button" aria-label="Buy SHAMELESS Sticker Pack">Buy Now</button>
+          </div>
+        </article>
       </div>
-    </article>
-    <article class="product-card" tabindex="0">
-      <img class="product-image" src="https://via.placeholder.com/320x180/330055/bb77ff?text=Steam+Gift+Card" alt="Steam Gift Card" />
-      <div class="product-info">
-        <h4 class="product-name">Steam Gift Card - $20</h4>
-        <div class="product-price">$19.99</div>
-        <button class="buy-button" onclick="alert('Added Steam Gift Card $20 to cart')">Buy Now</button>
-      </div>
-    </article>
-    <article class="product-card" tabindex="0">
-      <img class="product-image" src="https://via.placeholder.com/320x180/330055/bb77ff?text=VPN+Subscription" alt="VPN Subscription" />
-      <div class="product-info">
-        <h4 class="product-name">VPN Secure 1 Month</h4>
-        <div class="product-price">$5.99</div>
-        <button class="buy-button" onclick="alert('Added VPN Secure 1 Month to cart')">Buy Now</button>
-      </div>
-    </article>
-    <article class="product-card" tabindex="0">
-      <img class="product-image" src="https://via.placeholder.com/320x180/330055/bb77ff?text=Game+Boost" alt="Game Boost Service" />
-      <div class="product-info">
-        <h4 class="product-name">Game Boost Service</h4>
-        <div class="product-price">$29.99</div>
-        <button class="buy-button" onclick="alert('Added Game Boost Service to cart')">Buy Now</button>
-      </div>
-    </article>
-  </section>
-</main>
+    </section>
 
-<footer>
-  © 2025 SHAMELESS Shop — All rights reserved.
-</footer>
+    <!-- Categories -->
+    <section class="categories" aria-label="Product Categories">
+      <h2>Shop by Category</h2>
+      <div class="categories-list">
+        <div class="category-card" tabindex="0" role="button" aria-pressed="false" aria-label="Apparel Category">Apparel</div>
+        <div class="category-card" tabindex="0" role="button" aria-pressed="false" aria-label="Accessories Category">Accessories</div>
+        <div class="category-card" tabindex="0" role="button" aria-pressed="false" aria-label="Digital Goods Category">Digital Goods</div>
+      </div>
+    </section>
 
+    <!-- Deals -->
+    <section class="deals" aria-label="Special Deals and Promotions">
+      <h2>Special Deals</h2>
+      <div class="deal-item">Buy 2 SHAMELESS Hoodies, get 1 Sticker Pack free!</div>
+      <div class="deal-item">Free shipping on orders over $75</div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" aria-label="How It Works">
+      <h2>How It Works</h2>
+      <div class="steps">
+        <div class="step">
+          <h3>1. Browse Products</h3>
+          Find your favorite SHAMELESS gear.
+        </div>
+        <div class="step">
+          <h3>2. Add to Cart</h3>
+          Select your items and add them.
+        </div>
+        <div class="step">
+          <h3>3. Checkout Securely</h3>
+          Fast and safe payment methods.
+        </div>
+        <div class="step">
+          <h3>4. Enjoy</h3>
+          Get your order shipped to your door.
+        </div>
+      </div>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section class="reviews" aria-label="Customer Reviews">
+      <h2>What Customers Say</h2>
+      <div class="review-list">
+        <article class="review-card">
+          <div class="reviewer">Alex K.</div>
+          <div class="review-text">“Love the hoodie! Super comfy and the glitch design is fire 🔥”</div>
+        </article>
+        <article class="review-card">
+          <div class="reviewer">Jenna P.</div>
+          <div class="review-text">“Mousepad feels great and looks amazing on my desk.”</div>
+        </article>
+        <article class="review-card">
+          <div class="reviewer">Mike D.</div>
+          <div class="review-text">“Fast shipping and excellent customer service. Highly recommend!”</div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    &copy; 2025 SHAMELESS. All rights reserved. Made with 💜 and glitches.
+  </footer>
 </body>
 </html>
