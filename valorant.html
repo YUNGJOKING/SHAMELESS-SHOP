@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SHAMELESS Shop - Valorant</title>
 <link rel="stylesheet" href="styles.css" />
+<script defer src="cart.js"></script>
 </head>
 <body>
 
@@ -18,96 +19,44 @@
   <a href="cart.html">Cart</a>
 </nav>
 
-<div class="container">
+<header>
   <h1>Valorant Products</h1>
-  <div class="products-grid">
+  <p>Buy Valorant skins, battle passes, and boosts.</p>
+</header>
 
-    <div class="product-card" title="475 VP - Valorant Points">
-      <img src="images/475-vp.png" alt="475 VP" class="product-image" />
-      <div class="product-info">
-        <h3>475 VP</h3>
-        <p>Get 475 Valorant Points instantly.</p>
-        <div class="product-price">$4.99</div>
-        <button onclick="addToCart('475 VP', 4.99)">Add to Cart</button>
-      </div>
-    </div>
+<div class="container">
+  <div class="product-card" tabindex="0" role="button" aria-pressed="false" onclick="addToCart({
+      id: 'skin_ghost',
+      name: 'Ghost Skin',
+      price: 14.99,
+      img: 'images/valorant_ghost.png',
+      description: 'Cool Ghost pistol skin.'
+    })">
+    <img src="images/valorant_ghost.png" alt="Ghost Skin" />
+    <h3>Ghost Skin</h3>
+    <p class="description">Cool Ghost pistol skin.</p>
+    <div class="price">$14.99</div>
+    <button type="button" aria-label="Add Ghost Skin to cart">Add to Cart</button>
+  </div>
 
-    <div class="product-card" title="1000 VP - Valorant Points">
-      <img src="images/1000-vp.png" alt="1000 VP" class="product-image" />
-      <div class="product-info">
-        <h3>1000 VP</h3>
-        <p>Get 1000 Valorant Points instantly.</p>
-        <div class="product-price">$9.99</div>
-        <button onclick="addToCart('1000 VP', 9.99)">Add to Cart</button>
-      </div>
-    </div>
-
-    <div class="product-card" title="2050 VP - Valorant Points">
-      <img src="images/2050-vp.png" alt="2050 VP" class="product-image" />
-      <div class="product-info">
-        <h3>2050 VP</h3>
-        <p>Get 2050 Valorant Points instantly.</p>
-        <div class="product-price">$19.99</div>
-        <button onclick="addToCart('2050 VP', 19.99)">Add to Cart</button>
-      </div>
-    </div>
-
-    <div class="product-card" title="3650 VP - Valorant Points">
-      <img src="images/3650-vp.png" alt="3650 VP" class="product-image" />
-      <div class="product-info">
-        <h3>3650 VP</h3>
-        <p>Get 3650 Valorant Points instantly.</p>
-        <div class="product-price">$34.99</div>
-        <button onclick="addToCart('3650 VP', 34.99)">Add to Cart</button>
-      </div>
-    </div>
-
-    <div class="product-card" title="5350 VP - Valorant Points">
-      <img src="images/5350-vp.png" alt="5350 VP" class="product-image" />
-      <div class="product-info">
-        <h3>5350 VP</h3>
-        <p>Get 5350 Valorant Points instantly.</p>
-        <div class="product-price">$49.99</div>
-        <button onclick="addToCart('5350 VP', 49.99)">Add to Cart</button>
-      </div>
-    </div>
-
-    <div class="product-card" title="6350 VP - Valorant Points">
-      <img src="images/6350-vp.png" alt="6350 VP" class="product-image" />
-      <div class="product-info">
-        <h3>6350 VP</h3>
-        <p>Get 6350 Valorant Points instantly.</p>
-        <div class="product-price">$59.99</div>
-        <button onclick="addToCart('6350 VP', 59.99)">Add to Cart</button>
-      </div>
-    </div>
-
-    <div class="product-card" title="11000 VP - Valorant Points">
-      <img src="images/11000-vp.png" alt="11000 VP" class="product-image" />
-      <div class="product-info">
-        <h3>11000 VP</h3>
-        <p>Get 11000 Valorant Points instantly.</p>
-        <div class="product-price">$99.99</div>
-        <button onclick="addToCart('11000 VP', 99.99)">Add to Cart</button>
-      </div>
-    </div>
-
+  <div class="product-card" tabindex="0" role="button" aria-pressed="false" onclick="addToCart({
+      id: 'battle_pass',
+      name: 'Valorant Battle Pass',
+      price: 9.99,
+      img: 'images/valorant_battlepass.png',
+      description: 'Unlock exclusive rewards.'
+    })">
+    <img src="images/valorant_battlepass.png" alt="Valorant Battle Pass" />
+    <h3>Valorant Battle Pass</h3>
+    <p class="description">Unlock exclusive rewards.</p>
+    <div class="price">$9.99</div>
+    <button type="button" aria-label="Add Valorant Battle Pass to cart">Add to Cart</button>
   </div>
 </div>
 
-<script>
-  function addToCart(name, price) {
-    let cart = JSON.parse(localStorage.getItem('shamlessCart')) || [];
-    const idx = cart.findIndex(item => item.name === name);
-    if (idx !== -1) {
-      cart[idx].qty += 1;
-    } else {
-      cart.push({ name, price, qty: 1 });
-    }
-    localStorage.setItem('shamlessCart', JSON.stringify(cart));
-    alert(`Added "${name}" to cart.`);
-  }
-</script>
+<footer>
+  <p>© 2025 SHAMELESS Shop</p>
+</footer>
 
 </body>
 </html>
