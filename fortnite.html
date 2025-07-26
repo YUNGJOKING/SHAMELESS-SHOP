@@ -5,129 +5,107 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SHAMELESS Shop - Fortnite</title>
 <link rel="stylesheet" href="styles.css" />
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.product-card').forEach(card => {
-    card.addEventListener('click', () => {
-      if(card.classList.contains('desc-open')) {
-        card.classList.remove('desc-open');
-      } else {
-        document.querySelectorAll('.product-card.desc-open').forEach(openCard => openCard.classList.remove('desc-open'));
-        card.classList.add('desc-open');
-      }
-    });
-  });
-});
-</script>
 </head>
 <body>
-<header>
-  <nav class="navbar">
-    <a href="index.html" class="nav-logo">SHAMELESS Shop</a>
-    <ul class="nav-links">
-      <li><a href="fortnite.html" class="active">Fortnite</a></li>
-      <li><a href="valorant.html">Valorant</a></li>
-      <li><a href="discord.html">Discord</a></li>
-      <li><a href="telegram.html">Telegram</a></li>
-      <li><a href="gifting.html">Gifting</a></li>
-    </ul>
-  </nav>
-</header>
 
-<main class="products-main">
-  <h2>Fortnite Products</h2>
-  <section class="products-grid">
+<nav>
+  <a href="index.html">Home</a>
+  <a href="fortnite.html" class="active">Fortnite</a>
+  <a href="valorant.html">Valorant</a>
+  <a href="discord.html">Discord</a>
+  <a href="telegram.html">Telegram</a>
+  <a href="gifting.html">Gifting</a>
+  <a href="cart.html">Cart</a>
+</nav>
 
-    <!-- V-Bucks Packs -->
-    <article class="product-card" tabindex="0">
-      <div class="product-image-wrapper">
-        <img src="images/1000vbucks.png" alt="1000 V-Bucks" class="product-image" />
+<div class="container">
+  <h1>Fortnite Products</h1>
+  <div class="products-grid">
+    <div class="product-card" title="Get 1000 Fortnite V-Bucks instantly.">
+      <img src="images/1000-vbucks.png" alt="1000 V-Bucks" class="product-image" />
+      <div class="product-info">
+        <h3>1000 V-Bucks</h3>
+        <p>Get 1000 Fortnite V-Bucks instantly.</p>
+        <div class="product-price">$9.99</div>
+        <button onclick="addToCart('1000 V-Bucks', 9.99)">Add to Cart</button>
       </div>
-      <h3>1000 V-Bucks</h3>
-      <p class="product-price">$9.99</p>
-      <div class="product-description">
-        Get 1000 V-Bucks to spend on skins, emotes, and more in Fortnite.
-      </div>
-    </article>
+    </div>
 
-    <article class="product-card" tabindex="0">
-      <div class="product-image-wrapper">
-        <img src="images/2800vbucks.png" alt="2800 V-Bucks" class="product-image" />
+    <div class="product-card" title="Get 2800 Fortnite V-Bucks instantly.">
+      <img src="images/2800-vbucks.png" alt="2800 V-Bucks" class="product-image" />
+      <div class="product-info">
+        <h3>2800 V-Bucks</h3>
+        <p>Get 2800 Fortnite V-Bucks instantly.</p>
+        <div class="product-price">$24.99</div>
+        <button onclick="addToCart('2800 V-Bucks', 24.99)">Add to Cart</button>
       </div>
-      <h3>2800 V-Bucks</h3>
-      <p class="product-price">$24.99</p>
-      <div class="product-description">
-        2800 V-Bucks to fuel your Fortnite adventures and unlock exclusive items.
-      </div>
-    </article>
+    </div>
 
-    <article class="product-card" tabindex="0">
-      <div class="product-image-wrapper">
-        <img src="images/5000vbucks.png" alt="5000 V-Bucks" class="product-image" />
+    <div class="product-card" title="Get 5000 Fortnite V-Bucks instantly.">
+      <img src="images/5000-vbucks.png" alt="5000 V-Bucks" class="product-image" />
+      <div class="product-info">
+        <h3>5000 V-Bucks</h3>
+        <p>Get 5000 Fortnite V-Bucks instantly.</p>
+        <div class="product-price">$39.99</div>
+        <button onclick="addToCart('5000 V-Bucks', 39.99)">Add to Cart</button>
       </div>
-      <h3>5000 V-Bucks</h3>
-      <p class="product-price">$44.99</p>
-      <div class="product-description">
-        Bulk 5000 V-Bucks pack for serious Fortnite fans.
-      </div>
-    </article>
+    </div>
 
-    <article class="product-card" tabindex="0">
-      <div class="product-image-wrapper">
-        <img src="images/13500vbucks.png" alt="13500 V-Bucks" class="product-image" />
+    <div class="product-card" title="Get 13500 Fortnite V-Bucks instantly.">
+      <img src="images/13500-vbucks.png" alt="13500 V-Bucks" class="product-image" />
+      <div class="product-info">
+        <h3>13500 V-Bucks</h3>
+        <p>Get 13500 Fortnite V-Bucks instantly.</p>
+        <div class="product-price">$99.99</div>
+        <button onclick="addToCart('13500 V-Bucks', 99.99)">Add to Cart</button>
       </div>
-      <h3>13500 V-Bucks</h3>
-      <p class="product-price">$99.99</p>
-      <div class="product-description">
-        The ultimate 13500 V-Bucks bundle — best value for your Fortnite needs.
-      </div>
-    </article>
+    </div>
 
-    <!-- Fortnite Packs -->
-    <article class="product-card" tabindex="0">
-      <div class="product-image-wrapper">
-        <img src="images/starterpack.png" alt="Fortnite Starter Pack" class="product-image" />
+    <div class="product-card" title="Fortnite Starter Pack with exclusive items.">
+      <img src="images/starter-pack.png" alt="Fortnite Starter Pack" class="product-image" />
+      <div class="product-info">
+        <h3>Fortnite Starter Pack</h3>
+        <p>Exclusive items to get started in Fortnite.</p>
+        <div class="product-price">$4.99</div>
+        <button onclick="addToCart('Fortnite Starter Pack', 4.99)">Add to Cart</button>
       </div>
-      <h3>Fortnite Starter Pack</h3>
-      <p class="product-price">$4.99</p>
-      <div class="product-description">
-        Starter Pack including exclusive skin and V-Bucks to kickstart your Fortnite journey.
-      </div>
-    </article>
+    </div>
 
-    <article class="product-card" tabindex="0">
-      <div class="product-image-wrapper">
-        <img src="images/crewpack.png" alt="Fortnite Crew Pack" class="product-image" />
+    <div class="product-card" title="Fortnite Crew Pack monthly subscription.">
+      <img src="images/crew-pack.png" alt="Fortnite Crew Pack" class="product-image" />
+      <div class="product-info">
+        <h3>Fortnite Crew Pack</h3>
+        <p>Monthly subscription with exclusive rewards.</p>
+        <div class="product-price">$11.99 / month</div>
+        <button onclick="addToCart('Fortnite Crew Pack', 11.99)">Add to Cart</button>
       </div>
-      <h3>Fortnite Crew Pack</h3>
-      <p class="product-price">$11.99/month</p>
-      <div class="product-description">
-        Monthly subscription with exclusive skins, V-Bucks, and more.
-      </div>
-    </article>
+    </div>
 
-    <article class="product-card" tabindex="0">
-      <div class="product-image-wrapper">
-        <img src="images/battlepass.png" alt="Fortnite Battle Pass" class="product-image" />
+    <div class="product-card" title="Fortnite Battle Pass for current season.">
+      <img src="images/battlepass.png" alt="Fortnite Battle Pass" class="product-image" />
+      <div class="product-info">
+        <h3>Fortnite Battle Pass</h3>
+        <p>Access all premium rewards for the season.</p>
+        <div class="product-price">$9.99</div>
+        <button onclick="addToCart('Fortnite Battle Pass', 9.99)">Add to Cart</button>
       </div>
-      <h3>Fortnite Battle Pass</h3>
-      <p class="product-price">$9.99</p>
-      <div class="product-description">
-        Unlock exclusive challenges, skins, and rewards with the Battle Pass.
-      </div>
-    </article>
-
-  </section>
-</main>
-
-<footer class="footer">
-  <div class="social-icons">
-    <a href="https://discord.gg/yourserver" target="_blank" aria-label="Discord"><img src="icons/discord.svg" alt="Discord" /></a>
-    <a href="https://instagram.com/yourprofile" target="_blank" aria-label="Instagram"><img src="icons/instagram.svg" alt="Instagram" /></a>
-    <a href="https://t.me/yourchannel" target="_blank" aria-label="Telegram"><img src="icons/telegram.svg" alt="Telegram" /></a>
+    </div>
   </div>
-  <p>© 2025 SHAMELESS Shop. All rights reserved.</p>
-</footer>
+</div>
+
+<script>
+  function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem('shamlessCart')) || [];
+    const idx = cart.findIndex(item => item.name === name);
+    if (idx !== -1) {
+      cart[idx].qty += 1;
+    } else {
+      cart.push({ name, price, qty: 1 });
+    }
+    localStorage.setItem('shamlessCart', JSON.stringify(cart));
+    alert(`Added "${name}" to cart.`);
+  }
+</script>
 
 </body>
 </html>
