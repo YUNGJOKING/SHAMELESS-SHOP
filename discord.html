@@ -5,83 +5,69 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SHAMELESS Shop - Discord</title>
 <link rel="stylesheet" href="styles.css" />
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.product-card').forEach(card => {
-    card.addEventListener('click', () => {
-      if(card.classList.contains('desc-open')) {
-        card.classList.remove('desc-open');
-      } else {
-        document.querySelectorAll('.product-card.desc-open').forEach(openCard => openCard.classList.remove('desc-open'));
-        card.classList.add('desc-open');
-      }
-    });
-  });
-});
-</script>
 </head>
 <body>
-<header>
-  <nav class="navbar">
-    <a href="index.html" class="nav-logo">SHAMELESS Shop</a>
-    <ul class="nav-links">
-      <li><a href="fortnite.html">Fortnite</a></li>
-      <li><a href="valorant.html">Valorant</a></li>
-      <li><a href="discord.html" class="active">Discord</a></li>
-      <li><a href="telegram.html">Telegram</a></li>
-      <li><a href="gifting.html">Gifting</a></li>
-    </ul>
-  </nav>
-</header>
 
-<main class="products-main">
-  <h2>Discord Products</h2>
-  <section class="products-grid">
+<nav>
+  <a href="index.html">Home</a>
+  <a href="fortnite.html">Fortnite</a>
+  <a href="valorant.html">Valorant</a>
+  <a href="discord.html" class="active">Discord</a>
+  <a href="telegram.html">Telegram</a>
+  <a href="gifting.html">Gifting</a>
+  <a href="cart.html">Cart</a>
+</nav>
 
-    <article class="product-card" tabindex="0">
-      <div class="product-image-wrapper">
-        <img src="images/discordnitroclassic.png" alt="Discord Nitro Classic" class="product-image" />
-      </div>
-      <h3>Discord Nitro Classic</h3>
-      <p class="product-price">$4.99</p>
-      <div class="product-description">
-        Discord Nitro Classic subscription for 1 month with chat perks.
-      </div>
-    </article>
+<div class="container">
+  <h1>Discord Nitro</h1>
+  <div class="products-grid">
 
-    <article class="product-card" tabindex="0">
-      <div class="product-image-wrapper">
-        <img src="images/discordnitro.png" alt="Discord Nitro" class="product-image" />
+    <div class="product-card" title="1 Month Discord Nitro">
+      <img src="images/1month-nitro.png" alt="1 Month Nitro" class="product-image" />
+      <div class="product-info">
+        <h3>1 Month Nitro</h3>
+        <p>Full Discord Nitro subscription for 1 month.</p>
+        <div class="product-price">$9.99</div>
+        <button onclick="addToCart('1 Month Nitro', 9.99)">Add to Cart</button>
       </div>
-      <h3>Discord Nitro</h3>
-      <p class="product-price">$9.99</p>
-      <div class="product-description">
-        Full Discord Nitro subscription with HD streaming and server boosts.
-      </div>
-    </article>
+    </div>
 
-    <article class="product-card" tabindex="0">
-      <div class="product-image-wrapper">
-        <img src="images/discordserverboost.png" alt="Discord Server Boost" class="product-image" />
+    <div class="product-card" title="6 Months Discord Nitro">
+      <img src="images/6months-nitro.png" alt="6 Months Nitro" class="product-image" />
+      <div class="product-info">
+        <h3>6 Months Nitro</h3>
+        <p>Full Discord Nitro subscription for 6 months.</p>
+        <div class="product-price">$54.99</div>
+        <button onclick="addToCart('6 Months Nitro', 54.99)">Add to Cart</button>
       </div>
-      <h3>Discord Server Boost</h3>
-      <p class="product-price">$4.99</p>
-      <div class="product-description">
-        Boost your favorite server with one boost for added perks.
+    </div>
+
+    <div class="product-card" title="12 Months Discord Nitro">
+      <img src="images/12months-nitro.png" alt="12 Months Nitro" class="product-image" />
+      <div class="product-info">
+        <h3>12 Months Nitro</h3>
+        <p>Full Discord Nitro subscription for 12 months.</p>
+        <div class="product-price">$99.99</div>
+        <button onclick="addToCart('12 Months Nitro', 99.99)">Add to Cart</button>
       </div>
-    </article>
+    </div>
 
-  </section>
-</main>
-
-<footer class="footer">
-  <div class="social-icons">
-    <a href="https://discord.gg/yourserver" target="_blank" aria-label="Discord"><img src="icons/discord.svg" alt="Discord" /></a>
-    <a href="https://instagram.com/yourprofile" target="_blank" aria-label="Instagram"><img src="icons/instagram.svg" alt="Instagram" /></a>
-    <a href="https://t.me/yourchannel" target="_blank" aria-label="Telegram"><img src="icons/telegram.svg" alt="Telegram" /></a>
   </div>
-  <p>© 2025 SHAMELESS Shop. All rights reserved.</p>
-</footer>
+</div>
+
+<script>
+  function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem('shamlessCart')) || [];
+    const idx = cart.findIndex(item => item.name === name);
+    if (idx !== -1) {
+      cart[idx].qty += 1;
+    } else {
+      cart.push({ name, price, qty: 1 });
+    }
+    localStorage.setItem('shamlessCart', JSON.stringify(cart));
+    alert(`Added "${name}" to cart.`);
+  }
+</script>
 
 </body>
 </html>
