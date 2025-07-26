@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SHAMELESS Shop - Valorant</title>
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Shameless Shop - Valorant</title>
+<link rel="stylesheet" href="styles.css" />
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <header>
-    <nav aria-label="Primary navigation">
-      <a href="index.html">Home</a>
-      <a href="fortnite.html">Fortnite</a>
-      <a href="valorant.html" class="active">Valorant</a>
-      <a href="discord.html">Discord</a>
-      <a href="telegram.html">Telegram</a>
-    </nav>
-  </header>
+<header>
+  <nav>
+    <ul class="nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="fortnite.html">Fortnite</a></li>
+      <li><a href="valorant.html" class="active">Valorant</a></li>
+      <li><a href="discord.html">Discord</a></li>
+      <li><a href="telegram.html">Telegram</a></li>
+      <li><a href="gifting.html">Gifting</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <main>
-    <h1>Valorant Products</h1>
-    <p>Purchase Valorant points for the TR region and enjoy exclusive skins and upgrades.</p>
-    <!-- Add product listings here -->
-  </main>
-
-  <footer>
-    <div class="social-links" aria-label="Social media links">
-      <a href="https://discord.gg/yourserver" target="_blank" rel="noopener" aria-label="Join our Discord server">Discord</a> |
-      <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener" aria-label="Follow us on Instagram">Instagram</a> |
-      <a href="https://t.me/yourchannel" target="_blank" rel="noopener" aria-label="Join our Telegram channel">Telegram</a>
+<main class="container">
+  <section class="products">
+    <h2>Valorant Products</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <i class="fas fa-crosshairs product-icon"></i>
+        <h3>Valorant Points (TR Region)</h3>
+        <p>Fast delivery of Valorant points for Turkish accounts.</p>
+        <button class="btn btn-primary">Buy Now</button>
+      </div>
     </div>
-    <p>© 2025 SHAMELESS Shop. All rights reserved.</p>
-  </footer>
+  </section>
+</main>
 
-  <script>
-    const navLinks = document.querySelectorAll('nav a');
-    navLinks.forEach(link => {
-      if(link.href === window.location.href) {
-        link.classList.add('active');
-      }
-    });
-  </script>
+<footer>
+  <div class="footer-socials">
+    <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+  </div>
+  <p>© 2025 Shameless Shop</p>
+</footer>
 </body>
 </html>
