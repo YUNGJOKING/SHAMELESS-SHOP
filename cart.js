@@ -1,42 +1,66 @@
-const CART_KEY = 'shameless_cart';
+// Simple Cart Management in localStorage
 
-function getCart() { return JSON.parse(localStorage.getItem(CART_KEY) || '[]'); }
-function saveCart(c) { localStorage.setItem(CART_KEY, JSON.stringify(c)); }
-function updateCartCount() {
-  document.getElementById('cart-count').textContent = getCart().reduce((s,i)=>s+i.qty, 0);
-}
-function addToCart(id,name,price) {
-  const cart = getCart();
-  const found = cart.find(i=>i.id===id);
-  if(found) found.qty++;
-  else cart.push({id,name,price,qty:1});
-  saveCart(cart);
-  updateCartCount();
+const cartList = document.getElementById('cart-list');
+const cartTotal = document.getElementById('cart-total');
+const clearCartBtn = document.getElementById('clear-cart-btn');
+const checkoutBtn = document.getElementById('checkout-btn');
+
+function loadCart() {
+  let cart = JSON.parse(localStorage.getItem('shamlessCart')) || [];
+  renderCart(cart);
 }
 
-function renderCart() {
-  const items = getCart();
-  const container = document.getElementById('cart-items');
-  container.innerHTML = '';
-  if (!items.length) return container.innerHTML='<p>Your cart is empty.</p>';
-  let total=0;
-  items.forEach((i,idx)=> {
-    const div=document.createElement('div');
-    div.innerHTML = `<strong>${i.name}</strong> — $${i.price} × ${i.qty}
-      <button data-idx="${idx}">Remove</button>`;
-    container.appendChild(div);
-    total+=i.price*i.qty;
+function renderCart(cart) {
+  cartList.innerHTML = '';
+  if (cart.length === 0) {
+    cartList.innerHTML = '<li>Your cart is empty.</li>';
+    cartTotal.textContent = 'Total: $0.00';
+    return;
+  }
+  let total = 0;
+  cart.forEach((item, index) => {
+    total += item.price * item.qty;
+    const li = document.createElement('li');
+    li.className = 'cart-item';
+
+    li.innerHTML = `
+      <div class="cart-item-info">
+        <div class="cart-item-title">${item.name}</div>
+      </div>
+      <div class="cart-item-qty">Qty: ${item.qty}</div>
+      <div class="cart-item-price">$${(item.price * item.qty).toFixed(2)}</div>
+      <div class="cart-item-remove" data-index="${index}" title="Remove item">&times;</div>
+    `;
+    cartList.appendChild(li);
   });
-  document.getElementById('cart-total').textContent = 'Total: $'+total;
-  container.querySelectorAll('button').forEach(btn => btn.onclick = ()=>{
-    items.splice(btn.dataset.idx,1);
-    saveCart(items); renderCart(); updateCartCount();
+  cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+
+  // Attach remove listeners
+  document.querySelectorAll('.cart-item-remove').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const idx = e.target.getAttribute('data-index');
+      removeItemFromCart(parseInt(idx));
+    });
   });
 }
 
-document.addEventListener('DOMContentLoaded',()=>{
-  if (location.pathname.endsWith('cart.html')) {
-    renderCart();
-    document.getElementById('checkout-btn').onclick = () => alert('Checkout coming soon!');
+function removeItemFromCart(index) {
+  let cart = JSON.parse(localStorage.getItem('shamlessCart')) || [];
+  cart.splice(index, 1);
+  localStorage.setItem('shamlessCart', JSON.stringify(cart));
+  loadCart();
+}
+
+clearCartBtn.addEventListener('click', () => {
+  if (confirm('Are you sure you want to clear the cart?')) {
+    localStorage.removeItem('shamlessCart');
+    loadCart();
   }
 });
+
+checkoutBtn.addEventListener('click', () => {
+  alert('Checkout feature coming soon!');
+});
+
+// Initialize
+loadCart();
