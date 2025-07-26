@@ -1,30 +1,64 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Fortnite — SHAMELESS Shop</title>
-<link rel="stylesheet" href="styles.css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-</head><body>
-<header><nav class="navbar"><div class="logo">SHAMELESS</div><div class="nav-toggle" id="nav-toggle"><i class="fas fa-bars"></i></div>
-<ul class="nav-list" id="nav-list">
-<li><a href="index.html">Home</a></li>
-<li><a href="fortnite.html" class="active">Fortnite</a></li>
-<li><a href="valorant.html">Valorant</a></li>
-<li><a href="discord.html">Discord</a></li>
-<li><a href="telegram.html">Telegram</a></li>
-<li><a href="gifting.html">Gifting</a></li>
-</ul>
-<div class="cart-icon" id="cart-icon"><i class="fas fa-shopping-cart"></i><span id="cart-count">0</span></div></nav></header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Discord Nitro — SHAMELESS Shop</title>
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+<header>
+<nav class="navbar">
+  <div class="logo">SHAMELESS</div>
+  <div class="nav-toggle" id="nav-toggle"><i class="fas fa-bars"></i></div>
+  <ul class="nav-list" id="nav-list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="fortnite.html">Fortnite</a></li>
+    <li><a href="valorant.html">Valorant</a></li>
+    <li><a href="discord.html" class="active">Discord</a></li>
+    <li><a href="telegram.html">Telegram</a></li>
+    <li><a href="gifting.html">Gifting</a></li>
+  </ul>
+  <div class="cart-icon" id="cart-icon"><i class="fas fa-shopping-cart"></i><span id="cart-count">0</span></div>
+</nav>
+</header>
 <main>
 <section class="products-grid">
-<article class="product-card"><i class="fa-solid fa-gamepad product-icon"></i>
-<h3>Fortnite Products</h3><p>Skins, Battle Pass, Emotes</p><button class="btn btn-primary" onclick="addToCart('fn1','Fortnite Products',15)">Add to Cart</button></article>
-<article class="product-card"><i class="fa-solid fa-rocket product-icon"></i>
-<h3>Fortnite Boost</h3><p>Rank & Victory Boosts</p><button class="btn btn-primary" onclick="addToCart('fn2','Fortnite Boost',40)">Add to Cart</button></article>
+  <article class="product-card">
+    <i class="fa-brands fa-discord product-icon"></i>
+    <h3>Discord Nitro Monthly</h3>
+    <p>1-month subscription</p>
+    <button class="btn btn-primary" onclick="addToCart('dc_nitro_month', 'Discord Nitro Monthly', 9)">Add to Cart</button>
+  </article>
+  <article class="product-card">
+    <i class="fa-brands fa-discord product-icon"></i>
+    <h3>Discord Nitro Yearly</h3>
+    <p>12-month subscription</p>
+    <button class="btn btn-primary" onclick="addToCart('dc_nitro_year', 'Discord Nitro Yearly', 99)">Add to Cart</button>
+  </article>
+  <article class="product-card">
+    <i class="fa-brands fa-discord product-icon"></i>
+    <h3>Discord Server Boost</h3>
+    <p>Boost your favorite server</p>
+    <button class="btn btn-primary" onclick="addToCart('dc_server_boost', 'Discord Server Boost', 5)">Add to Cart</button>
+  </article>
 </section>
 </main>
-<footer><div class="footer-socials"><a href="#"><i class="fab fa-discord"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-telegram"></i></a></div><p>&copy; 2025 SHAMELESS Shop</p></footer>
-<script src="cart.js"></script><script>
-document.getElementById('nav-toggle').onclick = ()=>document.getElementById('nav-list').classList.toggle('nav-open');
-document.getElementById('cart-icon').onclick = ()=>location.href='cart.html';
+<footer>
+<div class="footer-socials">
+  <a href="#"><i class="fab fa-discord"></i></a>
+  <a href="#"><i class="fab fa-instagram"></i></a>
+  <a href="#"><i class="fab fa-telegram"></i></a>
+</div>
+<p>&copy; 2025 SHAMELESS Shop</p>
+</footer>
+<script src="cart.js"></script>
+<script>
+document.getElementById('nav-toggle').onclick = () =>
+  document.getElementById('nav-list').classList.toggle('nav-open');
+document.getElementById('cart-icon').onclick = () => location.href = 'cart.html';
 updateCartCount();
 </script>
-</body></html>
+</body>
+</html>
