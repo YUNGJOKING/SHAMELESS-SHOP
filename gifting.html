@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SHAMELESS Shop - Gifting</title>
 <link rel="stylesheet" href="styles.css" />
+<script defer src="cart.js"></script>
 </head>
 <body>
 
@@ -18,66 +19,44 @@
   <a href="cart.html">Cart</a>
 </nav>
 
+<header>
+  <h1>Gifting Services</h1>
+  <p>Gift cards, surprise packs, and more.</p>
+</header>
+
 <div class="container">
-  <h1>Gift Cards & Vouchers</h1>
-  <div class="products-grid">
+  <div class="product-card" tabindex="0" role="button" aria-pressed="false" onclick="addToCart({
+      id: 'gift_card_10',
+      name: '$10 Gift Card',
+      price: 10.00,
+      img: 'images/giftcard_10.png',
+      description: '$10 gift card usable on multiple platforms.'
+    })">
+    <img src="images/giftcard_10.png" alt="$10 Gift Card" />
+    <h3>$10 Gift Card</h3>
+    <p class="description">$10 gift card usable on multiple platforms.</p>
+    <div class="price">$10.00</div>
+    <button type="button" aria-label="Add $10 Gift Card to cart">Add to Cart</button>
+  </div>
 
-    <div class="product-card" title="Steam Gift Card $10">
-      <img src="images/steam-10.png" alt="Steam Gift Card 10" class="product-image" />
-      <div class="product-info">
-        <h3>Steam Gift Card $10</h3>
-        <p>Redeemable Steam gift card worth $10.</p>
-        <div class="product-price">$10.00</div>
-        <button onclick="addToCart('Steam Gift Card $10', 10.00)">Add to Cart</button>
-      </div>
-    </div>
-
-    <div class="product-card" title="Steam Gift Card $20">
-      <img src="images/steam-20.png" alt="Steam Gift Card 20" class="product-image" />
-      <div class="product-info">
-        <h3>Steam Gift Card $20</h3>
-        <p>Redeemable Steam gift card worth $20.</p>
-        <div class="product-price">$20.00</div>
-        <button onclick="addToCart('Steam Gift Card $20', 20.00)">Add to Cart</button>
-      </div>
-    </div>
-
-    <div class="product-card" title="Xbox Gift Card $25">
-      <img src="images/xbox-25.png" alt="Xbox Gift Card 25" class="product-image" />
-      <div class="product-info">
-        <h3>Xbox Gift Card $25</h3>
-        <p>Redeemable Xbox gift card worth $25.</p>
-        <div class="product-price">$25.00</div>
-        <button onclick="addToCart('Xbox Gift Card $25', 25.00)">Add to Cart</button>
-      </div>
-    </div>
-
-    <div class="product-card" title="PlayStation Gift Card $50">
-      <img src="images/ps-50.png" alt="PS Gift Card 50" class="product-image" />
-      <div class="product-info">
-        <h3>PlayStation Gift Card $50</h3>
-        <p>Redeemable PlayStation gift card worth $50.</p>
-        <div class="product-price">$50.00</div>
-        <button onclick="addToCart('PlayStation Gift Card $50', 50.00)">Add to Cart</button>
-      </div>
-    </div>
-
+  <div class="product-card" tabindex="0" role="button" aria-pressed="false" onclick="addToCart({
+      id: 'surprise_pack',
+      name: 'Surprise Gift Pack',
+      price: 19.99,
+      img: 'images/surprise_pack.png',
+      description: 'A mystery bundle of gaming goodies.'
+    })">
+    <img src="images/surprise_pack.png" alt="Surprise Gift Pack" />
+    <h3>Surprise Gift Pack</h3>
+    <p class="description">A mystery bundle of gaming goodies.</p>
+    <div class="price">$19.99</div>
+    <button type="button" aria-label="Add Surprise Gift Pack to cart">Add to Cart</button>
   </div>
 </div>
 
-<script>
-  function addToCart(name, price) {
-    let cart = JSON.parse(localStorage.getItem('shamlessCart')) || [];
-    const idx = cart.findIndex(item => item.name === name);
-    if (idx !== -1) {
-      cart[idx].qty += 1;
-    } else {
-      cart.push({ name, price, qty: 1 });
-    }
-    localStorage.setItem('shamlessCart', JSON.stringify(cart));
-    alert(`Added "${name}" to cart.`);
-  }
-</script>
+<footer>
+  <p>© 2025 SHAMELESS Shop</p>
+</footer>
 
 </body>
 </html>
