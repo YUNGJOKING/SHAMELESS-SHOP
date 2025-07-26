@@ -2,63 +2,145 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Gifting — SHAMELESS Shop</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SHAMELESS Shop - Gifting</title>
 <link rel="stylesheet" href="styles.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<style>
+  /* Simple clean style overrides for gifting page */
+  .container {
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    color: #2c2c2c;
+  }
+  .product-slides {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .product-card {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 280px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+    transition: box-shadow 0.3s ease;
+    cursor: pointer;
+    position: relative;
+  }
+  .product-card:hover {
+    box-shadow: 0 8px 16px rgb(0 0 0 / 0.2);
+  }
+  .product-image {
+    width: 100%;
+    height: 160px;
+    background: #ddd;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    background-position: center;
+    background-size: cover;
+  }
+  .product-title {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #222;
+  }
+  .balance {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    color: #555;
+  }
+  .amount-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  /* Tooltip styling */
+  .tooltip {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #222;
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    max-width: 240px;
+    display: none;
+    z-index: 10;
+  }
+  .product-card:hover .tooltip {
+    display: block;
+  }
+</style>
 </head>
 <body>
+
 <header>
-<nav class="navbar">
-  <div class="logo">SHAMELESS</div>
-  <div class="nav-toggle" id="nav-toggle"><i class="fas fa-bars"></i></div>
-  <ul class="nav-list" id="nav-list">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="fortnite.html">Fortnite</a></li>
-    <li><a href="valorant.html">Valorant</a></li>
-    <li><a href="discord.html">Discord</a></li>
-    <li><a href="telegram.html">Telegram</a></li>
-    <li><a href="gifting.html" class="active">Gifting</a></li>
-  </ul>
-  <div class="cart-icon" id="cart-icon"><i class="fas fa-shopping-cart"></i><span id="cart-count">0</span></div>
-</nav>
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo">SHAMELESS Shop</a>
+    <ul class="nav-links">
+      <li><a href="fortnite.html">Fortnite</a></li>
+      <li><a href="valorant.html">Valorant</a></li>
+      <li><a href="discord.html">Discord</a></li>
+      <li><a href="telegram.html">Telegram</a></li>
+      <li><a href="gifting.html" class="active">Gifting</a></li>
+    </ul>
+  </nav>
 </header>
-<main>
-<section class="products-grid">
-  <article class="product-card">
-    <i class="fa-solid fa-gift product-icon"></i>
-    <h3>Gift Card $10</h3>
-    <p>Redeemable on all platforms</p>
-    <button class="btn btn-primary" onclick="addToCart('gift_10', 'Gift Card $10', 10)">Add to Cart</button>
-  </article>
-  <article class="product-card">
-    <i class="fa-solid fa-gift product-icon"></i>
-    <h3>Gift Card $25</h3>
-    <p>Redeemable on all platforms</p>
-    <button class="btn btn-primary" onclick="addToCart('gift_25', 'Gift Card $25', 25)">Add to Cart</button>
-  </article>
-  <article class="product-card">
-    <i class="fa-solid fa-gift product-icon"></i>
-    <h3>Gift Card $50</h3>
-    <p>Redeemable on all platforms</p>
-    <button class="btn btn-primary" onclick="addToCart('gift_50', 'Gift Card $50', 50)">Add to Cart</button>
-  </article>
-</section>
+
+<main class="container">
+  <h1>Gifting Products</h1>
+  <div class="product-slides">
+    <!-- Slide 1 -->
+    <div class="product-card">
+      <div class="product-image" style="background-image: url('images/goofgang.jpg');"></div>
+      <div class="product-title">GOOF GANG</div>
+      <div class="balance">Balance: 1000 units</div>
+      <input type="number" class="amount-input" placeholder="Enter amount" min="1" />
+      <div class="tooltip">GOOF GANG is our premium gifting package with exclusive bonuses and fast delivery.</div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="product-card">
+      <div class="product-image" style="background-image: url('images/goofgang2.jpg');"></div>
+      <div class="product-title">GOOFGANG2</div>
+      <div class="balance">Balance: 500 units</div>
+      <input type="number" class="amount-input" placeholder="Enter amount" min="1" />
+      <div class="tooltip">GOOFGANG2 offers a great balance of price and value for your gifting needs.</div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="product-card">
+      <div class="product-image" style="background-image: url('images/goofgang3.jpg');"></div>
+      <div class="product-title">GOOFGANG3</div>
+      <div class="balance">Balance: 250 units</div>
+      <input type="number" class="amount-input" placeholder="Enter amount" min="1" />
+      <div class="tooltip">GOOFGANG3 is perfect for smaller gifts or budget-conscious customers.</div>
+    </div>
+  </div>
 </main>
+
 <footer>
-<div class="footer-socials">
-  <a href="#"><i class="fab fa-discord"></i></a>
-  <a href="#"><i class="fab fa-instagram"></i></a>
-  <a href="#"><i class="fab fa-telegram"></i></a>
-</div>
-<p>&copy; 2025 SHAMELESS Shop</p>
+  <div class="footer-content">
+    <p>© 2025 SHAMELESS Shop. All rights reserved.</p>
+    <div class="social-links">
+      <a href="https://discord.gg/yourdiscord" target="_blank" rel="noopener" aria-label="Discord">Discord</a> |
+      <a href="https://instagram.com/yourinstagram" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> |
+      <a href="https://t.me/yourtelegram" target="_blank" rel="noopener" aria-label="Telegram">Telegram</a>
+    </div>
+  </div>
 </footer>
-<script src="cart.js"></script>
-<script>
-document.getElementById('nav-toggle').onclick = () =>
-  document.getElementById('nav-list').classList.toggle('nav-open');
-document.getElementById('cart-icon').onclick = () => location.href = 'cart.html';
-updateCartCount();
-</script>
+
 </body>
 </html>
