@@ -5,72 +5,59 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SHAMELESS Shop - Telegram</title>
 <link rel="stylesheet" href="styles.css" />
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.product-card').forEach(card => {
-    card.addEventListener('click', () => {
-      if(card.classList.contains('desc-open')) {
-        card.classList.remove('desc-open');
-      } else {
-        document.querySelectorAll('.product-card.desc-open').forEach(openCard => openCard.classList.remove('desc-open'));
-        card.classList.add('desc-open');
-      }
-    });
-  });
-});
-</script>
 </head>
 <body>
-<header>
-  <nav class="navbar">
-    <a href="index.html" class="nav-logo">SHAMELESS Shop</a>
-    <ul class="nav-links">
-      <li><a href="fortnite.html">Fortnite</a></li>
-      <li><a href="valorant.html">Valorant</a></li>
-      <li><a href="discord.html">Discord</a></li>
-      <li><a href="telegram.html" class="active">Telegram</a></li>
-      <li><a href="gifting.html">Gifting</a></li>
-    </ul>
-  </nav>
-</header>
 
-<main class="products-main">
-  <h2>Telegram Products</h2>
-  <section class="products-grid">
+<nav>
+  <a href="index.html">Home</a>
+  <a href="fortnite.html">Fortnite</a>
+  <a href="valorant.html">Valorant</a>
+  <a href="discord.html">Discord</a>
+  <a href="telegram.html" class="active">Telegram</a>
+  <a href="gifting.html">Gifting</a>
+  <a href="cart.html">Cart</a>
+</nav>
 
-    <article class="product-card" tabindex="0">
-      <div class="product-image-wrapper">
-        <img src="images/telegrampremium.png" alt="Telegram Premium" class="product-image" />
+<div class="container">
+  <h1>Telegram Products</h1>
+  <div class="products-grid">
+
+    <div class="product-card" title="Telegram Premium Subscription">
+      <img src="images/telegram-premium.png" alt="Telegram Premium" class="product-image" />
+      <div class="product-info">
+        <h3>Telegram Premium</h3>
+        <p>Get Telegram Premium subscription with extra features.</p>
+        <div class="product-price">$4.99</div>
+        <button onclick="addToCart('Telegram Premium', 4.99)">Add to Cart</button>
       </div>
-      <h3>Telegram Premium</h3>
-      <p class="product-price">$4.99</p>
-      <div class="product-description">
-        Upgrade your Telegram account with premium features for 1 month.
-      </div>
-    </article>
+    </div>
 
-    <article class="product-card" tabindex="0">
-      <div class="product-image-wrapper">
-        <img src="images/telegramstickers.png" alt="Telegram Sticker Packs" class="product-image" />
+    <div class="product-card" title="Telegram Stickers Pack">
+      <img src="images/telegram-stickers.png" alt="Telegram Stickers" class="product-image" />
+      <div class="product-info">
+        <h3>Stickers Pack</h3>
+        <p>Exclusive Telegram Stickers collection.</p>
+        <div class="product-price">$1.99</div>
+        <button onclick="addToCart('Stickers Pack', 1.99)">Add to Cart</button>
       </div>
-      <h3>Telegram Sticker Packs</h3>
-      <p class="product-price">$1.99</p>
-      <div class="product-description">
-        Exclusive sticker packs to enhance your Telegram chats.
-      </div>
-    </article>
+    </div>
 
-  </section>
-</main>
-
-<footer class="footer">
-  <div class="social-icons">
-    <a href="https://discord.gg/yourserver" target="_blank" aria-label="Discord"><img src="icons/discord.svg" alt="Discord" /></a>
-    <a href="https://instagram.com/yourprofile" target="_blank" aria-label="Instagram"><img src="icons/instagram.svg" alt="Instagram" /></a>
-    <a href="https://t.me/yourchannel" target="_blank" aria-label="Telegram"><img src="icons/telegram.svg" alt="Telegram" /></a>
   </div>
-  <p>© 2025 SHAMELESS Shop. All rights reserved.</p>
-</footer>
+</div>
+
+<script>
+  function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem('shamlessCart')) || [];
+    const idx = cart.findIndex(item => item.name === name);
+    if (idx !== -1) {
+      cart[idx].qty += 1;
+    } else {
+      cart.push({ name, price, qty: 1 });
+    }
+    localStorage.setItem('shamlessCart', JSON.stringify(cart));
+    alert(`Added "${name}" to cart.`);
+  }
+</script>
 
 </body>
 </html>
