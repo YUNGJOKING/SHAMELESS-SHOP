@@ -2,47 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SHAMELESS — Valorant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Valorant - SHAMELESS</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
   <header>
-    <div class="logo">SHAMELESS</div>
+    <h1>SHAMELESS</h1>
     <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="fortnite.html">Fortnite</a></li>
-        <li class="active"><a href="valorant.html">Valorant</a></li>
-        <li><a href="discord.html">Discord</a></li>
-        <li><a href="telegram.html">Telegram</a></li>
-        <li><a href="gifting.html">Gifting</a></li>
-        <li><a href="cart.html">🛒 Cart</a></li>
-      </ul>
+      <a href="index.html">Home</a>
+      <a href="fortnite.html">Fortnite</a>
+      <a href="valorant.html" class="active">Valorant</a>
+      <a href="discord.html">Discord</a>
+      <a href="telegram.html">Telegram</a>
+      <a href="gifting.html">Gifting</a>
+      <a href="cart.html">Cart</a>
     </nav>
   </header>
 
   <main>
-    <section class="products">
-      <h1>Valorant Points</h1>
-      <div class="product-grid">
-        <div class="product-card"><img src="images/475vp.png" alt="475 VP" /><h3>475 VP</h3><p>$4.99</p><button class="add-to-cart-btn" data-name="475 VP" data-price="4.99">Add to Cart</button></div>
-        <div class="product-card"><img src="images/1000vp.png" alt="1000 VP" /><h3>1000 VP</h3><p>$9.99</p><button class="add-to-cart-btn" data-name="1000 VP" data-price="9.99">Add to Cart</button></div>
-        <div class="product-card"><img src="images/2050vp.png" alt="2050 VP" /><h3>2050 VP</h3><p>$18.99</p><button class="add-to-cart-btn" data-name="2050 VP" data-price="18.99">Add to Cart</button></div>
-        <div class="product-card"><img src="images/3650vp.png" alt="3650 VP" /><h3>3650 VP</h3><p>$29.99</p><button class="add-to-cart-btn" data-name="3650 VP" data-price="29.99">Add to Cart</button></div>
-        <div class="product-card"><img src="images/5350vp.png" alt="5350 VP" /><h3>5350 VP</h3><p>$49.99</p><button class="add-to-cart-btn" data-name="5350 VP" data-price="49.99">Add to Cart</button></div>
-        <div class="product-card"><img src="images/6350vp.png" alt="6350 VP" /><h3>6350 VP</h3><p>$59.99</p><button class="add-to-cart-btn" data-name="6350 VP" data-price="59.99">Add to Cart</button></div>
-        <div class="product-card"><img src="images/11000vp.png" alt="11000 VP" /><h3>11000 VP</h3><p>$99.99</p><button class="add-to-cart-btn" data-name="11000 VP" data-price="99.99">Add to Cart</button></div>
+    <h2>Valorant Points (TR Region)</h2>
+    <div class="products">
+      <div class="product" tabindex="0" title="475 VP for Valorant Turkish region">
+        <img src="images/vp-475.png" alt="475 VP" />
+        <h3>475 VP</h3>
+        <p>Quick and safe delivery.</p>
+        <button onclick="addToCart('475 VP', 3.99)">Add to Cart</button>
       </div>
-    </section>
+      <div class="product" tabindex="0" title="1000 VP for Valorant Turkish region">
+        <img src="images/vp-1000.png" alt="1000 VP" />
+        <h3>1000 VP</h3>
+        <p>Perfect for your favorite skins.</p>
+        <button onclick="addToCart('1000 VP', 7.99)">Add to Cart</button>
+      </div>
+      <!-- Add more Valorant products similarly -->
+    </div>
   </main>
 
   <footer>
     <p>© 2025 SHAMELESS. All rights reserved.</p>
     <div class="socials">
-      <a href="https://discord.gg/yourinvite" target="_blank">Discord</a>
-      <a href="https://instagram.com/yourhandle" target="_blank">Instagram</a>
-      <a href="https://t.me/yourchannel" target="_blank">Telegram</a>
+      <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
     </div>
   </footer>
 
