@@ -3,85 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SHAMELESS Shop — Fortnite</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Fortnite - SHAMELESS</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
-
   <header>
-    <div class="logo">SHAMELESS</div>
+    <h1>SHAMELESS</h1>
     <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li class="active"><a href="fortnite.html">Fortnite</a></li>
-        <li><a href="valorant.html">Valorant</a></li>
-        <li><a href="discord.html">Discord</a></li>
-        <li><a href="telegram.html">Telegram</a></li>
-        <li><a href="gifting.html">Gifting</a></li>
-        <li><a href="cart.html">🛒 Cart</a></li>
-      </ul>
+      <a href="index.html">Home</a>
+      <a href="fortnite.html" class="active">Fortnite</a>
+      <a href="valorant.html">Valorant</a>
+      <a href="discord.html">Discord</a>
+      <a href="telegram.html">Telegram</a>
+      <a href="gifting.html">Gifting</a>
+      <a href="cart.html">Cart</a>
     </nav>
   </header>
 
   <main>
-    <section class="products">
-      <h1>Fortnite Products</h1>
-      <div class="product-grid">
-        <!-- VBucks -->
-        <div class="product-card">
-          <img src="images/1000vbuck.png" alt="1000 V-Bucks">
-          <h3>1000 V-Bucks</h3>
-          <p>$7.99</p>
-          <button class="add-to-cart-btn" data-name="1000 V-Bucks" data-price="7.99">Add to Cart</button>
-        </div>
-        <div class="product-card">
-          <img src="images/2800vbuck.png" alt="2800 V-Bucks">
-          <h3>2800 V-Bucks</h3>
-          <p>$19.99</p>
-          <button class="add-to-cart-btn" data-name="2800 V-Bucks" data-price="19.99">Add to Cart</button>
-        </div>
-        <div class="product-card">
-          <img src="images/5000vbuck.png" alt="5000 V-Bucks">
-          <h3>5000 V-Bucks</h3>
-          <p>$31.99</p>
-          <button class="add-to-cart-btn" data-name="5000 V-Bucks" data-price="31.99">Add to Cart</button>
-        </div>
-        <div class="product-card">
-          <img src="images/13500vbuck.png" alt="13500 V-Bucks">
-          <h3>13500 V-Bucks</h3>
-          <p>$79.99</p>
-          <button class="add-to-cart-btn" data-name="13500 V-Bucks" data-price="79.99">Add to Cart</button>
-        </div>
-
-        <!-- Packs -->
-        <div class="product-card">
-          <img src="images/starterpack.png" alt="Starter Pack">
-          <h3>Starter Pack</h3>
-          <p>$4.99</p>
-          <button class="add-to-cart-btn" data-name="Fortnite Starter Pack" data-price="4.99">Add to Cart</button>
-        </div>
-        <div class="product-card">
-          <img src="images/crewpack.png" alt="Crew Pack">
-          <h3>Crew Pack</h3>
-          <p>$11.99</p>
-          <button class="add-to-cart-btn" data-name="Fortnite Crew Pack" data-price="11.99">Add to Cart</button>
-        </div>
-        <div class="product-card">
-          <img src="images/battlepass.png" alt="Battle Pass">
-          <h3>Battle Pass</h3>
-          <p>$7.99</p>
-          <button class="add-to-cart-btn" data-name="Fortnite Battle Pass" data-price="7.99">Add to Cart</button>
-        </div>
+    <h2>Fortnite Products</h2>
+    <div class="products">
+      <div class="product">
+        <img src="images/vbucks-1000.png" alt="1000 V-Bucks"/>
+        <h3>1000 V-Bucks</h3>
+        <p>Instant delivery to your Epic account.</p>
+        <button onclick="addToCart('1000 V-Bucks', 5.99)">Add to Cart</button>
       </div>
-    </section>
+      <div class="product">
+        <img src="images/starter-pack.png" alt="Starter Pack"/>
+        <h3>Starter Pack</h3>
+        <p>Exclusive skins + V-Bucks combo.</p>
+        <button onclick="addToCart('Starter Pack', 3.99)">Add to Cart</button>
+      </div>
+      <!-- Add more as needed -->
+    </div>
   </main>
 
   <footer>
     <p>© 2025 SHAMELESS. All rights reserved.</p>
     <div class="socials">
-      <a href="https://discord.gg/yourinvite" target="_blank">Discord</a>
-      <a href="https://instagram.com/yourhandle" target="_blank">Instagram</a>
-      <a href="https://t.me/yourchannel" target="_blank">Telegram</a>
+      <a href="#"><i class="fab fa-discord"></i> Discord</a>
+      <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="#"><i class="fab fa-telegram"></i> Telegram</a>
     </div>
   </footer>
 
