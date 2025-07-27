@@ -1,89 +1,50 @@
-// Simple cart system with localStorage persistence
+// cart.js
 
-const cartItemsEl = document.getElementById('cart-items');
-const cartTotalEl = document.getElementById('cart-total');
-const emptyMessageEl = document.getElementById('empty-message');
-const checkoutBtn = document.getElementById('checkout-btn');
-
-let cart = JSON.parse(localStorage.getItem('shamelessCart')) || [];
-
-// Utility: format price as $X.XX
-function formatPrice(price) {
-  return '$' + price.toFixed(2);
-}
-
-// Render cart items in table
-function renderCart() {
-  cartItemsEl.innerHTML = '';
-
-  if (cart.length === 0) {
-    emptyMessageEl.style.display = 'block';
-    checkoutBtn.disabled = true;
-    cartTotalEl.textContent = formatPrice(0);
-    return;
-  } else {
-    emptyMessageEl.style.display = 'none';
-    checkoutBtn.disabled = false;
-  }
-
+function loadCart() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const cartTable = document.getElementById('cart-items');
+  const totalPriceEl = document.getElementById('total-price');
+  cartTable.innerHTML = '';
   let total = 0;
+
   cart.forEach((item, index) => {
-    const subtotal = item.price * item.quantity;
-    total += subtotal;
-
-    const tr = document.createElement('tr');
-
-    tr.innerHTML = `
+    const row = document.createElement('tr');
+    row.innerHTML = `
       <td>${item.name}</td>
-      <td>
-        <input type="number" min="1" value="${item.quantity}" data-index="${index}" class="qty-input" />
-      </td>
-      <td>${formatPrice(item.price)}</td>
-      <td>${formatPrice(subtotal)}</td>
-      <td><button class="remove-btn" data-index="${index}" aria-label="Remove ${item.name}">&times;</button></td>
+      <td>$${item.price}</td>
+      <td><button onclick="removeFromCart(${index})">Remove</button></td>
     `;
-
-    cartItemsEl.appendChild(tr);
+    cartTable.appendChild(row);
+    total += parseFloat(item.price);
   });
 
-  cartTotalEl.textContent = formatPrice(total);
+  totalPriceEl.innerText = `$${total.toFixed(2)}`;
 }
 
-// Save cart to localStorage
-function saveCart() {
-  localStorage.setItem('shamelessCart', JSON.stringify(cart));
+function addToCart(name, price) {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  cart.push({ name, price });
+  localStorage.setItem('cart', JSON.stringify(cart));
+  alert(`${name} added to cart!`);
 }
 
-// Remove item handler
-cartItemsEl.addEventListener('click', e => {
-  if (e.target.classList.contains('remove-btn')) {
-    const idx = parseInt(e.target.dataset.index);
-    cart.splice(idx, 1);
-    saveCart();
-    renderCart();
+function removeFromCart(index) {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  cart.splice(index, 1);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  loadCart();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const name = btn.getAttribute('data-name');
+      const price = btn.getAttribute('data-price');
+      addToCart(name, price);
+    });
+  });
+
+  if (document.getElementById('cart-items')) {
+    loadCart();
   }
 });
-
-// Quantity change handler
-cartItemsEl.addEventListener('input', e => {
-  if (e.target.classList.contains('qty-input')) {
-    const idx = parseInt(e.target.dataset.index);
-    let val = parseInt(e.target.value);
-    if (isNaN(val) || val < 1) {
-      val = 1;
-      e.target.value = 1;
-    }
-    cart[idx].quantity = val;
-    saveCart();
-    renderCart();
-  }
-});
-
-// Checkout click
-checkoutBtn.addEventListener('click', () => {
-  alert('Checkout is not implemented yet. This is a demo cart.');
-  // In real scenario, redirect to payment gateway or process order.
-});
-
-// Initialize
-renderCart();
