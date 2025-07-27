@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fortnite - SHAMELESS</title>
-  <link rel="stylesheet" href="styles.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
   <header>
@@ -24,28 +24,36 @@
   <main>
     <h2>Fortnite Products</h2>
     <div class="products">
-      <div class="product">
-        <img src="images/vbucks-1000.png" alt="1000 V-Bucks"/>
+      <div class="product" tabindex="0" title="Instant delivery of 1000 V-Bucks to your Epic Games account">
+        <img src="images/vbucks-1000.png" alt="1000 V-Bucks" />
         <h3>1000 V-Bucks</h3>
         <p>Instant delivery to your Epic account.</p>
         <button onclick="addToCart('1000 V-Bucks', 5.99)">Add to Cart</button>
       </div>
-      <div class="product">
-        <img src="images/starter-pack.png" alt="Starter Pack"/>
+
+      <div class="product" tabindex="0" title="Exclusive Fortnite Starter Pack with skins & V-Bucks">
+        <img src="images/starter-pack.png" alt="Starter Pack" />
         <h3>Starter Pack</h3>
         <p>Exclusive skins + V-Bucks combo.</p>
         <button onclick="addToCart('Starter Pack', 3.99)">Add to Cart</button>
       </div>
-      <!-- Add more as needed -->
+
+      <div class="product" tabindex="0" title="Fortnite Battle Pass for the current season">
+        <img src="images/battlepass.png" alt="Battle Pass" />
+        <h3>Battle Pass</h3>
+        <p>Access to exclusive rewards and skins.</p>
+        <button onclick="addToCart('Battle Pass', 9.99)">Add to Cart</button>
+      </div>
+      <!-- Add more products similarly -->
     </div>
   </main>
 
   <footer>
     <p>© 2025 SHAMELESS. All rights reserved.</p>
     <div class="socials">
-      <a href="#"><i class="fab fa-discord"></i> Discord</a>
-      <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
-      <a href="#"><i class="fab fa-telegram"></i> Telegram</a>
+      <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
     </div>
   </footer>
 
