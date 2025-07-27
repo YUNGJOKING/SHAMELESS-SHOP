@@ -2,42 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Your Cart — SHAMELESS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shopping Cart - SHAMELESS</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
   <header>
-    <div class="logo">SHAMELESS</div>
+    <h1>SHAMELESS</h1>
     <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="fortnite.html">Fortnite</a></li>
-        <li><a href="valorant.html">Valorant</a></li>
-        <li><a href="discord.html">Discord</a></li>
-        <li><a href="telegram.html">Telegram</a></li>
-        <li><a href="gifting.html">Gifting</a></li>
-        <li class="active"><a href="cart.html">🛒 Cart</a></li>
-      </ul>
+      <a href="index.html">Home</a>
+      <a href="fortnite.html">Fortnite</a>
+      <a href="valorant.html">Valorant</a>
+      <a href="discord.html">Discord</a>
+      <a href="telegram.html">Telegram</a>
+      <a href="gifting.html">Gifting</a>
+      <a href="cart.html" class="active">Cart</a>
     </nav>
   </header>
 
   <main>
-    <section class="cart-section">
-      <h1>Your Cart</h1>
-      <ul id="cart-items"></ul>
-      <p id="cart-total">Total: $0.00</p>
-      <button onclick="checkoutCart()">Checkout</button>
-      <button onclick="clearCart()">Clear Cart</button>
-    </section>
+    <h2>Your Shopping Cart</h2>
+    <div id="cart-items" class="cart-items">
+      <!-- Cart items will appear here dynamically -->
+    </div>
+    <div class="cart-summary">
+      <p>Total: $<span id="cart-total">0.00</span></p>
+      <button id="checkout-btn" disabled>Checkout</button>
+      <button id="clear-cart-btn" disabled>Clear Cart</button>
+    </div>
   </main>
 
   <footer>
     <p>© 2025 SHAMELESS. All rights reserved.</p>
     <div class="socials">
-      <a href="https://discord.gg/yourinvite" target="_blank">Discord</a>
-      <a href="https://instagram.com/yourhandle" target="_blank">Instagram</a>
-      <a href="https://t.me/yourchannel" target="_blank">Telegram</a>
+      <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
     </div>
   </footer>
 
