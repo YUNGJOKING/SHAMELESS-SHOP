@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cart — SHAMELESS</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart — SHAMELESS</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
   <header>
     <div class="logo">SHAMELESS</div>
     <nav>
@@ -24,30 +23,21 @@
   </header>
 
   <main>
-    <h1>Your Cart</h1>
-    <table class="cart-table">
-      <thead>
-        <tr>
-          <th>Product</th>
-          <th>Price</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody id="cart-items">
-        <!-- Dynamically filled -->
-      </tbody>
-    </table>
-    <div class="cart-actions">
-      <strong>Total: <span id="total-price">$0.00</span></strong>
-    </div>
+    <section class="cart-section">
+      <h1>Your Cart</h1>
+      <ul id="cart-items"></ul>
+      <p id="cart-total">Total: $0.00</p>
+      <button onclick="checkoutCart()">Checkout</button>
+      <button onclick="clearCart()">Clear Cart</button>
+    </section>
   </main>
 
   <footer>
     <p>© 2025 SHAMELESS. All rights reserved.</p>
     <div class="socials">
-      <a href="#">Discord</a>
-      <a href="#">Instagram</a>
-      <a href="#">Telegram</a>
+      <a href="https://discord.gg/yourinvite" target="_blank">Discord</a>
+      <a href="https://instagram.com/yourhandle" target="_blank">Instagram</a>
+      <a href="https://t.me/yourchannel" target="_blank">Telegram</a>
     </div>
   </footer>
 
