@@ -1,125 +1,134 @@
-/* Base styles */
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+body {
   font-family: 'Segoe UI', sans-serif;
-  background: #0a0a0a;
-  color: #e0e0e0;
+  background-color: #0a0a0a;
+  color: #eee;
+  line-height: 1.6;
+  padding: 0 20px;
 }
 
 header {
-  background: #121212;
-  padding: 20px;
+  padding: 30px 0 20px;
   text-align: center;
 }
 
 header h1 {
-  margin: 0;
-  color: #a463f2;
+  color: #a855f7;
+  font-size: 2rem;
+  margin-bottom: 10px;
 }
 
-nav {
-  margin-top: 10px;
-}
-
-nav a {
-  color: #ccc;
-  margin: 0 12px;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-nav a:hover {
-  color: #a463f2;
-}
-
-/* Page-specific */
-main.home {
-  padding: 40px;
-  text-align: center;
-}
-
-/* Social Icons */
-footer {
-  background: #111;
-  padding: 20px;
-  text-align: center;
-}
-
-.socials a.icon {
-  width: 32px;
-  height: 32px;
-  display: inline-block;
-  margin: 0 10px;
-  background-size: cover;
-  filter: grayscale(1);
-  transition: all 0.3s ease;
-}
-
-.icon.discord {
-  background-image: url('https://cdn-icons-png.flaticon.com/512/5968/5968756.png');
-}
-.icon.instagram {
-  background-image: url('https://cdn-icons-png.flaticon.com/512/2111/2111463.png');
-}
-.icon.telegram {
-  background-image: url('https://cdn-icons-png.flaticon.com/512/2111/2111646.png');
-}
-
-.socials a:hover {
-  transform: scale(1.1);
-  filter: grayscale(0) brightness(1.2);
-}
-
-/* Product Card */
-.product-grid {
+nav ul {
+  list-style: none;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 20px;
+  gap: 12px;
 }
 
-.product {
-  background: #1a1a1a;
+nav ul li a {
+  color: #ccc;
+  padding: 8px 14px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+  background-color: #a855f7;
+  color: #fff;
+}
+
+main {
+  margin: 40px 0;
+}
+
+.products, .cart-container, .gifting-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+.product, .gifting-account {
   border: 1px solid #333;
+  padding: 20px;
   border-radius: 8px;
-  margin: 10px;
-  padding: 15px;
-  width: 180px;
+  background: #111;
   text-align: center;
+  width: 240px;
   transition: transform 0.2s ease;
+}
+
+.product:hover, .gifting-account:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 10px #a855f7aa;
 }
 
 .product img {
   width: 100%;
-  border-radius: 4px;
+  border-radius: 6px;
+  margin-bottom: 12px;
 }
 
-.product:hover {
-  transform: scale(1.05);
-  border-color: #a463f2;
-}
-
-.product h3 {
-  color: #fff;
-  font-size: 1rem;
-}
-
-.product p {
-  font-size: 0.9rem;
-  color: #aaa;
+.product h3, .gifting-account h3 {
+  margin-bottom: 10px;
+  color: #a855f7;
 }
 
 button {
-  background: #a463f2;
-  border: none;
+  background-color: #a855f7;
   color: white;
-  padding: 8px 12px;
-  margin-top: 10px;
-  cursor: pointer;
+  padding: 10px 14px;
+  border: none;
   border-radius: 4px;
-  transition: background 0.3s ease;
+  cursor: pointer;
 }
 
 button:hover {
-  background: #883be0;
+  background-color: #9333ea;
+}
+
+input[type="number"] {
+  width: 80%;
+  padding: 8px;
+  margin: 10px 0;
+  background: #1c1c1c;
+  border: 1px solid #444;
+  color: #fff;
+  border-radius: 4px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px 0;
+  border-top: 1px solid #222;
+  margin-top: 40px;
+}
+
+footer .socials {
+  margin-bottom: 10px;
+}
+
+footer .socials a {
+  display: inline-block;
+  margin: 0 10px;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+footer .socials img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0.7) invert(0.8);
+}
+
+footer .socials a:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 5px #a855f7);
 }
