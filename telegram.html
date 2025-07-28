@@ -2,51 +2,57 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Telegram Premium - SHAMELESS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SHAMELESS — Telegram Premium</title>
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
   <header>
-    <h1>SHAMELESS</h1>
+    <h1>Telegram Premium</h1>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="fortnite.html">Fortnite</a>
-      <a href="valorant.html">Valorant</a>
-      <a href="discord.html">Discord</a>
-      <a href="telegram.html" class="active">Telegram</a>
-      <a href="gifting.html">Gifting</a>
-      <a href="cart.html">Cart</a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="fortnite.html">Fortnite</a></li>
+        <li><a href="valorant.html">Valorant</a></li>
+        <li><a href="discord.html">Discord</a></li>
+        <li><a href="telegram.html" class="active">Telegram</a></li>
+        <li><a href="gifting.html">Gifting</a></li>
+        <li><a href="cart.html">Cart 🛒</a></li>
+      </ul>
     </nav>
   </header>
 
-  <main>
-    <h2>Telegram Premium</h2>
-    <div class="products">
-      <div class="product" tabindex="0" title="1 Month Telegram Premium subscription">
-        <img src="images/telegram-premium-1m.png" alt="1 Month Telegram Premium" />
-        <h3>1 Month Premium</h3>
-        <p>Unlock exclusive features.</p>
-        <button onclick="addToCart('Telegram Premium 1 Month', 4.99)">Add to Cart</button>
+  <main class="products">
+    <h2>Telegram Premium Plans</h2>
+    <div class="product-list">
+      <div class="product" data-name="1 Month Telegram Premium" data-price="4">
+        <img src="images/telegram-1month.png" alt="1 Month Premium">
+        <h3>1 Month</h3>
+        <p>$4</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
       </div>
-      <div class="product" tabindex="0" title="6 Months Telegram Premium subscription">
-        <img src="images/telegram-premium-6m.png" alt="6 Months Telegram Premium" />
-        <h3>6 Months Premium</h3>
-        <p>Save with a half-year package.</p>
-        <button onclick="addToCart('Telegram Premium 6 Months', 24.99)">Add to Cart</button>
+      <div class="product" data-name="6 Months Telegram Premium" data-price="20">
+        <img src="images/telegram-6months.png" alt="6 Months Premium">
+        <h3>6 Months</h3>
+        <p>$20</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
       </div>
-      <!-- More plans if needed -->
+      <div class="product" data-name="12 Months Telegram Premium" data-price="35">
+        <img src="images/telegram-12months.png" alt="12 Months Premium">
+        <h3>12 Months</h3>
+        <p>$35</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+      </div>
     </div>
   </main>
 
   <footer>
-    <p>© 2025 SHAMELESS. All rights reserved.</p>
     <div class="socials">
-      <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
-      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+      <a href="#"><img src="icons/discord.svg" alt="Discord"></a>
+      <a href="#"><img src="icons/instagram.svg" alt="Instagram"></a>
+      <a href="#"><img src="icons/telegram.svg" alt="Telegram"></a>
     </div>
+    <p>&copy; 2025 SHAMELESS. All rights reserved.</p>
   </footer>
 
   <script src="cart.js"></script>
