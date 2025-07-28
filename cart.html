@@ -2,151 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shopping Cart - SHAMELESS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SHAMELESS — Cart</title>
   <link rel="stylesheet" href="styles.css" />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  />
-  <style>
-    /* Extra styles specific for cart page */
-    main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      color: #d4bfff;
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 1.5rem;
-      color: #b07fff;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-    }
-    .cart-items {
-      background: #1a0f30;
-      border-radius: 8px;
-      padding: 1rem;
-      box-shadow: 0 0 15px #4b2dbb66;
-      min-height: 200px;
-    }
-    .cart-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid #3c246a;
-      padding: 0.8rem 0;
-      font-weight: 600;
-      font-size: 1.05rem;
-    }
-    .cart-name {
-      flex: 2;
-      color: #d0aaff;
-    }
-    .cart-qty {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-    .cart-qty button {
-      background: #3c246a;
-      border: none;
-      color: #d8bfff;
-      font-size: 1.2rem;
-      width: 30px;
-      height: 30px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .cart-qty button:hover {
-      background: #6d53a9;
-      color: #fff;
-    }
-    .cart-price {
-      flex: 1;
-      text-align: right;
-      color: #c4a3ff;
-    }
-    .remove-btn {
-      background: transparent;
-      border: none;
-      color: #e03e96;
-      font-size: 1.4rem;
-      cursor: pointer;
-      transition: color 0.3s ease;
-      margin-left: 1rem;
-    }
-    .remove-btn:hover {
-      color: #ff6fa8;
-    }
-    .cart-summary {
-      margin-top: 1.5rem;
-      text-align: right;
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #b388ff;
-    }
-    .cart-summary p {
-      margin-bottom: 1rem;
-    }
-    .cart-summary button {
-      background: #6d53a9;
-      border: none;
-      color: #f2e9ff;
-      font-weight: 700;
-      padding: 0.75rem 1.5rem;
-      margin-left: 1rem;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .cart-summary button:disabled {
-      background: #3c246a;
-      cursor: not-allowed;
-      color: #8a78b2;
-    }
-    .cart-summary button:hover:not(:disabled) {
-      background: #8c71c9;
-    }
-  </style>
 </head>
 <body>
   <header>
-    <h1>SHAMELESS</h1>
+    <h1>Your Cart</h1>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="fortnite.html">Fortnite</a>
-      <a href="valorant.html">Valorant</a>
-      <a href="discord.html">Discord</a>
-      <a href="telegram.html">Telegram</a>
-      <a href="gifting.html">Gifting</a>
-      <a href="cart.html" class="active">Cart</a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="fortnite.html">Fortnite</a></li>
+        <li><a href="valorant.html">Valorant</a></li>
+        <li><a href="discord.html">Discord</a></li>
+        <li><a href="telegram.html">Telegram</a></li>
+        <li><a href="gifting.html">Gifting</a></li>
+        <li><a href="cart.html" class="active">Cart 🛒</a></li>
+      </ul>
     </nav>
   </header>
 
-  <main>
-    <h2>Your Shopping Cart</h2>
-    <div id="cart-items" class="cart-items">
-      <!-- Cart items get dynamically inserted here -->
-    </div>
-    <div class="cart-summary">
-      <p>Total: $<span id="cart-total">0.00</span></p>
-      <button id="checkout-btn" disabled>Checkout</button>
-      <button id="clear-cart-btn" disabled>Clear Cart</button>
-    </div>
+  <main class="cart-container">
+    <h2>Items in Your Cart</h2>
+    <ul id="cart-items"></ul>
+    <p id="total-price">Total: $0</p>
+    <button onclick="clearCart()">Clear Cart</button>
   </main>
 
   <footer>
-    <p>© 2025 SHAMELESS. All rights reserved.</p>
     <div class="socials">
-      <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
-      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+      <a href="#"><img src="icons/discord.svg" alt="Discord"></a>
+      <a href="#"><img src="icons/instagram.svg" alt="Instagram"></a>
+      <a href="#"><img src="icons/telegram.svg" alt="Telegram"></a>
     </div>
+    <p>&copy; 2025 SHAMELESS. All rights reserved.</p>
   </footer>
 
   <script src="cart.js"></script>
