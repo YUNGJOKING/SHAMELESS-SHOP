@@ -1,194 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF‑8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SHAMELESS Shop</title>
   <style>
+    :root {
+      --primary: #8e44ad;
+      --bg: #0b0b0b;
+      --text: #e0e0e0;
+      --card-bg: #1c1c1e;
+    }
+    html, body { margin:0;padding:0;height:100%; }
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #0b0b0b;
-      color: #fff;
+      display:flex;flex-direction:column;
+      font-family:'Segoe UI',sans-serif;
+      background:var(--bg);color:var(--text);
     }
-
     header {
-      text-align: center;
-      padding: 40px 10px 20px;
-      background: linear-gradient(145deg, #1b1b1b, #0f0f0f);
-      color: #bb86fc;
-      font-size: 2.5rem;
-      letter-spacing: 2px;
+      padding:2rem;
+      background:var(--card-bg);
+      text-align:center;
+      font-size:2rem;
+      color:var(--primary);
     }
-
     nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      background: #111;
-      padding: 10px 0;
+      display:flex;justify-content:center;
+      background:#111;padding:0.5rem 0;
     }
-
     nav a {
-      color: #bbb;
-      margin: 0 10px;
-      padding: 10px 20px;
-      text-decoration: none;
-      transition: 0.3s;
+      color:#bbb;margin:0 0.5rem;
+      padding:0.5rem 1rem;text-decoration:none;
+      transition:0.3s;
     }
-
-    nav a:hover, nav a.active {
-      color: #fff;
-      background: #8e44ad;
-      border-radius: 5px;
+    nav a.active, nav a:hover {
+      background:var(--primary);color:#fff;border-radius:4px;
     }
-
-    .tab-content {
-      display: none;
-      padding: 30px 5%;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
+    main { flex:1;padding:2rem 5%; }
+    .tab-content { display:none; }
+    .tab-content.active { display:block; }
     .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 20px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      gap:1.5rem;
     }
-
     .product-card {
-      background: #151515;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      border: 1px solid #333;
-      transition: 0.3s;
+      background:var(--card-bg);
+      padding:1rem;
+      border-radius:8px;
+      text-align:center;
+      border:1px solid #333;
+      position:relative;
+      overflow:hidden;
+      transition:transform 0.3s,color 0.3s;
     }
-
     .product-card:hover {
-      border-color: #8e44ad;
-      box-shadow: 0 0 15px #8e44ad80;
+      transform:translateY(-4px);
+      border-color:var(--primary);
+      box-shadow:0 0 12px var(--primary)80;
     }
-
+    .product-card h3 { margin:0.5rem 0 0.2rem; }
+    .product-card p.price { font-weight:600; }
     .product-card button {
-      margin-top: 10px;
-      background: #8e44ad;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 5px;
-      color: white;
-      cursor: pointer;
+      margin-top:0.7rem;
+      background:var(--primary);
+      border:none;padding:6px 12px;
+      color:#fff;border-radius:4px;cursor:pointer;
+      transition:background 0.3s;
     }
-
-    /* Footer */
+    .product-card button:hover { background:#a96ff5; }
+    .product-card .details {
+      position:absolute;
+      bottom:0;left:0;right:0;
+      background:rgba(20,0,30,0.95);
+      padding:0.8rem;
+      font-size:0.9rem;
+      color:#ddd;
+      opacity:0;
+      transform:translateY(100%);
+      transition:opacity 0.3s ease, transform 0.3s ease;
+    }
+    .product-card:hover .details {
+      opacity:1;transform:translateY(0);
+    }
     footer {
-      margin-top: 50px;
-      background: #111;
-      padding: 30px 20px;
-      text-align: center;
+      background:var(--card-bg);
+      padding:1rem;
+      text-align:center;
+      border-top:2px solid var(--primary);
     }
-
-    .social-icons a {
-      display: inline-block;
-      margin: 0 10px;
-      transition: transform 0.3s;
-    }
-
+    .social-icons a { margin:0 0.5rem;display:inline-block; }
     .social-icons img {
-      width: 28px;
-      height: 28px;
-      filter: grayscale(1) brightness(1.2);
+      width:28px;height:28px;
+      filter:grayscale(1) brightness(1.2);
+      transition:filter 0.3s,transform 0.3s;
     }
-
-    .social-icons a:hover {
-      transform: scale(1.2);
-      filter: brightness(1.5);
+    .social-icons a:hover img {
+      filter:brightness(1.6);transform:scale(1.2);
     }
-
-    /* Floating Cart Button */
     .floating-cart-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #8e44ad;
-      color: #fff;
-      border: none;
-      padding: 12px 16px;
-      font-size: 18px;
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: 0 0 10px #8e44ad80;
-      z-index: 1000;
+      position:fixed;bottom:20px;right:20px;
+      background:var(--primary);border:none;
+      color:#fff;padding:14px;border-radius:50%;
+      font-size:18px;cursor:pointer;z-index:1000;
+      box-shadow:0 0 12px var(--primary)80;
     }
-
-    .floating-cart-btn:hover {
-      background: #9b59b6;
-    }
-
-    /* Cart Modal */
+    .floating-cart-btn:hover { background:#a96ff5; }
     .cart-modal {
-      display: none;
-      position: fixed;
-      z-index: 999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(10, 10, 10, 0.9);
+      display:none;position:fixed;z-index:999;
+      top:0;left:0;width:100%;height:100%;
+      background:rgba(10,10,10,0.9);
     }
-
     .cart-content {
-      background-color: #111;
-      margin: 10% auto;
-      padding: 30px;
-      border: 1px solid #8e44ad;
-      width: 90%;
-      max-width: 500px;
-      border-radius: 8px;
-      color: #fff;
+      background:var(--card-bg);
+      margin:8% auto;padding:2rem;
+      width:90%;max-width:480px;
+      border:1px solid var(--primary);
+      border-radius:8px;color:#fff;
     }
-
     .close-cart {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
+      float:right;font-size:26px;color:#aaa;cursor:pointer;
     }
-
-    .close-cart:hover {
-      color: #fff;
-    }
-
-    #cartItems {
-      list-style: none;
-      padding: 0;
-    }
-
+    .close-cart:hover { color:#fff; }
+    #cartItems { list-style:none;padding:0;margin:1rem 0; }
     #cartItems li {
-      padding: 8px;
-      border-bottom: 1px solid #444;
+      padding:0.6rem 0;border-bottom:1px solid #333;
     }
-
     .cart-footer {
-      margin-top: 20px;
-      text-align: right;
+      text-align:right;
     }
-
     .checkout-btn {
-      background: #8e44ad;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+      background:var(--primary);color:#fff;
+      padding:0.6rem 1.2rem;border:none;
+      border-radius:4px;cursor:pointer;margin-top:1rem;
     }
-
-    .checkout-btn:hover {
-      background: #9b59b6;
-    }
+    .checkout-btn:hover { background:#a96ff5; }
   </style>
 </head>
 <body>
@@ -203,56 +149,80 @@
     <a href="#gifting">Gifting</a>
   </nav>
 
-  <div id="fortnite" class="tab-content active">
-    <h2>Fortnite Products</h2>
-    <div class="product-grid">
-      <div class="product-card"><h3>1,000 V-Bucks</h3><p>$8.99</p><button onclick="addToCart('1,000 V-Bucks', 8.99)">Add to Cart</button></div>
-      <div class="product-card"><h3>2,800 V-Bucks</h3><p>$22.49</p><button onclick="addToCart('2,800 V-Bucks', 22.49)">Add to Cart</button></div>
-      <div class="product-card"><h3>5,000 V-Bucks</h3><p>$36.99</p><button onclick="addToCart('5,000 V-Bucks', 36.99)">Add to Cart</button></div>
-    </div>
-  </div>
+  <main>
+    <section id="fortnite" class="tab-content active">
+      <h2>Fortnite Products</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <h3>1,000 V‑Bucks</h3><p class="price">$8.99</p>
+          <button onclick="addToCart('1,000 V‑Bucks',8.99)">Add to Cart</button>
+          <div class="details">Instant delivery, region‑free, no account needed.</div>
+        </div>
+        <div class="product-card">
+          <h3>Battle Pass</h3><p class="price">$7.99</p>
+          <button onclick="addToCart('Battle Pass',7.99)">Add to Cart</button>
+          <div class="details">Current season Battle Pass, immediate delivery.</div>
+        </div>
+      </div>
+    </section>
 
-  <div id="valorant" class="tab-content">
-    <h2>Valorant Points</h2>
-    <div class="product-grid">
-      <div class="product-card"><h3>1,000 VP</h3><p>$9.49</p><button onclick="addToCart('1,000 VP', 9.49)">Add to Cart</button></div>
-      <div class="product-card"><h3>2,050 VP</h3><p>$18.99</p><button onclick="addToCart('2,050 VP', 18.99)">Add to Cart</button></div>
-    </div>
-  </div>
+    <section id="valorant" class="tab-content">
+      <h2>Valorant Points (TR)</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <h3>1,000 VP</h3><p class="price">$9.49</p>
+          <button onclick="addToCart('1,000 VP',9.49)">Add to Cart</button>
+          <div class="details">Turkish region, secure delivery within minutes.</div>
+        </div>
+      </div>
+    </section>
 
-  <div id="discord" class="tab-content">
-    <h2>Discord Nitro</h2>
-    <div class="product-grid">
-      <div class="product-card"><h3>Nitro 1 Month</h3><p>$3.99</p><button onclick="addToCart('Nitro 1 Month', 3.99)">Add to Cart</button></div>
-    </div>
-  </div>
+    <section id="discord" class="tab-content">
+      <h2>Discord Nitro</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <h3>Nitro 1 Month</h3><p class="price">$3.99</p>
+          <button onclick="addToCart('Nitro 1 Month',3.99)">Add to Cart</button>
+          <div class="details">Full Nitro benefits for 30 days, direct to your account.</div>
+        </div>
+      </div>
+    </section>
 
-  <div id="telegram" class="tab-content">
-    <h2>Telegram Premium</h2>
-    <div class="product-grid">
-      <div class="product-card"><h3>1 Month</h3><p>$4.49</p><button onclick="addToCart('Telegram Premium 1 Month', 4.49)">Add to Cart</button></div>
-    </div>
-  </div>
+    <section id="telegram" class="tab-content">
+      <h2>Telegram Premium</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <h3>1 Month Premium</h3><p class="price">$4.49</p>
+          <button onclick="addToCart('Telegram Premium 1 Month',4.49)">Add to Cart</button>
+          <div class="details">Instant upgrade, unlock extra features.</div>
+        </div>
+      </div>
+    </section>
 
-  <div id="gifting" class="tab-content">
-    <h2>Fortnite Gifting</h2>
-    <div class="product-grid">
-      <div class="product-card"><h3>GOOFGANG</h3><p>Custom</p><button onclick="addToCart('Gift via GOOFGANG', 0)">Add</button></div>
-    </div>
-  </div>
+    <section id="gifting" class="tab-content">
+      <h2>Fortnite Gifting</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <h3>GOOFGANG Gift Pack</h3><p class="price">Custom</p>
+          <button onclick="addToCart('GOOFGANG Gift',0)">Add to Cart</button>
+          <div class="details">Choose amount & recipient for direct gifting.</div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
     <p>Follow SHAMELESS</p>
     <div class="social-icons">
-      <a href="https://twitter.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter"></a>
-      <a href="https://discord.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord"></a>
-      <a href="https://t.me" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram"></a>
-      <a href="https://github.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub"></a>
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord" /></a>
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" /></a>
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram" /></a>
     </div>
     <p>&copy; 2025 SHAMELESS</p>
   </footer>
 
-  <!-- 🛒 Cart Modal -->
+  <button id="openCartBtn" class="floating-cart-btn">🛒</button>
+
   <div id="cartModal" class="cart-modal">
     <div class="cart-content">
       <span class="close-cart">&times;</span>
@@ -265,60 +235,43 @@
     </div>
   </div>
 
-  <!-- Floating Cart Button -->
-  <button id="openCartBtn" class="floating-cart-btn">🛒</button>
-
-  <!-- JavaScript -->
   <script>
-    const tabs = document.querySelectorAll("nav a");
-    const contents = document.querySelectorAll(".tab-content");
-
-    tabs.forEach(tab => {
-      tab.addEventListener("click", (e) => {
+    document.querySelectorAll('nav a').forEach(tab => {
+      tab.addEventListener('click', e => {
         e.preventDefault();
-        const target = tab.getAttribute("href").substring(1);
-
-        contents.forEach(content => content.classList.remove("active"));
-        document.getElementById(target).classList.add("active");
-
-        tabs.forEach(t => t.classList.remove("active"));
-        tab.classList.add("active");
+        const target = tab.getAttribute('href').substring(1);
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        document.getElementById(target).classList.add('active');
+        document.querySelectorAll('nav a').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
       });
     });
 
-    const openCartBtn = document.getElementById("openCartBtn");
-    const cartModal = document.getElementById("cartModal");
-    const closeCart = document.querySelector(".close-cart");
-    const cartItems = document.getElementById("cartItems");
-    const cartTotal = document.getElementById("cartTotal");
-
+    const cartModal = document.getElementById('cartModal');
+    const openCartBtn = document.getElementById('openCartBtn');
+    const closeCart = document.querySelector('.close-cart');
+    const cartItems = document.getElementById('cartItems');
+    const cartTotal = document.getElementById('cartTotal');
     let cart = [];
 
-    openCartBtn.addEventListener("click", () => {
+    openCartBtn.onclick = () => {
       updateCartUI();
-      cartModal.style.display = "block";
-    });
-
-    closeCart.addEventListener("click", () => {
-      cartModal.style.display = "none";
-    });
-
-    window.onclick = (e) => {
-      if (e.target == cartModal) cartModal.style.display = "none";
+      cartModal.style.display = 'block';
     };
+    closeCart.onclick = () => cartModal.style.display = 'none';
+    window.onclick = e => { if (e.target === cartModal) cartModal.style.display = 'none'; };
 
-    function addToCart(productName, price) {
-      cart.push({ name: productName, price: parseFloat(price) });
+    function addToCart(name, price) {
+      cart.push({ name, price });
       updateCartUI();
     }
-
     function updateCartUI() {
-      cartItems.innerHTML = "";
+      cartItems.innerHTML = '';
       let total = 0;
       cart.forEach(item => {
         total += item.price;
-        const li = document.createElement("li");
-        li.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+        const li = document.createElement('li');
+        li.textContent = `${item.name} – $${item.price.toFixed(2)}`;
         cartItems.appendChild(li);
       });
       cartTotal.textContent = total.toFixed(2);
