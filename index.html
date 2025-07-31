@@ -2,229 +2,328 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SHAMELESS Shop</title>
   <style>
-    :root {
-      --primary: #8a2be2;
-      --background: #0e0e0e;
-      --text: #f0f0f0;
-      --card: #1a1a1a;
-    }
-
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: var(--background);
-      color: var(--text);
+      background: #0b0b0b;
+      color: #fff;
     }
 
     header {
-      background: var(--card);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 2px solid var(--primary);
+      text-align: center;
+      padding: 40px 10px 20px;
+      background: linear-gradient(145deg, #1b1b1b, #0f0f0f);
+      color: #bb86fc;
+      font-size: 2.5rem;
+      letter-spacing: 2px;
     }
 
-    header h1 {
-      margin: 0;
-      color: var(--primary);
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      background: #111;
+      padding: 10px 0;
     }
 
     nav a {
-      margin: 0 0.75rem;
+      color: #bbb;
+      margin: 0 10px;
+      padding: 10px 20px;
       text-decoration: none;
-      color: var(--text);
-      font-weight: 500;
-      transition: color 0.2s ease;
+      transition: 0.3s;
     }
 
-    nav a:hover {
-      color: var(--primary);
+    nav a:hover, nav a.active {
+      color: #fff;
+      background: #8e44ad;
+      border-radius: 5px;
     }
 
     .tab-content {
       display: none;
-      padding: 2rem;
+      padding: 30px 5%;
     }
 
     .tab-content.active {
       display: block;
-      animation: fadeIn 0.3s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
     }
 
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
     }
 
     .product-card {
-      background-color: var(--card);
-      padding: 1rem;
-      border-radius: 8px;
+      background: #151515;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
       border: 1px solid #333;
-      transition: transform 0.2s ease;
+      transition: 0.3s;
     }
 
     .product-card:hover {
-      transform: scale(1.02);
-      border-color: var(--primary);
+      border-color: #8e44ad;
+      box-shadow: 0 0 15px #8e44ad80;
     }
 
-    .product-card h3 {
-      margin-top: 0;
-      font-size: 1.1rem;
+    .product-card button {
+      margin-top: 10px;
+      background: #8e44ad;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
     }
 
-    .footer {
-      padding: 1rem;
-      background-color: var(--card);
+    /* Footer */
+    footer {
+      margin-top: 50px;
+      background: #111;
+      padding: 30px 20px;
       text-align: center;
-      border-top: 2px solid var(--primary);
-      margin-top: 3rem;
     }
 
-    .social-icons svg {
-      width: 24px;
-      height: 24px;
-      margin: 0 0.5rem;
-      fill: var(--text);
-      transition: fill 0.2s ease;
+    .social-icons a {
+      display: inline-block;
+      margin: 0 10px;
+      transition: transform 0.3s;
     }
 
-    .social-icons svg:hover {
-      fill: var(--primary);
+    .social-icons img {
+      width: 28px;
+      height: 28px;
+      filter: grayscale(1) brightness(1.2);
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.2);
+      filter: brightness(1.5);
+    }
+
+    /* Floating Cart Button */
+    .floating-cart-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #8e44ad;
+      color: #fff;
+      border: none;
+      padding: 12px 16px;
+      font-size: 18px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 10px #8e44ad80;
+      z-index: 1000;
+    }
+
+    .floating-cart-btn:hover {
+      background: #9b59b6;
+    }
+
+    /* Cart Modal */
+    .cart-modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(10, 10, 10, 0.9);
+    }
+
+    .cart-content {
+      background-color: #111;
+      margin: 10% auto;
+      padding: 30px;
+      border: 1px solid #8e44ad;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 8px;
+      color: #fff;
+    }
+
+    .close-cart {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close-cart:hover {
+      color: #fff;
+    }
+
+    #cartItems {
+      list-style: none;
+      padding: 0;
+    }
+
+    #cartItems li {
+      padding: 8px;
+      border-bottom: 1px solid #444;
+    }
+
+    .cart-footer {
+      margin-top: 20px;
+      text-align: right;
+    }
+
+    .checkout-btn {
+      background: #8e44ad;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .checkout-btn:hover {
+      background: #9b59b6;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>SHAMELESS Shop</h1>
-    <nav>
-      <a href="#" onclick="showTab('home')">Home</a>
-      <a href="#" onclick="showTab('fortnite')">Fortnite</a>
-      <a href="#" onclick="showTab('valorant')">Valorant</a>
-      <a href="#" onclick="showTab('discord')">Discord</a>
-      <a href="#" onclick="showTab('telegram')">Telegram</a>
-      <a href="#" onclick="showTab('gifting')">Gifting</a>
-      <a href="#" onclick="showTab('cart')">Cart</a>
-    </nav>
-  </header>
+  <header>SHAMELESS SHOP</header>
 
-  <main>
-    <!-- HOME -->
-    <section id="home" class="tab-content active">
-      <h2>Welcome to SHAMELESS Shop</h2>
-      <p>Your trusted source for Fortnite V-Bucks, Valorant Points (TR), Discord Nitro, Telegram Premium and more.</p>
-    </section>
+  <nav>
+    <a href="#fortnite" class="active">Fortnite</a>
+    <a href="#valorant">Valorant</a>
+    <a href="#discord">Discord</a>
+    <a href="#telegram">Telegram</a>
+    <a href="#gifting">Gifting</a>
+  </nav>
 
-    <!-- FORTNITE -->
-    <section id="fortnite" class="tab-content">
-      <h2>Fortnite Products</h2>
-      <div class="product-grid">
-        <div class="product-card">
-          <h3>1,000 V-Bucks</h3>
-          <p>Fast delivery, region-free.</p>
-        </div>
-        <div class="product-card">
-          <h3>Battle Pass</h3>
-          <p>Get the latest Battle Pass instantly.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- VALORANT -->
-    <section id="valorant" class="tab-content">
-      <h2>Valorant Points (TR)</h2>
-      <div class="product-grid">
-        <div class="product-card">
-          <h3>1,000 VP</h3>
-          <p>TR Region only. Instant delivery.</p>
-        </div>
-        <div class="product-card">
-          <h3>5,350 VP</h3>
-          <p>Popular pack with bonus points!</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- DISCORD -->
-    <section id="discord" class="tab-content">
-      <h2>Discord Nitro</h2>
-      <div class="product-grid">
-        <div class="product-card">
-          <h3>1 Month Nitro</h3>
-          <p>Gifted instantly to your Discord ID.</p>
-        </div>
-        <div class="product-card">
-          <h3>12 Months Nitro</h3>
-          <p>Best value yearly Nitro!</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- TELEGRAM -->
-    <section id="telegram" class="tab-content">
-      <h2>Telegram Premium</h2>
-      <div class="product-grid">
-        <div class="product-card">
-          <h3>1 Month Premium</h3>
-          <p>Boost your account features.</p>
-        </div>
-        <div class="product-card">
-          <h3>12 Months Premium</h3>
-          <p>Save more with a yearly plan!</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- GIFTING -->
-    <section id="gifting" class="tab-content">
-      <h2>Custom Gifting</h2>
-      <div class="product-grid">
-        <div class="product-card">
-          <h3>GOOF GANG</h3>
-          <p>Send custom gifts. Add your balance and amount.</p>
-        </div>
-        <div class="product-card">
-          <h3>GOOFGANG2</h3>
-          <p>Special gifting for friends or yourself.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CART -->
-    <section id="cart" class="tab-content">
-      <h2>Your Cart</h2>
-      <p>(Cart system coming soon...)</p>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <p>Follow us on:</p>
-    <div class="social-icons">
-      <!-- Inline SVGs -->
-      <a href="https://discord.gg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.317 4.369A19.791 19.791 0 0 0 15.805 3c-.104.183-.22.408-.301.6a18.508 18.508 0 0 0-6.006 0c-.08-.192-.197-.417-.301-.6a19.791 19.791 0 0 0-4.512 1.369C2.965 9.174 2.148 13.88 2.474 18.511a19.894 19.894 0 0 0 5.957 1.83c.455-.63.858-1.3 1.202-2a13.257 13.257 0 0 1-2.079-.998c.175-.132.346-.269.512-.41a13.047 13.047 0 0 0 8.232 0c.167.14.338.278.513.41a13.257 13.257 0 0 1-2.08.998c.345.7.748 1.37 1.203 2a19.894 19.894 0 0 0 5.957-1.83c.326-4.631-.491-9.337-2.683-14.142z"/></svg></a>
-      <a href="https://instagram.com"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.38 3.608 1.355.975.975 1.293 2.242 1.355 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.38 2.633-1.355 3.608-.975.975-2.242 1.293-3.608 1.355-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.38-3.608-1.355-.975-.975-1.293-2.242-1.355-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.38-2.633 1.355-3.608C4.563 2.613 5.83 2.295 7.196 2.233 8.462 2.175 8.842 2.163 12 2.163zm0-2.163C8.741 0 8.332.012 7.052.07 5.77.129 4.648.414 3.73 1.332 2.812 2.25 2.527 3.372 2.468 4.654 2.41 5.934 2.398 6.343 2.398 9.6v4.8c0 3.257.012 3.666.07 4.946.059 1.282.344 2.404 1.262 3.322.918.918 2.04 1.203 3.322 1.262 1.28.058 1.689.07 4.946.07s3.666-.012 4.946-.07c1.282-.059 2.404-.344 3.322-1.262.918-.918 1.203-2.04 1.262-3.322.058-1.28.07-1.689.07-4.946v-4.8c0-3.257-.012-3.666-.07-4.946-.059-1.282-.344-2.404-1.262-3.322-.918-.918-2.04-1.203-3.322-1.262C15.668.012 15.259 0 12 0z"/></svg></a>
-      <a href="https://t.me"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.004 0C5.372 0 0 5.372 0 12.004c0 6.632 5.372 12.004 12.004 12.004 6.632 0 12.004-5.372 12.004-12.004C24.008 5.372 18.636 0 12.004 0zm5.747 7.83l-1.36 6.47c-.103.47-.37.587-.752.365l-2.09-1.54-1.008.97c-.11.11-.203.203-.414.203l.15-2.13 3.875-3.5c.17-.15-.038-.235-.264-.085l-4.79 3.015-2.06-.645c-.447-.14-.455-.446.093-.66l8.05-3.1c.373-.14.7.085.58.655z"/></svg></a>
+  <div id="fortnite" class="tab-content active">
+    <h2>Fortnite Products</h2>
+    <div class="product-grid">
+      <div class="product-card"><h3>1,000 V-Bucks</h3><p>$8.99</p><button onclick="addToCart('1,000 V-Bucks', 8.99)">Add to Cart</button></div>
+      <div class="product-card"><h3>2,800 V-Bucks</h3><p>$22.49</p><button onclick="addToCart('2,800 V-Bucks', 22.49)">Add to Cart</button></div>
+      <div class="product-card"><h3>5,000 V-Bucks</h3><p>$36.99</p><button onclick="addToCart('5,000 V-Bucks', 36.99)">Add to Cart</button></div>
     </div>
+  </div>
+
+  <div id="valorant" class="tab-content">
+    <h2>Valorant Points</h2>
+    <div class="product-grid">
+      <div class="product-card"><h3>1,000 VP</h3><p>$9.49</p><button onclick="addToCart('1,000 VP', 9.49)">Add to Cart</button></div>
+      <div class="product-card"><h3>2,050 VP</h3><p>$18.99</p><button onclick="addToCart('2,050 VP', 18.99)">Add to Cart</button></div>
+    </div>
+  </div>
+
+  <div id="discord" class="tab-content">
+    <h2>Discord Nitro</h2>
+    <div class="product-grid">
+      <div class="product-card"><h3>Nitro 1 Month</h3><p>$3.99</p><button onclick="addToCart('Nitro 1 Month', 3.99)">Add to Cart</button></div>
+    </div>
+  </div>
+
+  <div id="telegram" class="tab-content">
+    <h2>Telegram Premium</h2>
+    <div class="product-grid">
+      <div class="product-card"><h3>1 Month</h3><p>$4.49</p><button onclick="addToCart('Telegram Premium 1 Month', 4.49)">Add to Cart</button></div>
+    </div>
+  </div>
+
+  <div id="gifting" class="tab-content">
+    <h2>Fortnite Gifting</h2>
+    <div class="product-grid">
+      <div class="product-card"><h3>GOOFGANG</h3><p>Custom</p><button onclick="addToCart('Gift via GOOFGANG', 0)">Add</button></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Follow SHAMELESS</p>
+    <div class="social-icons">
+      <a href="https://twitter.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter"></a>
+      <a href="https://discord.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord"></a>
+      <a href="https://t.me" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram"></a>
+      <a href="https://github.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub"></a>
+    </div>
+    <p>&copy; 2025 SHAMELESS</p>
   </footer>
 
+  <!-- 🛒 Cart Modal -->
+  <div id="cartModal" class="cart-modal">
+    <div class="cart-content">
+      <span class="close-cart">&times;</span>
+      <h2>Your Cart</h2>
+      <ul id="cartItems"></ul>
+      <div class="cart-footer">
+        <p>Total: $<span id="cartTotal">0.00</span></p>
+        <button class="checkout-btn">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Cart Button -->
+  <button id="openCartBtn" class="floating-cart-btn">🛒</button>
+
+  <!-- JavaScript -->
   <script>
-    function showTab(id) {
-      const sections = document.querySelectorAll('.tab-content');
-      sections.forEach(section => section.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
+    const tabs = document.querySelectorAll("nav a");
+    const contents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", (e) => {
+        e.preventDefault();
+        const target = tab.getAttribute("href").substring(1);
+
+        contents.forEach(content => content.classList.remove("active"));
+        document.getElementById(target).classList.add("active");
+
+        tabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+      });
+    });
+
+    const openCartBtn = document.getElementById("openCartBtn");
+    const cartModal = document.getElementById("cartModal");
+    const closeCart = document.querySelector(".close-cart");
+    const cartItems = document.getElementById("cartItems");
+    const cartTotal = document.getElementById("cartTotal");
+
+    let cart = [];
+
+    openCartBtn.addEventListener("click", () => {
+      updateCartUI();
+      cartModal.style.display = "block";
+    });
+
+    closeCart.addEventListener("click", () => {
+      cartModal.style.display = "none";
+    });
+
+    window.onclick = (e) => {
+      if (e.target == cartModal) cartModal.style.display = "none";
+    };
+
+    function addToCart(productName, price) {
+      cart.push({ name: productName, price: parseFloat(price) });
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      cartItems.innerHTML = "";
+      let total = 0;
+      cart.forEach(item => {
+        total += item.price;
+        const li = document.createElement("li");
+        li.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+        cartItems.appendChild(li);
+      });
+      cartTotal.textContent = total.toFixed(2);
     }
   </script>
+
 </body>
 </html>
