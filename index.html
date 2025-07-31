@@ -2,60 +2,229 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SHAMELESS Shop — Home</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHAMELESS Shop</title>
+  <style>
+    :root {
+      --primary: #8a2be2;
+      --background: #0e0e0e;
+      --text: #f0f0f0;
+      --card: #1a1a1a;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+    }
+
+    header {
+      background: var(--card);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--primary);
+    }
+
+    header h1 {
+      margin: 0;
+      color: var(--primary);
+    }
+
+    nav a {
+      margin: 0 0.75rem;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .tab-content {
+      display: none;
+      padding: 2rem;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .product-card {
+      background-color: var(--card);
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid #333;
+      transition: transform 0.2s ease;
+    }
+
+    .product-card:hover {
+      transform: scale(1.02);
+      border-color: var(--primary);
+    }
+
+    .product-card h3 {
+      margin-top: 0;
+      font-size: 1.1rem;
+    }
+
+    .footer {
+      padding: 1rem;
+      background-color: var(--card);
+      text-align: center;
+      border-top: 2px solid var(--primary);
+      margin-top: 3rem;
+    }
+
+    .social-icons svg {
+      width: 24px;
+      height: 24px;
+      margin: 0 0.5rem;
+      fill: var(--text);
+      transition: fill 0.2s ease;
+    }
+
+    .social-icons svg:hover {
+      fill: var(--primary);
+    }
+  </style>
 </head>
 <body>
+
   <header>
-    <h1>SHAMELESS SHOP</h1>
+    <h1>SHAMELESS Shop</h1>
     <nav>
-      <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="fortnite.html">Fortnite</a></li>
-        <li><a href="valorant.html">Valorant</a></li>
-        <li><a href="discord.html">Discord</a></li>
-        <li><a href="telegram.html">Telegram</a></li>
-        <li><a href="gifting.html">Gifting</a></li>
-        <li><a href="cart.html">Cart 🛒</a></li>
-      </ul>
+      <a href="#" onclick="showTab('home')">Home</a>
+      <a href="#" onclick="showTab('fortnite')">Fortnite</a>
+      <a href="#" onclick="showTab('valorant')">Valorant</a>
+      <a href="#" onclick="showTab('discord')">Discord</a>
+      <a href="#" onclick="showTab('telegram')">Telegram</a>
+      <a href="#" onclick="showTab('gifting')">Gifting</a>
+      <a href="#" onclick="showTab('cart')">Cart</a>
     </nav>
   </header>
 
-  <main class="home">
-    <section>
-      <h2>Welcome to SHAMELESS — Your Digital Plug</h2>
-      <p>
-        We offer top-tier digital products including Fortnite V-Bucks, Valorant Points, Discord Nitro, Telegram Premium, Ranked & Victory Boosts, and Custom Gifting services.
-        Everything you need — simple, fast, and secure.
-      </p>
+  <main>
+    <!-- HOME -->
+    <section id="home" class="tab-content active">
+      <h2>Welcome to SHAMELESS Shop</h2>
+      <p>Your trusted source for Fortnite V-Bucks, Valorant Points (TR), Discord Nitro, Telegram Premium and more.</p>
+    </section>
+
+    <!-- FORTNITE -->
+    <section id="fortnite" class="tab-content">
+      <h2>Fortnite Products</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <h3>1,000 V-Bucks</h3>
+          <p>Fast delivery, region-free.</p>
+        </div>
+        <div class="product-card">
+          <h3>Battle Pass</h3>
+          <p>Get the latest Battle Pass instantly.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALORANT -->
+    <section id="valorant" class="tab-content">
+      <h2>Valorant Points (TR)</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <h3>1,000 VP</h3>
+          <p>TR Region only. Instant delivery.</p>
+        </div>
+        <div class="product-card">
+          <h3>5,350 VP</h3>
+          <p>Popular pack with bonus points!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DISCORD -->
+    <section id="discord" class="tab-content">
+      <h2>Discord Nitro</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <h3>1 Month Nitro</h3>
+          <p>Gifted instantly to your Discord ID.</p>
+        </div>
+        <div class="product-card">
+          <h3>12 Months Nitro</h3>
+          <p>Best value yearly Nitro!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TELEGRAM -->
+    <section id="telegram" class="tab-content">
+      <h2>Telegram Premium</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <h3>1 Month Premium</h3>
+          <p>Boost your account features.</p>
+        </div>
+        <div class="product-card">
+          <h3>12 Months Premium</h3>
+          <p>Save more with a yearly plan!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GIFTING -->
+    <section id="gifting" class="tab-content">
+      <h2>Custom Gifting</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <h3>GOOF GANG</h3>
+          <p>Send custom gifts. Add your balance and amount.</p>
+        </div>
+        <div class="product-card">
+          <h3>GOOFGANG2</h3>
+          <p>Special gifting for friends or yourself.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CART -->
+    <section id="cart" class="tab-content">
+      <h2>Your Cart</h2>
+      <p>(Cart system coming soon...)</p>
     </section>
   </main>
 
-  <footer>
-  <div class="socials">
-    <a href="https://discord.gg/yourserver" target="_blank" aria-label="Discord" class="social-icon" title="Discord">
-      <!-- Discord SVG -->
-      <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
-        <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C2.533 9.0458 1.873 13.5799 2.298 18.0578a.0824.0824 0 00.0312.0561 19.9 19.9 0 006.1167 3.1249.0777.0777 0 00.0842-.0276c.4726-.649.8953-1.3363 1.264-2.0497a.076.076 0 00-.0416-.1057 13.13 13.13 0 01-1.872-.8884.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0786-.0105c3.927 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.079.0095c.12.099.246.1971.372.2914a.077.077 0 01-.006.1276 12.84 12.84 0 01-1.873.8884.0766.0766 0 00-.0407.1067c.4.7124.823 1.4 1.2957 2.0497a.076.076 0 00.0842.0286 19.9272 19.9272 0 006.117-3.125.0824.0824 0 00.0308-.0559c.5004-5.177-.8382-9.6739-3.5485-13.66a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1824 0-2.1568-1.0857-2.1568-2.419 0-1.3332.9554-2.4189 2.1568-2.4189 1.2108 0 2.1757 1.0952 2.1569 2.419 0 1.3332-.9461 2.4189-2.1569 2.4189Z"/>
-      </svg>
-    </a>
+  <footer class="footer">
+    <p>Follow us on:</p>
+    <div class="social-icons">
+      <!-- Inline SVGs -->
+      <a href="https://discord.gg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.317 4.369A19.791 19.791 0 0 0 15.805 3c-.104.183-.22.408-.301.6a18.508 18.508 0 0 0-6.006 0c-.08-.192-.197-.417-.301-.6a19.791 19.791 0 0 0-4.512 1.369C2.965 9.174 2.148 13.88 2.474 18.511a19.894 19.894 0 0 0 5.957 1.83c.455-.63.858-1.3 1.202-2a13.257 13.257 0 0 1-2.079-.998c.175-.132.346-.269.512-.41a13.047 13.047 0 0 0 8.232 0c.167.14.338.278.513.41a13.257 13.257 0 0 1-2.08.998c.345.7.748 1.37 1.203 2a19.894 19.894 0 0 0 5.957-1.83c.326-4.631-.491-9.337-2.683-14.142z"/></svg></a>
+      <a href="https://instagram.com"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.38 3.608 1.355.975.975 1.293 2.242 1.355 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.38 2.633-1.355 3.608-.975.975-2.242 1.293-3.608 1.355-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.38-3.608-1.355-.975-.975-1.293-2.242-1.355-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.38-2.633 1.355-3.608C4.563 2.613 5.83 2.295 7.196 2.233 8.462 2.175 8.842 2.163 12 2.163zm0-2.163C8.741 0 8.332.012 7.052.07 5.77.129 4.648.414 3.73 1.332 2.812 2.25 2.527 3.372 2.468 4.654 2.41 5.934 2.398 6.343 2.398 9.6v4.8c0 3.257.012 3.666.07 4.946.059 1.282.344 2.404 1.262 3.322.918.918 2.04 1.203 3.322 1.262 1.28.058 1.689.07 4.946.07s3.666-.012 4.946-.07c1.282-.059 2.404-.344 3.322-1.262.918-.918 1.203-2.04 1.262-3.322.058-1.28.07-1.689.07-4.946v-4.8c0-3.257-.012-3.666-.07-4.946-.059-1.282-.344-2.404-1.262-3.322-.918-.918-2.04-1.203-3.322-1.262C15.668.012 15.259 0 12 0z"/></svg></a>
+      <a href="https://t.me"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.004 0C5.372 0 0 5.372 0 12.004c0 6.632 5.372 12.004 12.004 12.004 6.632 0 12.004-5.372 12.004-12.004C24.008 5.372 18.636 0 12.004 0zm5.747 7.83l-1.36 6.47c-.103.47-.37.587-.752.365l-2.09-1.54-1.008.97c-.11.11-.203.203-.414.203l.15-2.13 3.875-3.5c.17-.15-.038-.235-.264-.085l-4.79 3.015-2.06-.645c-.447-.14-.455-.446.093-.66l8.05-3.1c.373-.14.7.085.58.655z"/></svg></a>
+    </div>
+  </footer>
 
-    <a href="https://instagram.com/yourprofile" target="_blank" aria-label="Instagram" class="social-icon" title="Instagram">
-      <!-- Instagram SVG -->
-      <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
-        <path d="M7.75 2A5.75 5.75 0 002 7.75v8.5A5.75 5.75 0 007.75 22h8.5A5.75 5.75 0 0022 16.25v-8.5A5.75 5.75 0 0016.25 2h-8.5zm0 1.5h8.5A4.25 4.25 0 0120.5 7.75v8.5a4.25 4.25 0 01-4.25 4.25h-8.5A4.25 4.25 0 013.5 16.25v-8.5A4.25 4.25 0 017.75 3.5zm8.75 2.75a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0zM12 7a5 5 0 100 10 5 5 0 000-10zm0 1.5a3.5 3.5 0 110 7 3.5 3.5 0 010-7z"/>
-      </svg>
-    </a>
-
-    <a href="https://t.me/yourchannel" target="_blank" aria-label="Telegram" class="social-icon" title="Telegram">
-      <!-- Telegram SVG -->
-      <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
-        <path d="M22.5 2.79a1.4 1.4 0 00-1.69-.43L2.59 10.68c-.63.27-.64 1.17-.01 1.46l4.5 1.6 2.16 6.81c.16.5.74.65 1.09.3l1.84-1.83 3.83 2.83c.4.3 1 .12 1.16-.38l4.06-16.5c.13-.54-.35-1.05-.93-.96zM9.88 15.2l-.67-2.54 9.87-7.4-10.2 9.94z"/>
-      </svg>
-    </a>
-  </div>
-</footer>
-
+  <script>
+    function showTab(id) {
+      const sections = document.querySelectorAll('.tab-content');
+      sections.forEach(section => section.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
 </body>
 </html>
