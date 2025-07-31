@@ -1,282 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF‑8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SHAMELESS Shop</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>SHAMELESS Shop — All-in-One</title>
   <style>
     :root {
-      --primary: #8e44ad;
-      --bg: #0b0b0b;
+      --neon: #9b59b6;
+      --bg: #0a0a0d;
       --text: #e0e0e0;
-      --card-bg: #1c1c1e;
+      --card: #1c1c26;
+      --accent: #a569bd;
     }
-    html, body { margin:0;padding:0;height:100%; }
-    body {
-      display:flex;flex-direction:column;
-      font-family:'Segoe UI',sans-serif;
-      background:var(--bg);color:var(--text);
-    }
-    header {
-      padding:2rem;
-      background:var(--card-bg);
-      text-align:center;
-      font-size:2rem;
-      color:var(--primary);
-    }
-    nav {
-      display:flex;justify-content:center;
-      background:#111;padding:0.5rem 0;
-    }
-    nav a {
-      color:#bbb;margin:0 0.5rem;
-      padding:0.5rem 1rem;text-decoration:none;
-      transition:0.3s;
-    }
-    nav a.active, nav a:hover {
-      background:var(--primary);color:#fff;border-radius:4px;
-    }
-    main { flex:1;padding:2rem 5%; }
-    .tab-content { display:none; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html,body { height:100%; font-family:'Segoe UI',sans-serif; background:var(--bg); color:var(--text); }
+    body { display:flex; flex-direction:column; }
+    header { padding:2rem; background:var(--card); text-align:center; font-size:2.4rem; color:var(--neon); }
+    nav { display:flex; justify-content:center; background:#111; }
+    nav a { padding:12px 16px; color:#ccc; text-decoration:none; transition:color 0.3s, background .3s; }
+    nav a.active, nav a:hover { background:var(--neon); color:#fff; border-radius:4px; }
+    main { flex:1; padding:2rem; }
+    .tab-content { display:none; animation:fadeIn .4s ease-in-out; }
     .tab-content.active { display:block; }
-    .product-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-      gap:1.5rem;
-    }
+    @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+    .product-grid { display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); }
     .product-card {
-      background:var(--card-bg);
-      padding:1rem;
-      border-radius:8px;
-      text-align:center;
-      border:1px solid #333;
-      position:relative;
-      overflow:hidden;
-      transition:transform 0.3s,color 0.3s;
+      background:var(--card); padding:1rem; border-radius:8px; text-align:center; position:relative;
+      border:1px solid #333; transition:transform .3s, box-shadow .3s;
     }
     .product-card:hover {
-      transform:translateY(-4px);
-      border-color:var(--primary);
-      box-shadow:0 0 12px var(--primary)80;
+      transform:scale(1.03);
+      box-shadow: 0 0 15px var(--neon);
+      border-color: var(--neon);
     }
-    .product-card h3 { margin:0.5rem 0 0.2rem; }
-    .product-card p.price { font-weight:600; }
+    .product-card h3 { margin:0.5rem 0; color:#fff; }
+    .product-card p.price { font-weight:600; color:#ddd; }
     .product-card button {
-      margin-top:0.7rem;
-      background:var(--primary);
-      border:none;padding:6px 12px;
-      color:#fff;border-radius:4px;cursor:pointer;
-      transition:background 0.3s;
+      margin-top:0.8rem; background:var(--neon); color:#fff; border:none;
+      padding:8px 12px; border-radius:4px; cursor:pointer; transition:background .3s;
     }
-    .product-card button:hover { background:#a96ff5; }
+    .product-card button:hover { background:var(--accent); }
     .product-card .details {
-      position:absolute;
-      bottom:0;left:0;right:0;
-      background:rgba(20,0,30,0.95);
-      padding:0.8rem;
-      font-size:0.9rem;
-      color:#ddd;
-      opacity:0;
-      transform:translateY(100%);
-      transition:opacity 0.3s ease, transform 0.3s ease;
+      position:absolute; bottom:0; left:0; right:0;
+      background:rgba(30,10,40,0.95); color:#eee; padding:0.8rem;
+      font-size:0.9rem; transform:translateY(100%); opacity:0;
+      transition:transform .3s, opacity .3s;
+      border-bottom-left-radius:8px; border-bottom-right-radius:8px;
     }
-    .product-card:hover .details {
-      opacity:1;transform:translateY(0);
-    }
-    footer {
-      background:var(--card-bg);
-      padding:1rem;
-      text-align:center;
-      border-top:2px solid var(--primary);
-    }
-    .social-icons a { margin:0 0.5rem;display:inline-block; }
-    .social-icons img {
-      width:28px;height:28px;
-      filter:grayscale(1) brightness(1.2);
-      transition:filter 0.3s,transform 0.3s;
-    }
-    .social-icons a:hover img {
-      filter:brightness(1.6);transform:scale(1.2);
-    }
+    .product-card:hover .details { transform:translateY(0); opacity:1; }
     .floating-cart-btn {
-      position:fixed;bottom:20px;right:20px;
-      background:var(--primary);border:none;
-      color:#fff;padding:14px;border-radius:50%;
-      font-size:18px;cursor:pointer;z-index:1000;
-      box-shadow:0 0 12px var(--primary)80;
+      position:fixed; bottom:20px; right:20px; background:var(--neon);
+      border:none; color:#fff; font-size:20px; padding:12px; border-radius:50%;
+      cursor:pointer; box-shadow:0 0 12px var(--neon);
     }
-    .floating-cart-btn:hover { background:#a96ff5; }
+    .floating-cart-btn:hover { background:var(--accent); }
     .cart-modal {
-      display:none;position:fixed;z-index:999;
-      top:0;left:0;width:100%;height:100%;
-      background:rgba(10,10,10,0.9);
+      display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+      background:rgba(0,0,0,0.85); z-index:999;
     }
     .cart-content {
-      background:var(--card-bg);
-      margin:8% auto;padding:2rem;
-      width:90%;max-width:480px;
-      border:1px solid var(--primary);
-      border-radius:8px;color:#fff;
+      background:var(--card); margin:8% auto; padding:2rem;
+      max-width:480px; border-radius:8px; border:2px solid var(--neon);
+      color:#eee;
     }
     .close-cart {
-      float:right;font-size:26px;color:#aaa;cursor:pointer;
+      float:right; font-size:26px; color:#aaa; cursor:pointer;
     }
     .close-cart:hover { color:#fff; }
-    #cartItems { list-style:none;padding:0;margin:1rem 0; }
+    #cartItems { list-style:none; margin-top:1rem; }
     #cartItems li {
-      padding:0.6rem 0;border-bottom:1px solid #333;
+      padding:6px 0; border-bottom:1px solid#333;
     }
-    .cart-footer {
-      text-align:right;
-    }
+    .cart-footer { margin-top:1.5rem; text-align:right; }
     .checkout-btn {
-      background:var(--primary);color:#fff;
-      padding:0.6rem 1.2rem;border:none;
-      border-radius:4px;cursor:pointer;margin-top:1rem;
+      background:var(--neon); color:#fff; border:none;
+      padding:8px15px; border-radius:5px; cursor:pointer;
     }
-    .checkout-btn:hover { background:#a96ff5; }
+    .checkout-btn:hover { background:var(--accent); }
+    footer { background:var(--card); padding:2rem 0; text-align:center; border-top:2px solid var(--neon);}
+    .social-icons a { margin:0 8px; transition:transform .3s;}
+    .social-icons img { width:28px;filter:grayscale(1) brightness(1.2);}
+    .social-icons a:hover img { transform:scale(1.2); filter:brightness(1.5);}
   </style>
 </head>
 <body>
 
-  <header>SHAMELESS SHOP</header>
+<header>SHAMELESS SHOP</header>
 
-  <nav>
-    <a href="#fortnite" class="active">Fortnite</a>
-    <a href="#valorant">Valorant</a>
-    <a href="#discord">Discord</a>
-    <a href="#telegram">Telegram</a>
-    <a href="#gifting">Gifting</a>
-  </nav>
+<nav>
+  <a href="#fortnite" class="active">Fortnite</a>
+  <a href="#valorant">Valorant</a>
+  <a href="#discord">Discord</a>
+  <a href="#telegram">Telegram</a>
+  <a href="#gifting">Gifting</a>
+</nav>
 
-  <main>
-    <section id="fortnite" class="tab-content active">
-      <h2>Fortnite Products</h2>
-      <div class="product-grid">
-        <div class="product-card">
-          <h3>1,000 V‑Bucks</h3><p class="price">$8.99</p>
-          <button onclick="addToCart('1,000 V‑Bucks',8.99)">Add to Cart</button>
-          <div class="details">Instant delivery, region‑free, no account needed.</div>
-        </div>
-        <div class="product-card">
-          <h3>Battle Pass</h3><p class="price">$7.99</p>
-          <button onclick="addToCart('Battle Pass',7.99)">Add to Cart</button>
-          <div class="details">Current season Battle Pass, immediate delivery.</div>
-        </div>
+<main>
+  <!-- Fortnite -->
+  <div id="fortnite" class="tab-content active">
+    <h2>Fortnite Product Catalog</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <h3>1,000 V‑Bucks</h3><p class="price">$8.99</p>
+        <button onclick="addToCart('1,000 V‑Bucks',8.99)">Add to Cart</button>
+        <div class="details">Instant delivery, region‑free, no account needed.</div>
       </div>
-    </section>
-
-    <section id="valorant" class="tab-content">
-      <h2>Valorant Points (TR)</h2>
-      <div class="product-grid">
-        <div class="product-card">
-          <h3>1,000 VP</h3><p class="price">$9.49</p>
-          <button onclick="addToCart('1,000 VP',9.49)">Add to Cart</button>
-          <div class="details">Turkish region, secure delivery within minutes.</div>
-        </div>
+      <div class="product-card">
+        <h3>2,800 V‑Bucks</h3><p class="price">$22.49</p>
+        <button onclick="addToCart('2,800 V‑Bucks',22.49)">Add</button>
+        <div class="details">Best value pack with bonus rewards.</div>
       </div>
-    </section>
-
-    <section id="discord" class="tab-content">
-      <h2>Discord Nitro</h2>
-      <div class="product-grid">
-        <div class="product-card">
-          <h3>Nitro 1 Month</h3><p class="price">$3.99</p>
-          <button onclick="addToCart('Nitro 1 Month',3.99)">Add to Cart</button>
-          <div class="details">Full Nitro benefits for 30 days, direct to your account.</div>
-        </div>
+      <div class="product-card">
+        <h3>5,000 V‑Bucks</h3><p class="price">$36.99</p>
+        <button onclick="addToCart('5,000 V‑Bucks',36.99)">Add</button>
+        <div class="details">Full bundle for all skins & emotes.</div>
       </div>
-    </section>
-
-    <section id="telegram" class="tab-content">
-      <h2>Telegram Premium</h2>
-      <div class="product-grid">
-        <div class="product-card">
-          <h3>1 Month Premium</h3><p class="price">$4.49</p>
-          <button onclick="addToCart('Telegram Premium 1 Month',4.49)">Add to Cart</button>
-          <div class="details">Instant upgrade, unlock extra features.</div>
-        </div>
+      <div class="product-card">
+        <h3>13,500 V‑Bucks</h3><p class="price">$79.99</p>
+        <button onclick="addToCart('13,500 V‑Bucks',79.99)">Add</button>
+        <div class="details">Ultimate bundle; perfect for big spenders.</div>
       </div>
-    </section>
-
-    <section id="gifting" class="tab-content">
-      <h2>Fortnite Gifting</h2>
-      <div class="product-grid">
-        <div class="product-card">
-          <h3>GOOFGANG Gift Pack</h3><p class="price">Custom</p>
-          <button onclick="addToCart('GOOFGANG Gift',0)">Add to Cart</button>
-          <div class="details">Choose amount & recipient for direct gifting.</div>
-        </div>
+      <div class="product-card">
+        <h3>Starter Pack</h3><p class="price">$3.99</p>
+        <button onclick="addToCart('Fortnite Starter Pack',3.99)">Add</button>
+        <div class="details">Exclusive outfit + 600 V‑Bucks.</div>
       </div>
-    </section>
-  </main>
-
-  <footer>
-    <p>Follow SHAMELESS</p>
-    <div class="social-icons">
-      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord" /></a>
-      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" /></a>
-      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram" /></a>
-    </div>
-    <p>&copy; 2025 SHAMELESS</p>
-  </footer>
-
-  <button id="openCartBtn" class="floating-cart-btn">🛒</button>
-
-  <div id="cartModal" class="cart-modal">
-    <div class="cart-content">
-      <span class="close-cart">&times;</span>
-      <h2>Your Cart</h2>
-      <ul id="cartItems"></ul>
-      <div class="cart-footer">
-        <p>Total: $<span id="cartTotal">0.00</span></p>
-        <button class="checkout-btn">Checkout</button>
+      <div class="product-card">
+        <h3>Battle Pass</h3><p class="price">$7.99</p>
+        <button onclick="addToCart('Fortnite Battle Pass',7.99)">Add</button>
+        <div class="details">Current season Battle Pass — unlock new tiers.</div>
       </div>
     </div>
   </div>
 
-  <script>
-    document.querySelectorAll('nav a').forEach(tab => {
-      tab.addEventListener('click', e => {
-        e.preventDefault();
-        const target = tab.getAttribute('href').substring(1);
-        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-        document.getElementById(target).classList.add('active');
-        document.querySelectorAll('nav a').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-      });
+  <!-- Valorant -->
+  <div id="valorant" class="tab-content">
+    <h2>Valorant Points (TR)</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <h3>475 VP</h3><p class="price">$4.99</p>
+        <button onclick="addToCart('475 VP',4.99)">Add to Cart</button>
+        <div class="details">Quick, secure TR server delivery.</div>
+      </div>
+      <div class="product-card">
+        <h3>1,000 VP</h3><p class="price">$9.49</p>
+        <button onclick="addToCart('1,000 VP',9.49)">Add</button>
+        <div class="details">Popular pack with bonus skins access.</div>
+      </div>
+      <div class="product-card">
+        <h3>2,050 VP</h3><p class="price">$18.99</p>
+        <button onclick="addToCart('2,050 VP',18.99)">Add</button>
+        <div class="details">Mid-range pack for multiple weapon skins.</div>
+      </div>
+      <div class="product-card">
+        <h3>3,650 VP</h3><p class="price">$29.99</p>
+        <button onclick="addToCart('3,650 VP',29.99)">Add</button>
+        <div class="details">Large pack, great value for premium items.</div>
+      </div>
+      <div class="product-card">
+        <h3>5,350 VP</h3><p class="price">$44.99</p>
+        <button onclick="addToCart('5,350 VP',44.99)">Add</button>
+        <div class="details">Top seller with bonus points included.</div>
+      </div>
+      <div class="product-card">
+        <h3>11,000 VP</h3><p class="price">$84.99</p>
+        <button onclick="addToCart('11,000 VP',84.99)">Add</button>
+        <div class="details">Everything you need — complete bundle.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Discord -->
+  <div id="discord" class="tab-content">
+    <h2>Discord Nitro Plans</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <h3>Nitro 1 Month</h3><p class="price">$3.99</p>
+        <button onclick="addToCart('Nitro 1 Month',3.99)">Add to Cart</button>
+        <div class="details">Full Nitro, boosted perks for 30 days.</div>
+      </div>
+      <div class="product-card">
+        <h3>Nitro 6 Months</h3><p class="price">$22.99</p>
+        <button onclick="addToCart('Nitro 6 Months',22.99)">Add</button>
+        <div class="details">Save more with semi-annual plan.</div>
+      </div>
+      <div class="product-card">
+        <h3>Nitro 12 Months</h3><p class="price">$44.99</p>
+        <button onclick="addToCart('Nitro 12 Months',44.99)">Add</button>
+        <div class="details">Best yearly value — full perks included.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Telegram -->
+  <div id="telegram" class="tab-content">
+    <h2>Telegram Premium</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <h3>1 Month</h3><p class="price">$4.49</p>
+        <button onclick="addToCart('Telegram Premium 1 Month',4.49)">Add</button>
+        <div class="details">Unlock premium features immediately.</div>
+      </div>
+      <div class="product-card">
+        <h3>6 Months</h3><p class="price">$24.99</p>
+        <button onclick="addToCart('Telegram Premium 6 Months',24.99)">Add</button>
+        <div class="details">Half year access at discount.</div>
+      </div>
+      <div class="product-card">
+        <h3>12 Months</h3><p class="price">$44.99</p>
+        <button onclick="addToCart('Telegram Premium 12 Months',44.99)">Add</button>
+        <div class="details">Best value annual plan unlocked.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gifting -->
+  <div id="gifting" class="tab-content">
+    <h2>Fortnite Gifting Packs</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <h3>GOOFGANG Pack</h3><p class="price">Custom</p>
+        <button onclick="addToCart('GOOFGANG Gift Pack',0)">Add</button>
+        <div class="details">Custom amount, fast transfer to recipient.</div>
+      </div>
+      <div class="product-card">
+        <h3>GOOFGANG2 Pack</h3><p class="price">Custom</p>
+        <button onclick="addToCart('GOOFGANG2 Gift Pack',0)">Add</button>
+        <div class="details">Extended support & bonus perks.</div>
+      </div>
+      <div class="product-card">
+        <h3>GOOFGANG3 Pack</h3><p class="price">Custom</p>
+        <button onclick="addToCart('GOOFGANG3 Gift Pack',0)">Add</button>
+        <div class="details">Premium gifting, VIP support included.</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>Follow SHAMELESS</p>
+  <div class="social-icons">
+    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord"/></a>
+    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"/></a>
+    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram"/></a>
+  </div>
+  <p>&copy; 2025 SHAMELESS</p>
+</footer>
+
+<button id="openCartBtn" class="floating-cart-btn">🛒</button>
+<div id="cartModal" class="cart-modal">
+  <div class="cart-content">
+    <span class="close-cart">&times;</span>
+    <h2>Your Cart</h2>
+    <ul id="cartItems"></ul>
+    <div class="cart-footer">
+      <p>Total: $<span id="cartTotal">0.00</span></p>
+      <button class="checkout-btn">Checkout</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('nav a').forEach(tab => {
+    tab.addEventListener('click', e => {
+      e.preventDefault();
+      const id = tab.getAttribute('href').substring(1);
+      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.querySelectorAll('nav a').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
     });
+  });
 
-    const cartModal = document.getElementById('cartModal');
-    const openCartBtn = document.getElementById('openCartBtn');
-    const closeCart = document.querySelector('.close-cart');
-    const cartItems = document.getElementById('cartItems');
-    const cartTotal = document.getElementById('cartTotal');
-    let cart = [];
+  const cartModal = document.getElementById('cartModal'),
+        openCartBtn = document.getElementById('openCartBtn'),
+        closeCart = document.querySelector('.close-cart'),
+        cartItems = document.getElementById('cartItems'),
+        cartTotal = document.getElementById('cartTotal');
+  let cart = [];
 
-    openCartBtn.onclick = () => {
-      updateCartUI();
-      cartModal.style.display = 'block';
-    };
-    closeCart.onclick = () => cartModal.style.display = 'none';
-    window.onclick = e => { if (e.target === cartModal) cartModal.style.display = 'none'; };
+  openCartBtn.onclick = () => { updateCartUI(); cartModal.style.display = 'block'; };
+  closeCart.onclick = () => cartModal.style.display = 'none';
+  window.onclick = e => { if (e.target === cartModal) cartModal.style.display = 'none'; };
 
-    function addToCart(name, price) {
-      cart.push({ name, price });
-      updateCartUI();
-    }
-    function updateCartUI() {
-      cartItems.innerHTML = '';
-      let total = 0;
-      cart.forEach(item => {
-        total += item.price;
-        const li = document.createElement('li');
-        li.textContent = `${item.name} – $${item.price.toFixed(2)}`;
-        cartItems.appendChild(li);
-      });
-      cartTotal.textContent = total.toFixed(2);
-    }
-  </script>
+  function addToCart(name, price) {
+    cart.push({ name, price });
+    updateCartUI();
+  }
 
+  function updateCartUI() {
+    cartItems.innerHTML = '';
+    let total = 0;
+    cart.forEach(item => { total += item.price; const li = document.createElement('li'); li.textContent = `${item.name} – $${item.price.toFixed(2)}`; cartItems.appendChild(li); });
+    cartTotal.textContent = total.toFixed(2);
+  }
+</script>
 </body>
 </html>
